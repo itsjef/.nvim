@@ -15,8 +15,8 @@ filetype plugin on
 filetype indent on
 
 " Mapping leader key
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = "\<space>"
+let g:mapleader = "\<space>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM UI
@@ -74,3 +74,11 @@ try
     colorscheme gruvbox
 catch
 endtry
+
+""""""""""""""""""""""""""""""
+" => Misc
+""""""""""""""""""""""""""""""
+" Quickly open/reload nvimrc
+nnoremap <leader>ev :split ~/.nvimrc<cr>
+nnoremap <leader>sv :source ~/.nvimrc<cr>
+
