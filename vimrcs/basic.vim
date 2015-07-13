@@ -7,6 +7,15 @@ set history=700
 " Set autoread when a file is changed from outside
 set autoread
 
+" Set uncompatible with old Vi
+set nocp
+
+" Show line number
+set nu
+
+" Set timeout length for double key
+set timeoutlen=200
+
 " Enable syntax highlight "
 syntax on
 
@@ -17,6 +26,9 @@ filetype indent on
 " Mapping leader key
 let mapleader = "\<space>"
 let g:mapleader = "\<space>"
+
+" Remapping ESC key
+inoremap ii <ESC>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM UI
