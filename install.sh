@@ -4,17 +4,11 @@ cp ~/.vimrc ~/.vimrc.bak
 echo 'Installing new vimrc ...'
 cd ~/.nvim_runtime
 
-echo 'set runtimepath+=~/.vim_runtime
+echo 'set runtimepath+=~/.nvim_runtime
 
-try
-source ~/.vim_runtime/vimrcs/my_configs.vim
-catch
-endtry
-
-source ~/.vim_runtime/vimrcs/basic.vim
-source ~/.vim_runtime/vimrcs/filetypes.vim
-source ~/.vim_runtime/vimrcs/plugins_config.vim
-source ~/.vim_runtime/vimrcs/extended.vim
+source ~/.nvim_runtime/vimrcs/basic.vim
+source ~/.nvim_runtime/vimrcs/plugins_config.vim
+source ~/.nvim_runtime/vimrcs/filetype.vim
 
 set nocp
 set nu
