@@ -14,7 +14,7 @@ set nocp
 set nu
 
 " Set timeout length for double key
-set timeoutlen=200
+" set timeoutlen=200
 
 " Enable syntax highlight "
 syntax on
@@ -24,8 +24,8 @@ filetype plugin on
 filetype indent on
 
 " Mapping leader key
-let mapleader = "\<space>"
-let g:mapleader = "\<space>"
+let mapleader = ","
+let g:mapleader = ","
 
 " Remapping ESC key
 inoremap ii <ESC>
