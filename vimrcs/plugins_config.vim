@@ -15,7 +15,10 @@ map <leader>f :MRU<cr>
 if has("win32") || has("win64")
     " Do nothing
 else
-    let g:yankring_history_dir = '~/.nvim_runtime/yankring_tmp/'
+    try
+        let g:yankring_history_dir = '~/.nvim_runtime/temp_dir/'
+    catch
+    endtry
 endif
 
 """"""""""""""""""""""""""""""
