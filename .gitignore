@@ -1,2 +1,2 @@
 # Ignore YankRing tmp folder
-yankring_tmp
+yankring_tmp/*
