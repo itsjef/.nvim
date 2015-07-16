@@ -1,3 +1,4 @@
 # Ignore YankRing tmp folder
 yankring_tmp/*
 temp_dir/*
+colors/*
