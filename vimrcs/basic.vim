@@ -82,6 +82,7 @@ set laststatus=2
 """""""""""""""""""""""""""""""""""""""""
 " Background theme
 set background=dark
+
 try
     colorscheme gruvbox
 catch
@@ -90,6 +91,9 @@ endtry
 """"""""""""""""""""""""""""""
 " => Misc
 """"""""""""""""""""""""""""""
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
 " Quickly open/reload nvimrc
 nnoremap <leader>ev :split ~/.nvimrc<cr>
 nnoremap <leader>sv :source ~/.nvimrc<cr>

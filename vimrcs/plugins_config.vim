@@ -6,7 +6,7 @@ execute pathogen#infect('~/.nvim_runtime/bundle/{}')
 """"""""""""""""""""""""""""""
 " => MRU
 """"""""""""""""""""""""""""""
-let MRU_Max_Entries = 400
+let MRU_Max_Entries = 100
 map <leader>f :MRU<cr>
 
 """"""""""""""""""""""""""""""
@@ -27,6 +27,7 @@ endif
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
+let g:NERDTreeWinSize=25
 
 """"""""""""""""""""""""""""""
 " => Airline
@@ -37,7 +38,7 @@ if !exists('g:airline_symbols')
 endif
 
 let g:airline_powerline_fonts=1
-let g:airline_theme="gruvbox"
+"let g:airline_theme="solarized"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vimroom - Goyo
