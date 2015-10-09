@@ -104,3 +104,7 @@ try
     set undofile
 catch
 endtry
+
+" highlight cursor line when in Insert Mode
+autocmd InsertEnter * set cul
+autocmd InsertLeave * set nocul
