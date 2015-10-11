@@ -13,6 +13,9 @@ set nocp
 " Show line number
 set nu
 
+" Show matching parenthese
+set showmatch
+
 " Set timeout length for double key
 " set timeoutlen=200
 
@@ -76,6 +79,10 @@ set wildmode=longest,full
 " Status line
 " Always show the status line - Mandatory for vim-airline to show"
 set laststatus=2
+
+" Set NERDTree on by default
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p " go back to editor tab
 
 """""""""""""""""""""""""""""""""""""""""
 " => Colors

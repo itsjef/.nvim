@@ -27,7 +27,8 @@ endif
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
-let g:NERDTreeWinSize=25
+let g:NERDTreeWinSize=20
+let g:NERDTreeWinPos="right"
 
 """"""""""""""""""""""""""""""
 " => Airline
