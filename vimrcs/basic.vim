@@ -40,9 +40,9 @@ inoremap ii <ESC>
 set so=7
 
 " Indentation
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 set expandtab autoindent
 
 " Ignore case when searching
@@ -88,12 +88,12 @@ autocmd VimEnter * wincmd p " go back to editor tab
 " => Colors
 """""""""""""""""""""""""""""""""""""""""
 " Background theme
-set background=dark
-
 try
     colorscheme gruvbox
 catch
 endtry
+
+set background=dark
 
 """"""""""""""""""""""""""""""
 " => Misc
@@ -102,8 +102,8 @@ endtry
 set encoding=utf8
 
 " Quickly open/reload nvimrc
-nnoremap <leader>ev :split ~/.nvimrc<cr>
-nnoremap <leader>sv :source ~/.nvimrc<cr>
+nnoremap <leader>ev :split ~/.vimrc<cr>
+nnoremap <leader>sv :source ~/.vimrc<cr>
 
 " Persistent undo - You can undo even after closing a buffer or Vim itself
 try
