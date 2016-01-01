@@ -30,6 +30,10 @@ map <leader>nf :NERDTreeFind<cr>
 let g:NERDTreeWinSize=25
 let g:NERDTreeWinPos="right"
 
+" Set NERDTree on by default
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p " go back to editor tab
+
 " Auto close NERDTree when 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 """"""""""""""""""""""""""""""

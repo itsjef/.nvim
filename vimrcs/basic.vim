@@ -80,20 +80,12 @@ set wildmode=longest,full
 " Always show the status line - Mandatory for vim-airline to show"
 set laststatus=2
 
-" Set NERDTree on by default
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p " go back to editor tab
-
 """""""""""""""""""""""""""""""""""""""""
 " => Colors
 """""""""""""""""""""""""""""""""""""""""
 " Background theme
 set background=dark
-
-try
-    colorscheme gruvbox
-catch
-endtry
+colorscheme onedark
 
 """"""""""""""""""""""""""""""
 " => Misc
