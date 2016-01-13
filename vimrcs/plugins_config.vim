@@ -16,7 +16,7 @@ if has("win32") || has("win64")
     " Do nothing
 else
     try
-        let g:yankring_history_dir = '~/.nvim_runtime/temp_dir/'
+        let g:yankring_history_dir = '~/.nvim_runtime/temp_dir'
     catch
     endtry
 endif

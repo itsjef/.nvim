@@ -1,0 +1,4 @@
+>>>>>>> 0c5612fa31ee434ba055e21c76f456244b3b5109,V
+<<<<<<< HEAD,V
+temp_dir/*,V
+/home/fu/.nvim_runtime/temp_dir//yankring_history_v2.txt,v

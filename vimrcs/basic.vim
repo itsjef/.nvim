@@ -88,7 +88,7 @@ set background=dark
 colorscheme gruvbox
 
 try
-    colorscheme onedark
+  colorscheme onedark
 catch
 endtry
 
