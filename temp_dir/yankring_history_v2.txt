@@ -1,4 +1,100 @@
+ROOT_PATH,v
+=======,V
 >>>>>>> 0c5612fa31ee434ba055e21c76f456244b3b5109,V
 <<<<<<< HEAD,V
-temp_dir/*,V
-/home/fu/.nvim_runtime/temp_dir//yankring_history_v2.txt,v
+*,v
+_,v
+",v
+http://comicvn.net/truyen-tranh/nguoi-trong-giang-ho/chapter-629-dong-qui-u-tan/260402,v
+http://cdn02.foxitsoftware.com/pub/foxit/reader/desktop/linux/,v
+',v
+    }).transform('babelify', {presets: ['es2015', 'react']}),V
+import React from 'react';,V
+  <link rel="stylesheet" href="">,V
+env ,v
+cross-,v
+eel,v
+e,v
+h,v
+heel,V
+heel,v
+  <script src="/node_modules/react/dist/react.min.js"></script>,V
+git clone git://github.com/tpope/vim-surround.git,v
+start:,v
+d,v
+  <title>Block Breaker</title>  <script src="/node_modules/react/dist/react.min.js"></script>,V
+metain,v
+varvarvarvar,3
+ ,v
+         ,v
+import { CHANGE_OWNER_NAME, CHANGE_PROJECT_NAME } from '../constants/AppConstants';export function asyncChangeProjectName(name) {  return (dispatch) => {    // You can do async stuff here!    // API fetching, Animations,...    // For more information as to how and why you would do this, check https://github.com/gaearon/redux-thunk    return dispatch(changeProjectName(name));  };}export function asyncChangeOwnerName(name) {  return (dispatch) => {    // You can do async stuff here!    // API fetching, Animations,...    // For more information as to how and why you would do this, check https://github.com/gaearon/redux-thunk    return dispatch(changeOwnerName(name));  };}export function changeProjectName(name) {  return { type: CHANGE_PROJECT_NAME, name };}export function changeOwnerName(name) {  return { type: CHANGE_OWNER_NAME, name };},V
+var gulp = require('gulp');var browserify = require('browserify');var babelify = require('babelify');var source = require('vinyl-source-stream');gulp.task('build', function () {    return browserify({entries: './app.jsx', extensions: ['.jsx'], debug: true})        .transform(babelify)        .bundle()        .pipe(source('bundle.js'))        .pipe(gulp.dest('dist'));});gulp.task('watch', ['build'], function () {    gulp.watch('*.jsx', ['build']);});gulp.task('default', ['watch']);,v
+<Paste>,v
+babel-preset-es2015 --save,v
+(),v
+const rootReducer = function() {};,V
+() => ,v
+undefined,v
+,V
+const rootReducer = homeReducer;,v
+listen EADDRINUSE 0.0.0.0:3000,v
+rootReducer.js,V
+export default rootReducer;,V
+  </Provider>,,V
+    </Router>,V
+      </Route>,V
+      <Route component={App}>,V
+    <Router history={createHistory()}>,V
+  <Provider store={store}>,V
+        <Route path="*" component={NotFoundPage} />,V
+        <Route path="/readme" component={ReadmePage} />,V
+        <Route path="/" component={HomePage} />,V
+import NotFoundPage from './components/pages/NotFound.react';,V
+import ReadmePage from './components/pages/ReadmePage.react';,V
+import HomePage from './components/pages/HomePage.react';,V
+.wrapper {	background-color: #FEFEFE;	color: #222222;	max-width: 978px;	margin: 0 auto;}.home__wrapper a {	color: #222222;}.home__wrapper h1,.home__wrapper h2 {	text-align: center;}.btn {	display: inline-block;	background-color: skyblue;	padding: 0.5em;	color: #FEFEFE;	border-radius: 3px;	text-decoration: none;}.logo {	max-height: 5em;	margin: 0 auto;	display: block;}.home__label {	display: block;	width: 100%;	margin: 1em 0;}.home__input {	margin-left: 0.5em;	border-radius: 2px;	border-width: 1px;	border-color: grey;	padding: 0.3em;},V
+Max Stoiber,v
+git://github.com/mxstbr/react-boilerplate.git,v
+Quick setup for new React.js applications featuring Redux, hot–reloading, PostCSS, react-router and Mocha.,v
+reactjs-boilerplate,v
+Sesshomaru,v
+https://github.com/vasanthk/react-es6-webpack-boilerplate,v
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>,V
+    <script src="/socket.io/socket.io.js"></script>,V
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script><script src="http://code.jquery.com/jquery-1.11.1.js"></script>,v
+s,v
+    console.log('message: ' + msg);,V
+  $('form').submit(function(){    socket.emit('chat message', $('#m').val());    $('#m').val('');    return false;  });,v
+  console.log('a user has connected');  socket.on('disconnect', function() {    console.log('user disconnected');  });,V
+    <script src="/socket.io/socket.io.js">,V
+  });,V
+    console.log('user disconnected');,V
+  socket.on('disconnect', function() {,V
+.connect,v
+      var socket = io.connect();,V
+    </script>,V
+    <script>console.log('hello world');</script>,V
+    <script src="/socket.io/socket.io.js">      var socket = io();    </script>,V
+    <ul id="messages"></ul>    <form action="">      <input id="m" autocomplete="off" /><button>Send</button>    </form>,V
+http://localhost:3000/,v
+has connected,v
+a,v
+    c,V
+  console.log('a user has connected');,V
+      console.log(socket);,V
+(app),v
+var express = require('express');var socket  = require('socket.io');var http    = require('http');var app    = express();var server = http.Server(app);var io     = socket(server);  app.use('/', express.static(__dirname));io.on('connection', function(socket) {  console.log('a user has connected');});server.listen(3000, function() {  console.log('listening on *:3000');});,V
+});,V
+http.S,v
+app,v
+ src='/socket.io/socket.io.js',v
+    <script src='/socket.io/socket.io.js'>      var socket = io();    </script>,V
+Cannot GET /socket.io/socket.io.js ,v
+var app = require('express')();var http = require('http').Server(app);var io = require('socket.io')(http);app.get('/', function(req, res){  res.sendfile('index.html');});io.on('connection', function(socket){  console.log('a user connected');});http.listen(3000, function(){  console.log('listening on *:3000');});,v
+var express = require('express');var socket  = require('socket.io');var http    = require('http');var app = express();var io  = socket(http.Server(app));  app.use('/', express.static(__dirname));io.on('connection', function(socket) {  console.log('a user has connected');});app.listen(3000, function() {  console.log('listening on *:3000');});,V
+require,v
+files myhostname mdns4_minimal [NOTFOUND=return] ,v
+p,v
+var http = require('http').Server(app);,V
+<!doctype html><html>  <head>    <title>Socket.IO chat</title>    <style>      * { margin: 0; padding: 0; box-sizing: border-box; }      body { font: 13px Helvetica, Arial; }      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }      #messages { list-style-type: none; margin: 0; padding: 0; }      #messages li { padding: 5px 10px; }      #messages li:nth-child(odd) { background: #eee; }    </style>  </head>  <body>    <ul id="messages"></ul>    <form action="">      <input id="m" autocomplete="off" /><button>Send</button>    </form>  </body></html>,v
+  res.send('<h1>Hello World</h1>');,V

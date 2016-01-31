@@ -87,10 +87,10 @@ set laststatus=2
 set background=dark
 colorscheme gruvbox
 
-try
-  colorscheme onedark
-catch
-endtry
+" try
+"   colorscheme onedark
+" catch
+" endtry
 
 """"""""""""""""""""""""""""""
 " => Misc
