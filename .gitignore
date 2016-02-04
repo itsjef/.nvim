@@ -1,5 +1,6 @@
 # Ignore YankRing tmp folder
-yankring_tmp/*
+yankring_tmp
 temp_dir/*
-colors/*
+autoload/airline
+colors
 doc/tags
