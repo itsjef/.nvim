@@ -85,12 +85,12 @@ set laststatus=2
 """""""""""""""""""""""""""""""""""""""""
 " Background theme
 set background=dark
-colorscheme gruvbox
 
-" try
-"   colorscheme onedark
-" catch
-" endtry
+try
+  colorscheme onedark
+catch
+  colorscheme gruvbox
+endtry
 
 """"""""""""""""""""""""""""""
 " => Misc
