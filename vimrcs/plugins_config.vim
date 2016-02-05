@@ -39,12 +39,18 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 """"""""""""""""""""""""""""""
 " => Airline
 """"""""""""""""""""""""""""""
+if (exists('g:loaded_airline_themes') && g:loaded_airline_themes)
+  finish
+endif
+let g:loaded_airline_themes = 1
+
 " Avoid accidentally overwritting existing symbols
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
 let g:airline_powerline_fonts=1
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vimroom - Goyo
