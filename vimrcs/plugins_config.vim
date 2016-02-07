@@ -32,6 +32,7 @@ let g:NERDTreeWinPos="right"
 
 " Set NERDTree on by default
 autocmd VimEnter * NERDTree
+autocmd BufWinEnter * NERDTreeMirror
 autocmd VimEnter * wincmd p " go back to editor tab
 
 " Auto close NERDTree when 
