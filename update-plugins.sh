@@ -1,4 +1,4 @@
 cd './bundle';
 for f in */; do 
-  (cd $f && git pull)
+  (echo $f && cd $f && git pull)
 done;
