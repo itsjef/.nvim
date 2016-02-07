@@ -69,3 +69,8 @@ nnoremap <silent> <leader>z :Goyo<cr>
 let g:ctrlp_map = '<c-f>' " Avoid conflict with YankRing <c-p>
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|^\.DS_Store\|^\.git\|^\.coffee'
+
+"""""""""""""""""""""""
+" => Markdown
+"""""""""""""""""""""""
+let g:vim_markdown_folding_disabled = 1
