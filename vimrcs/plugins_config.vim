@@ -36,6 +36,7 @@ autocmd VimEnter * wincmd p " go back to editor tab
 
 " Auto close NERDTree when 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 """"""""""""""""""""""""""""""
 " => Airline
 """"""""""""""""""""""""""""""
@@ -50,7 +51,8 @@ if !exists('g:airline_symbols')
 endif
 
 let g:airline_powerline_fonts=1
-
+let g:airline_extensions = ['tabline', 'branch']
+let g:airline#extensions#tabline#fnamemod = ':t' 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vimroom - Goyo
