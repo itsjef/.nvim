@@ -1,3 +1,6 @@
-" markdown filetype file
-au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=markdown
-au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn}.{des3,des,bf,bfa,aes,idea,cast,rc2,rc4,rc5,desx} set filetype=markdown
+autocmd BufNewFile,BufRead *.markdown,*.md,*.mdown,*.mkd,*.mkdn
+      \ if &ft =~# '^\%(conf\|modula2\)$' |
+      \   set ft=markdown |
+      \ else |
+      \   setf markdown |
+      \ endif
