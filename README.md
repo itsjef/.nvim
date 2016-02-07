@@ -22,4 +22,10 @@ Recommend using [*Powerline fonts*](https://github.com/powerline/fonts) for bett
 
 ###Optional
 
-In order to display powerline symbols correctly in __vim-airline__, change your Terminal font to __Inconsolata-dz for Powerline__
+1, In order to display powerline symbols correctly in __vim-airline__, change your Terminal font to __Inconsolata-dz for Powerline__
+
+2, Update plugins:
+```bash
+$ chmod +x update-plugins.sh
+$ ./update-plugins.sh
+```
