@@ -1,5 +1,5 @@
 #Screenshot
-![alt text](https://raw.githubusercontent.com/itsjef/vimrc/master/screenshot.png "Gruvbox Dark High Contrast")
+![alt text](https://raw.githubusercontent.com/itsjef/vimrc/268a15b54aef9669228837592ea0153252376043/screenshot.png "Gruvbox Dark High Contrast")
 
 #How to install
 
