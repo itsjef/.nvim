@@ -1,3 +1,6 @@
+#Screenshot
+![alt text](https://raw.githubusercontent.com/itsjef/vimrc/master/screenshot.png "Gruvbox Dark High Contrast")
+
 #How to install
 
 ##Clone this repo
