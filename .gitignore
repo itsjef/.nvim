@@ -1,6 +1,7 @@
 # Ignore YankRing and temporary folder
 temp_dir/yankring_history_v2.txt
 temp_dir/undo_dir*
+autoload/airline
 colors/*
 doc/tags
 .DS_Store
