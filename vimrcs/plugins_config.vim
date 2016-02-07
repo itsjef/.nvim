@@ -35,8 +35,8 @@ autocmd VimEnter * NERDTree
 autocmd BufWinEnter * NERDTreeMirror
 autocmd VimEnter * wincmd p " go back to editor tab
 
-" Auto close NERDTree when 
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" Auto close NERDTree when the only open window left is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 """"""""""""""""""""""""""""""
 " => Airline
