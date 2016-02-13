@@ -10,7 +10,7 @@ git clone https://github.com/itsjef/vimrc ~/.nvim_runtime
 
 ##Edit your dotfile
 
-Copy and paste these line into __~/.vimrc__ (Vim) or __~/.config/nvim__ (Neovim):
+Copy and paste these line into __~/.vimrc__ (Vim) or __~/.config/nvim/init.vim__ (Neovim):
 ```vimL
 set runtimepath+=~/.nvim_runtime
 
