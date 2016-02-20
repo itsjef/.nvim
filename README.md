@@ -21,14 +21,16 @@ source ~/.nvim_runtime/vimrcs/filetype.vim
 " colorscheme <your_favorite_colorscheme>
 ```
 
-Recommend using [*Powerline fonts*](https://github.com/powerline/fonts) for better displaying of certain plugins (vim-airline, etc ...)
-
 ###Optional
 
 1, In order to display powerline symbols correctly in __vim-airline__, change your Terminal font to __Inconsolata-dz for Powerline__
 
-2, Update plugins:
-```bash
-$ chmod +x update-plugins.sh
-$ ./update-plugins.sh
-```
+2, No clipboard tool
+> clipboard: No clipboard too available. See :help nvim-clipboard
+
+Install xclip: `sudo apt-get install xclip`
+
+3, Plugin is not loaded
+> Taglist: Exuberant ctags (http://ctags.sf.net) not found in PATH. Plugin is not loaded.
+
+Install ctags: `sudo apt-get install exuberant-ctags`
