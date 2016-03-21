@@ -33,6 +33,11 @@ let g:mapleader = ","
 " Remapping ESC key
 inoremap ii <ESC>
 
+" Buffer navigation
+nmap <leader>h :bprevious<CR>
+nmap <leader>l :bnext<CR>
+nmap <leader>c :bdelete<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM UI
 """""""""""""""""""""""""""""""""""""""""""""""""""""
