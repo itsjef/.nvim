@@ -99,8 +99,8 @@ set background=dark
 " set encoding=utf8
 
 " Quickly open/reload nvimrc
-nnoremap <leader>ev :split ~/.vimrc<cr>
-nnoremap <leader>sv :source ~/.vimrc<cr>
+nnoremap <leader>ev :split ~/.config/nvim/init.vim<cr>
+nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 
 " Persistent undo - You can undo even after closing a buffer or Vim itself
 try
