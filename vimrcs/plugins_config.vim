@@ -1,7 +1,30 @@
-"""""""""""""""""""""""""""
-" => Load pathogen paths  "
-"""""""""""""""""""""""""""
-execute pathogen#infect('~/.nvim_runtime/bundle/{}')
+""""""""""""
+" vim-plug "
+""""""""""""
+call plug#begin('~/.nvim_runtime/bundle')
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'Raimondi/delimitMate'
+Plug 'Shougo/deoplete.nvim'
+Plug 'Yggdroot/indentLine'
+Plug 'airblade/vim-gitgutter'
+Plug 'benekastah/neomake'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mattn/emmet-vim'
+Plug 'mileszs/ack.vim'
+Plug 'morhetz/gruvbox'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/syntastic'
+Plug 'slim-template/vim-slim'
+Plug 'tpope/vim-endwise', { 'for': 'ruby' }
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline-themes' | Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/YankRing.vim'
+Plug 'vim-scripts/mru.vim'
+Plug 'vim-scripts/taglist.vim'
+call plug#end()
 
 """"""""""""""""""""""""""""""
 " => MRU

@@ -93,6 +93,9 @@ let [s:pref, s:bpref, s:opts, s:new_opts, s:lc_opts] =
 	\ 'open_single_match':     ['s:opensingle', []],
 	\ 'brief_prompt':          ['s:brfprt', 0],
 	\ 'match_current_file':    ['s:matchcrfile', 0],
+	\ 'compare_lim':           ['s:compare_lim', 3000],
+	\ 'bufname_mod':           ['s:bufname_mod', ':t'],
+	\ 'bufpath_mod':           ['s:bufpath_mod', ':~:.:h'],
 	\ }, {
 	\ 'open_multiple_files':   's:opmul',
 	\ 'regexp':                's:regexp',
@@ -152,8 +155,6 @@ if !has('gui_running')
 	cal add(s:prtmaps['PrtBS()'], remove(s:prtmaps['PrtCurLeft()'], 0))
 en
 
-let s:compare_lim = 3000
-
 let s:ficounts = {}
 
 let s:ccex = s:pref.'clear_cache_on_exit'
@@ -165,6 +166,9 @@ let s:fpats = {
 	\ '^\S\*$': '\*',
 	\ '^\S\\?$': '\\?',
 	\ }
+
+let s:has_conceal = has('conceal')
+let s:bufnr_width = 3
 
 " Keypad
 let s:kprange = {
@@ -185,6 +189,15 @@ let s:hlgrps = {
 	\ 'PrtBase': 'Comment',
 	\ 'PrtText': 'Normal',
 	\ 'PrtCursor': 'Constant',
+	\ 'BufferNr':      'Constant',
+	\ 'BufferInd':     'Normal',
+	\ 'BufferHid':     'Comment',
+	\ 'BufferHidMod':  'String',
+	\ 'BufferVis':     'Normal',
+	\ 'BufferVisMod':  'Identifier',
+	\ 'BufferCur':     'Question',
+	\ 'BufferCurMod':  'WarningMsg',
+	\ 'BufferPath':    'Comment',
 	\ }
 
 " lname, sname of the basic(non-extension) modes
@@ -319,7 +332,7 @@ fu! s:Close()
 	if s:winres[1] >= &lines && s:winres[2] == winnr('$')
 		exe s:winres[0].s:winres[0]
 	en
-	unl! s:focus s:hisidx s:hstgot s:marked s:statypes s:cline s:init s:savestr
+	unl! s:focus s:hisidx s:hstgot s:marked s:statypes s:init s:savestr
 		\ s:mrbs s:did_exp
 	cal ctrlp#recordhist()
 	cal s:execextvar('exit')
@@ -359,7 +372,7 @@ fu! ctrlp#files()
 			if !ctrlp#igncwd(s:dyncwd)
 				cal s:InitCustomFuncs()
 				cal s:GlobPath(s:fnesc(s:dyncwd, 'g', ','), 0)
-        cal s:CloseCustomFuncs()
+				cal s:CloseCustomFuncs()
 			en
 		el
 			sil! cal ctrlp#progress('Indexing...')
@@ -419,7 +432,7 @@ fu! s:UserCmd(lscmd)
 		let lscmd = substitute(lscmd, '\v(^|\&\&\s*)\zscd (/d)@!', 'cd /d ', '')
 	en
 	let path = exists('*shellescape') ? shellescape(path) : path
-	if has('patch-7.4-597')
+	if has('patch-7.4-597') && !(has('win32') || has('win64'))
 		let g:ctrlp_allfiles = systemlist(printf(lscmd, path))
 	else
 		let g:ctrlp_allfiles = split(system(printf(lscmd, path)), "\n")
@@ -471,6 +484,24 @@ fu! s:lsCmd()
 	en
 endf
 " - Buffers {{{1
+fu! s:bufparts(bufnr)
+	let idc  = (a:bufnr == bufnr('#')      ? '#' : '')  " alternative
+	let idc .= (getbufvar(a:bufnr, '&mod') ? '+' : '')  " modified
+	let idc .= (getbufvar(a:bufnr, '&ma')  ? '' : '-')  " nomodifiable
+	let idc .= (getbufvar(a:bufnr, '&ro')  ? '=' : '')  " readonly
+
+	" flags for highlighting
+	let hiflags  = (bufwinnr(a:bufnr) != -1    ? '*' : '')  " visible
+	let hiflags .= (getbufvar(a:bufnr, '&mod') ? '+' : '')  " modified
+	let hiflags .= (a:bufnr == s:crbufnr       ? '!' : '')  " current
+
+	let bname = bufname(a:bufnr)
+	let bname = (bname == '' ? '[No Name]' : fnamemodify(bname, s:bufname_mod))
+
+	let bpath = empty(s:bufpath_mod) ? '' : fnamemodify(bufname(a:bufnr), s:bufpath_mod).s:lash()
+
+	retu [idc, hiflags, bname, bpath]
+endf
 fu! ctrlp#buffers(...)
 	let ids = sort(filter(range(1, bufnr('$')), '(empty(getbufvar(v:val, "&bt"))'
 		\ .' || s:isneovimterminal(v:val)) && getbufvar(v:val, "&bl")'), 's:compmreb')
@@ -565,6 +596,7 @@ fu! s:Render(lines, pat)
 	let height = min([max([s:mw_min, s:res_count]), s:winmaxh])
 	let pat = s:byfname() ? split(a:pat, '^[^;]\+\\\@<!\zs;', 1)[0] : a:pat
 	let cur_cmd = 'keepj norm! '.( s:mw_order == 'btt' ? 'G' : 'gg' ).'1|'
+
 	" Setup the match window
 	sil! exe '%d _ | res' height
 	" Print the new items
@@ -589,17 +621,14 @@ fu! s:Render(lines, pat)
 	let s:lines = copy(lines)
 	cal map(lines, 's:formatline(v:val)')
 	cal setline(1, s:offset(lines, height))
-	setl noma cul
-	exe cur_cmd
 	cal s:unmarksigns()
 	cal s:remarksigns()
-	if exists('s:cline') && s:nolim != 1
-		cal cursor(s:cline, 1)
-	en
 	" Highlighting
 	if s:dohighlight()
 		cal s:highlight(pat, s:mathi[1])
 	en
+	setl noma cul
+	exe cur_cmd
 endf
 
 fu! s:Update(str)
@@ -615,12 +644,15 @@ fu! s:Update(str)
 	let pat = s:matcher == {} ? s:SplitPattern(str) : str
 	let lines = s:nolim == 1 && empty(str) ? copy(g:ctrlp_lines)
 		\ : s:MatchedItems(g:ctrlp_lines, pat, s:mw_res)
+	if empty(str) | call clearmatches() | en
 	cal s:Render(lines, pat)
 	return lines
 endf
 
 fu! s:ForceUpdate()
+	let wv = winsaveview()
 	sil! cal s:Update(escape(s:getinput(), '\'))
+	cal winrestview(wv)
 endf
 
 fu! s:BuildPrompt(upd)
@@ -804,8 +836,9 @@ fu! s:PrtSelectMove(dir)
 	let wht = winheight(0)
 	let dirs = {'t': 'gg','b': 'G','j': 'j','k': 'k','u': wht.'k','d': wht.'j'}
 	exe 'keepj norm!' dirs[a:dir]
-	if s:nolim != 1 | let s:cline = line('.') | en
-	if line('$') > winheight(0) | cal s:BuildPrompt(0) | en
+	let wv = winsaveview()
+	cal s:BuildPrompt(0)
+	cal winrestview(wv)
 endf
 
 fu! s:PrtSelectJump(char)
@@ -828,8 +861,9 @@ fu! s:PrtSelectJump(char)
 			let [jmpln, s:jmpchr] = [npos == -1 ? pos : npos, [chr, npos]]
 		en
 		exe 'keepj norm!' ( jmpln + 1 ).'G'
-		if s:nolim != 1 | let s:cline = line('.') | en
-		if line('$') > winheight(0) | cal s:BuildPrompt(0) | en
+		let wv = winsaveview()
+		cal s:BuildPrompt(0)
+		cal winrestview(wv)
 	en
 endf
 " Misc {{{2
@@ -856,6 +890,8 @@ endf
 fu! s:PrtDeleteEnt()
 	if s:itemtype == 2
 		cal s:PrtDeleteMRU()
+	elsei s:itemtype == 1
+		cal s:delbuf()
 	elsei type(s:getextvar('wipe')) == 1
 		cal s:delent(s:getextvar('wipe'))
 	en
@@ -927,23 +963,27 @@ fu! s:MapSpecs()
 endf
 
 fu! s:KeyLoop()
-	let t_ve = &t_ve
-	set t_ve=
-	try
-		wh exists('s:init') && s:keyloop
-			redr
+	let [t_ve, guicursor] = [&t_ve, &guicursor]
+	wh exists('s:init') && s:keyloop
+		try
+			set t_ve=
+			set guicursor=a:NONE
 			let nr = getchar()
-			let chr = !type(nr) ? nr2char(nr) : nr
-			if nr >=# 0x20
-				cal s:PrtFocusMap(chr)
-			el
-				let cmd = matchstr(maparg(chr), ':<C-U>\zs.\+\ze<CR>$')
+		fina
+			let &t_ve = t_ve
+			let &guicursor = guicursor
+		endt
+		let chr = !type(nr) ? nr2char(nr) : nr
+		if nr >=# 0x20
+			cal s:PrtFocusMap(chr)
+		el
+			let cmd = matchstr(maparg(chr), ':<C-U>\zs.\+\ze<CR>$')
+			try
 				exe ( cmd != '' ? cmd : 'norm '.chr )
-			en
-		endw
-	fina
-		let &t_ve = t_ve
-	endt
+			cat
+			endt
+		en
+	endw
 endf
 " * Toggling {{{1
 fu! s:ToggleFocus()
@@ -967,8 +1007,8 @@ endf
 fu! s:ToggleType(dir)
 	let max = len(g:ctrlp_ext_vars) + 2
 	let next = s:walker(max, s:itemtype, a:dir)
-	cal ctrlp#syntax()
 	cal ctrlp#setlines(next)
+	cal ctrlp#syntax()
 	cal s:PrtSwitcher()
 endf
 
@@ -1031,12 +1071,9 @@ fu! ctrlp#acceptfile(...)
 	if !type(line)
 		let [filpath, bufnr, useb] = [line, line, 1]
 	el
-		let filpath = fnamemodify(line, ':p')
-		if s:nonamecond(line, filpath)
-			let bufnr = str2nr(matchstr(line, '[\/]\?\[\zs\d\+\ze\*No Name\]$'))
-			let [filpath, useb] = [bufnr, 1]
-		el
-			let bufnr = bufnr('^'.filpath.'$')
+		let [bufnr, filpath] = s:bufnrfilpath(line)
+		if bufnr == filpath
+			let useb = 1
 		en
 	en
 	cal s:PrtExit()
@@ -1168,6 +1205,13 @@ fu! s:MarkToOpen()
 		retu
 	en
 	let line = ctrlp#getcline()
+
+	" Do not allow to mark modified or current buffer
+	let bufnr = s:bufnrfilpath(line)[0]
+	if (s:itemtype == 1 && s:delbufcond(bufnr))
+		retu
+	en
+
 	if empty(line) | retu | en
 	let filpath = s:ispath ? fnamemodify(line, ':p') : line
 	if exists('s:marked') && s:dictindex(s:marked, filpath) > 0
@@ -1470,17 +1514,26 @@ endf
 fu! s:formatline(str)
 	let str = a:str
 	if s:itemtype == 1
-		let filpath = fnamemodify(str, ':p')
-		let bufnr = s:nonamecond(str, filpath)
-			\ ? str2nr(matchstr(str, '[\/]\?\[\zs\d\+\ze\*No Name\]$'))
-			\ : bufnr('^'.filpath.'$')
-		let idc = ( bufnr == bufnr('#') ? '#' : '' )
-			\ . ( getbufvar(bufnr, '&ma') ? '' : '-' )
-			\ . ( getbufvar(bufnr, '&ro') ? '=' : '' )
-			\ . ( getbufvar(bufnr, '&mod') ? '+' : '' )
-		let str .= idc != '' ? ' '.idc : ''
+		let bufnr = s:bufnrfilpath(str)[0]
+		let parts = s:bufparts(bufnr)
+		let str = printf('%'.s:bufnr_width.'s', bufnr)
+		if s:has_conceal
+			let str .= printf(' %-13s %s%-36s',
+				\ '<bi>'.parts[0].'</bi>',
+				\ '<bn>'.parts[1], '{'.parts[2].'}</bn>')
+			if (!empty(s:bufpath_mod))
+				let str .= printf('  %s', '<bp>'.parts[3].'</bp>')
+			en
+		el
+			let str .= printf(' %-5s %-30s  %s',
+				\ parts[0],
+				\ parts[2])
+			if (!empty(s:bufpath_mod))
+				let str .= printf('  %s', parts[3])
+			en
+		en
 	en
-	let cond = s:ispath && ( s:winw - 4 ) < s:strwidth(str)
+	let cond = s:itemtype != 1 &&s:ispath && ( s:winw - 4 ) < s:strwidth(str)
 	retu s:lineprefix.( cond ? s:pathshorten(str) : str )
 endf
 
@@ -1682,6 +1735,20 @@ fu! ctrlp#syntax()
 	if hlexists('CtrlPLinePre')
 		sy match CtrlPLinePre '^>'
 	en
+
+	if s:itemtype == 1 && s:has_conceal
+		sy region CtrlPBufferNr     matchgroup=CtrlPLinePre start='^>\s\+' end='\s'
+		sy region CtrlPBufferInd    concealends matchgroup=Ignore start='<bi>' end='</bi>'
+		sy region CtrlPBufferRegion concealends matchgroup=Ignore start='<bn>' end='</bn>'
+			\ contains=CtrlPBufferHid,CtrlPBufferHidMod,CtrlPBufferVis,CtrlPBufferVisMod,CtrlPBufferCur,CtrlPBufferCurMod
+		sy region CtrlPBufferHid    concealends matchgroup=Ignore     start='\s*{' end='}' contained
+		sy region CtrlPBufferHidMod concealends matchgroup=Ignore    start='+\s*{' end='}' contained
+		sy region CtrlPBufferVis    concealends matchgroup=Ignore   start='\*\s*{' end='}' contained
+		sy region CtrlPBufferVisMod concealends matchgroup=Ignore  start='\*+\s*{' end='}' contained
+		sy region CtrlPBufferCur    concealends matchgroup=Ignore  start='\*!\s*{' end='}' contained
+		sy region CtrlPBufferCurMod concealends matchgroup=Ignore start='\*+!\s*{' end='}' contained
+		sy region CtrlPBufferPath   concealends matchgroup=Ignore start='<bp>' end='</bp>'
+	en
 endf
 
 fu! s:highlight(pat, grp)
@@ -1704,7 +1771,7 @@ fu! s:highlight(pat, grp)
 			let ending = '\(.*'.pat.'\)\@!'
 			" Case sensitive?
 			let beginning = ( s:martcs == '' ? '\c' : '\C' ).'^.*'
-			if s:byfname
+			if s:byfname()
 				" Make sure there are no slashes in our match
 				let beginning = beginning.'\([^\/]*$\)\@='
 			end
@@ -1844,9 +1911,14 @@ fu! s:bufwins(bufnr)
 	retu winns
 endf
 
-fu! s:nonamecond(str, filpath)
-	retu a:str =~ '[\/]\?\[\d\+\*No Name\]$' && !filereadable(a:filpath)
-		\ && bufnr('^'.a:filpath.'$') < 1
+fu! s:bufnrfilpath(line)
+	let filpath = fnamemodify(a:line, ':p')
+	let bufnr = bufnr('^'.filpath.'$')
+	if (a:line =~ '[\/]\?\[\d\+\*No Name\]$' && !filereadable(filpath) && bufnr < 1)
+		let bufnr = str2nr(matchstr(a:line, '[\/]\?\[\zs\d\+\ze\*No Name\]$'))
+		let filpath = bufnr
+	en
+	retu [bufnr, filpath]
 endf
 
 fu! ctrlp#normcmd(cmd, ...)
@@ -1883,6 +1955,9 @@ fu! s:setupblank()
 	setl fdc=0 fdl=99 tw=0 bt=nofile bh=unload
 	if v:version > 702
 		setl nornu noudf cc=0
+	en
+	if s:has_conceal
+		setl cole=2 cocu=nc
 	en
 endf
 
@@ -2020,7 +2095,7 @@ fu! s:nosort()
 endf
 
 fu! s:byfname()
-	retu s:ispath && s:byfname
+	retu s:itemtype != 1 && s:ispath && s:byfname
 endf
 
 fu! s:narrowable()
@@ -2097,6 +2172,29 @@ fu! s:delent(rfunc)
 	let g:ctrlp_lines = call(a:rfunc, [tbrem])
 	cal s:BuildPrompt(1)
 	unl s:force
+endf
+
+fu! s:delbufcond(bufnr)
+	retu getbufvar(a:bufnr, "&mod") || a:bufnr == s:crbufnr
+endf
+
+fu! s:delbuf()
+	let lines = []
+	if exists('s:marked')
+		let lines = values(s:marked)
+		cal s:unmarksigns()
+		unl s:marked
+	el
+		let lines += [ctrlp#getcline()]
+	en
+	for line in lines
+		let bufnr = s:bufnrfilpath(line)[0]
+		if (s:delbufcond(bufnr))
+			con
+		en
+		exe 'bd '. bufnr
+	endfo
+	cal s:PrtClearCache()
 endf
 
 fu! s:isneovimterminal(buf)
@@ -2196,6 +2294,13 @@ fu! s:matchfname(item, pat)
 		\ ? 0 : -1 ) : -1
 endf
 
+fu! s:matchbuf(item, pat)
+	let bufnr = s:bufnrfilpath(a:item)[0]
+	let parts = s:bufparts(bufnr)
+	let item = bufnr.parts[0].parts[2].s:lash().parts[3]
+	retu match(item, a:pat)
+endf
+
 fu! s:matchtabs(item, pat)
 	retu match(split(a:item, '\t\+')[0], a:pat)
 endf
@@ -2216,6 +2321,8 @@ fu! s:mfunc()
 	let mfunc = 'match'
 	if s:byfname()
 		let mfunc = 's:matchfname'
+	elsei s:itemtype == 1
+		let mfunc = 's:matchbuf'
 	elsei s:itemtype > 2
 		let matchtypes = { 'tabs': 's:matchtabs', 'tabe': 's:matchtabe' }
 		if has_key(matchtypes, s:matchtype)
@@ -2229,6 +2336,7 @@ fu! s:mmode()
 	let matchmodes = {
 		\ 'match': 'full-line',
 		\ 's:matchfname': 'filename-only',
+		\ 's:matchbuf': 'full-line',
 		\ 's:matchtabs': 'first-non-tab',
 		\ 's:matchtabe': 'until-last-tab',
 		\ }
@@ -2374,8 +2482,8 @@ fu! ctrlp#init(type, ...)
 	cal s:SetWD(a:0 ? a:1 : {})
 	cal s:MapNorms()
 	cal s:MapSpecs()
-	cal ctrlp#syntax()
 	cal ctrlp#setlines(s:settype(a:type))
+	cal ctrlp#syntax()
 	cal s:SetDefTxt()
 	let curName = s:CurTypeName()
 	let shouldExitSingle = index(s:opensingle, curName[0])>=0 || index(s:opensingle, curName[1])>=0

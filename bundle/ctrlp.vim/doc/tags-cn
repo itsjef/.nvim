@@ -30,7 +30,6 @@
 'g:ctrlp_mruf_case_sensitive'	ctrlp.cnx	/*'g:ctrlp_mruf_case_sensitive'*
 'g:ctrlp_mruf_default_order'	ctrlp.cnx	/*'g:ctrlp_mruf_default_order'*
 'g:ctrlp_mruf_exclude'	ctrlp.cnx	/*'g:ctrlp_mruf_exclude'*
-'g:ctrlp_mruf_exclude_nomod'	ctrlp.cnx	/*'g:ctrlp_mruf_exclude_nomod'*
 'g:ctrlp_mruf_include'	ctrlp.cnx	/*'g:ctrlp_mruf_include'*
 'g:ctrlp_mruf_max'	ctrlp.cnx	/*'g:ctrlp_mruf_max'*
 'g:ctrlp_mruf_relative'	ctrlp.cnx	/*'g:ctrlp_mruf_relative'*

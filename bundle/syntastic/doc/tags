@@ -6,6 +6,7 @@
 'syntastic_<filetype>_<checker>_<option>'	syntastic.txt	/*'syntastic_<filetype>_<checker>_<option>'*
 'syntastic_<filetype>_<checker>_exe'	syntastic.txt	/*'syntastic_<filetype>_<checker>_exe'*
 'syntastic_<filetype>_<checker>_exec'	syntastic.txt	/*'syntastic_<filetype>_<checker>_exec'*
+'syntastic_<filetype>_<checker>_fname'	syntastic.txt	/*'syntastic_<filetype>_<checker>_fname'*
 'syntastic_<filetype>_<checker>_quiet_messages'	syntastic.txt	/*'syntastic_<filetype>_<checker>_quiet_messages'*
 'syntastic_<filetype>_<checker>_sort'	syntastic.txt	/*'syntastic_<filetype>_<checker>_sort'*
 'syntastic_aggregate_errors'	syntastic.txt	/*'syntastic_aggregate_errors'*
@@ -52,8 +53,10 @@ syntastic-checker-options	syntastic.txt	/*syntastic-checker-options*
 syntastic-commands	syntastic.txt	/*syntastic-commands*
 syntastic-compatibility	syntastic.txt	/*syntastic-compatibility*
 syntastic-composite	syntastic.txt	/*syntastic-composite*
+syntastic-config-debug	syntastic.txt	/*syntastic-config-debug*
 syntastic-config-exec	syntastic.txt	/*syntastic-config-exec*
 syntastic-config-makeprg	syntastic.txt	/*syntastic-config-makeprg*
+syntastic-config-no-makeprgbuild	syntastic.txt	/*syntastic-config-no-makeprgbuild*
 syntastic-config-sort	syntastic.txt	/*syntastic-config-sort*
 syntastic-contents	syntastic.txt	/*syntastic-contents*
 syntastic-csh	syntastic.txt	/*syntastic-csh*
