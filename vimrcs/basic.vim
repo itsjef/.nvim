@@ -38,7 +38,6 @@ nmap <leader>h :bprevious<CR>
 nmap <leader>l :bnext<CR>
 nmap <leader>bd :bp<BAR>bd#<CR>
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM UI
 """""""""""""""""""""""""""""""""""""""""""""""""""""
