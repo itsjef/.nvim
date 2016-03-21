@@ -74,3 +74,9 @@ let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|^\.DS_Store\|^\.git
 " => Markdown
 """""""""""""""""""""""
 let g:vim_markdown_folding_disabled = 1
+
+"""""""""""""""""""""""
+" => GitGutter
+"""""""""""""""""""""""
+" No mapping at all
+let g:gitgutter_map_keys = 0

@@ -33,6 +33,11 @@ let g:mapleader = ","
 " Remapping ESC key
 inoremap ii <ESC>
 
+" Buffer navigation
+nmap <leader>h :bprevious<CR>
+nmap <leader>l :bnext<CR>
+nmap <leader>bd :bdelete %<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM UI
 """""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -90,7 +95,7 @@ set background=dark
 " => Misc
 """"""""""""""""""""""""""""""
 " Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
+" set encoding=utf8
 
 " Quickly open/reload nvimrc
 nnoremap <leader>ev :split ~/.vimrc<cr>
