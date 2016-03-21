@@ -21,7 +21,7 @@ Plug 'tpope/vim-endwise', { 'for': 'ruby' }
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline-themes' | Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes' | Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'vim-scripts/mru.vim'
 Plug 'vim-scripts/taglist.vim'
@@ -89,7 +89,7 @@ if !exists('g:airline_symbols')
 endif
 
 let g:airline_powerline_fonts=1
-let g:airline_extensions = ['tabline', 'branch']
+let g:airline_extensions = ['tabline']
 let g:airline#extensions#tabline#fnamemod = ':t' 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
