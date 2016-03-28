@@ -39,6 +39,7 @@
 'syntastic_style_error_symbol'	syntastic.txt	/*'syntastic_style_error_symbol'*
 'syntastic_style_warning_symbol'	syntastic.txt	/*'syntastic_style_warning_symbol'*
 'syntastic_warning_symbol'	syntastic.txt	/*'syntastic_warning_symbol'*
+/syntastic/	syntastic.txt	/*\/syntastic\/*
 :Errors	syntastic.txt	/*:Errors*
 :SyntasticCheck	syntastic.txt	/*:SyntasticCheck*
 :SyntasticInfo	syntastic.txt	/*:SyntasticInfo*
@@ -54,7 +55,9 @@ syntastic-commands	syntastic.txt	/*syntastic-commands*
 syntastic-compatibility	syntastic.txt	/*syntastic-compatibility*
 syntastic-composite	syntastic.txt	/*syntastic-composite*
 syntastic-config-debug	syntastic.txt	/*syntastic-config-debug*
+syntastic-config-empty	syntastic.txt	/*syntastic-config-empty*
 syntastic-config-exec	syntastic.txt	/*syntastic-config-exec*
+syntastic-config-filtering	syntastic.txt	/*syntastic-config-filtering*
 syntastic-config-makeprg	syntastic.txt	/*syntastic-config-makeprg*
 syntastic-config-no-makeprgbuild	syntastic.txt	/*syntastic-config-no-makeprgbuild*
 syntastic-config-sort	syntastic.txt	/*syntastic-config-sort*
@@ -77,6 +80,7 @@ syntastic-netrw	syntastic.txt	/*syntastic-netrw*
 syntastic-notes	syntastic.txt	/*syntastic-notes*
 syntastic-powerline	syntastic.txt	/*syntastic-powerline*
 syntastic-powershell	syntastic.txt	/*syntastic-powershell*
+syntastic-profiling	syntastic.txt	/*syntastic-profiling*
 syntastic-pymode	syntastic.txt	/*syntastic-pymode*
 syntastic-quickstart	syntastic.txt	/*syntastic-quickstart*
 syntastic-recommended	syntastic.txt	/*syntastic-recommended*
