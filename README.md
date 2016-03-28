@@ -24,6 +24,11 @@ source ~/.nvim_runtime/vimrcs/filetype.vim
 " colorscheme <your_favorite_colorscheme>
 ```
 
+##Install Plugins
+```
+:PlugInstall
+```
+
 ###FAQs
 
 1, In order to display powerline symbols correctly in __vim-airline__, change your Terminal font to __Inconsolata-dz for Powerline__
