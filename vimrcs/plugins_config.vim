@@ -5,17 +5,18 @@ call plug#begin('~/.nvim_runtime/bundle')
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/deoplete.nvim'
+Plug 'SirVer/ultisnips'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'benekastah/neomake'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'honza/vim-snippets'
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/syntastic'
-Plug 'SirVer/ultisnips'
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-endwise', { 'for': 'ruby' }
 Plug 'tpope/vim-rails'
@@ -25,14 +26,23 @@ Plug 'vim-airline/vim-airline-themes' | Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'vim-scripts/mru.vim'
 Plug 'vim-scripts/taglist.vim'
+
+Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 call plug#end()
 
 """"""""""""""""
 " => Deoplete  "
 """"""""""""""""
 let g:deoplete#enable_at_startup = 1
-" let g:deoplete#disable_auto_complete = 1
+let g:deoplete#enable_smart_case = 1
 
+" In order for deoplete-clang to work
+let g:deoplete#sources#clang#libclang_path='/usr/lib/llvm-3.8/lib/libclang.so'
+let g:deoplete#sources#clang#clang_header='/usr/lib/llvm-3.8/lib/clang'
+
+" No need for previewing
+set completeopt-=preview
 """"""""""""""""
 " => UtilSnips "
 """"""""""""""""
@@ -52,10 +62,10 @@ map <leader>f :MRU<cr>
 if has("win32") || has("win64")
     " Do nothing
 else
-    try
-        let g:yankring_history_dir = '~/.nvim_runtime/temp_dir'
-    catch
-    endtry
+  try
+    let g:yankring_history_dir = '~/.nvim_runtime/temp_dir'
+  catch
+  endtry
 endif
 
 """"""""""""""""""""""""""""""
