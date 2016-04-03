@@ -8,18 +8,18 @@ My NeoVim configuration
 
 ##Clone this repo
 ```bash
-git clone https://github.com/itsjef/nvimrc ~/.nvim_runtime
+git clone https://github.com/itsjef/.nvim
 ```
 
 ##Edit your dotfile
 
 Copy and paste these line to __~/.config/nvim/init.vim__:
 ```vimL
-set runtimepath+=~/.nvim_runtime
+set runtimepath+=~/.nvim
 
-source ~/.nvim_runtime/vimrcs/basic.vim
-source ~/.nvim_runtime/vimrcs/plugins_config.vim
-source ~/.nvim_runtime/vimrcs/filetype.vim
+source ~/.nvim/vimrcs/basic.vim
+source ~/.nvim/vimrcs/plugins_config.vim
+source ~/.nvim/vimrcs/filetype.vim
 
 " colorscheme <your_favorite_colorscheme>
 ```
