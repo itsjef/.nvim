@@ -1,7 +1,7 @@
 """"""""""""
 " vim-plug "
 """"""""""""
-call plug#begin('~/.nvim_runtime/bundle')
+call plug#begin('~/.nvim/bundle')
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/deoplete.nvim'
