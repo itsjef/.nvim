@@ -103,7 +103,7 @@ nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 
 " Persistent undo - You can undo even after closing a buffer or Vim itself
 try
-    set undodir=~/.nvim_runtime/temp_dir/undo_dir
+    set undodir=~/.nvim/temp_dir/undo_dir
     set undofile
 catch
 endtry
