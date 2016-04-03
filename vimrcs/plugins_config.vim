@@ -3,17 +3,14 @@
 """"""""""""
 call plug#begin('~/.nvim/bundle')
 Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'Raimondi/delimitMate'
 Plug 'Shougo/deoplete.nvim'
 Plug 'SirVer/ultisnips'
-Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'benekastah/neomake'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'honza/vim-snippets'
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
-Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -27,9 +24,15 @@ Plug 'vim-airline/vim-airline-themes' | Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'vim-scripts/mru.vim'
 Plug 'vim-scripts/taglist.vim'
-
 Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+
+" Colorscheme & Display helper
+Plug 'mhartington/oceanic-next'
+Plug 'morhetz/gruvbox'
+Plug 'Yggdroot/indentLine'
+Plug 'Raimondi/delimitMate'
+
 call plug#end()
 
 """"""""""""""""
