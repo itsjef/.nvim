@@ -1,7 +1,7 @@
 """"""""""""
 " vim-plug "
 """"""""""""
-call plug#begin('~/.nvim_runtime/bundle')
+call plug#begin('~/.nvim/bundle')
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/deoplete.nvim'
@@ -63,7 +63,7 @@ if has("win32") || has("win64")
     " Do nothing
 else
   try
-    let g:yankring_history_dir = '~/.nvim_runtime/temp_dir'
+    let g:yankring_history_dir = '~/.nvim/temp_dir'
   catch
   endtry
 endif
