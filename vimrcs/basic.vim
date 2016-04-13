@@ -50,6 +50,10 @@ set softtabstop=2
 set tabstop=2
 set expandtab autoindent
 
+" Line mark
+set list
+set lcs=eol:¬
+
 " Ignore case when searching
 set ignorecase
 
