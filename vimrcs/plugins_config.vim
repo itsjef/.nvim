@@ -121,6 +121,8 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:goyo_width=100
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 nnoremap <silent> <leader>z :Goyo<cr>
 
 """"""""""""""""""""""""""""
