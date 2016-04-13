@@ -42,7 +42,7 @@ nmap <leader>bd :bp<BAR>bd#<CR>
 " => VIM UI
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set lines to the cursor - when moving around with j/k keys
-set so=7
+set so=999
 
 " Indentation
 set shiftwidth=2
