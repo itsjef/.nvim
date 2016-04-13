@@ -24,6 +24,12 @@ source ~/.nvim/vimrcs/filetype.vim
 " colorscheme <your_favorite_colorscheme>
 ```
 
+##Install Neovim python-client
+```
+pip2 install -U neovim
+pip3 install -U neovim
+```
+
 ##Install Plugins
 ```
 :PlugInstall

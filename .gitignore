@@ -1,3 +1,4 @@
+autoload/plug.vim*
 temp_dir/*.txt
 temp_dir/undo_dir*
 bundle/*
