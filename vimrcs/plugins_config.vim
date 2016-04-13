@@ -3,13 +3,8 @@
 """"""""""""
 call plug#begin('~/.nvim/bundle')
 Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'Shougo/deoplete.nvim'
-Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'benekastah/neomake'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'honza/vim-snippets'
-Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
@@ -17,22 +12,36 @@ Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/syntastic'
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-endwise', { 'for': 'ruby' }
-Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rails', { 'for': ['ruby', 'rails'] }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline-themes' | Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'vim-scripts/mru.vim'
 Plug 'vim-scripts/taglist.vim'
-Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 
 " Colorscheme & Display helper
 Plug 'mhartington/oceanic-next'
 Plug 'morhetz/gruvbox'
+Plug 'chriskempson/base16-vim'
+
 Plug 'Yggdroot/indentLine'
 Plug 'Raimondi/delimitMate'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 
+" Autocompletion and snippets
+Plug 'mattn/emmet-vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+
+" Shougo
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/deoplete.nvim'
 call plug#end()
 
 """"""""""""""""
@@ -82,9 +91,9 @@ let g:NERDTreeWinSize=25
 let g:NERDTreeWinPos="right"
 
 " Set NERDTree on by default
-autocmd VimEnter * NERDTree
-autocmd BufWinEnter * NERDTreeMirror
-autocmd VimEnter * wincmd p " go back to editor tab
+"autocmd VimEnter * NERDTree
+"autocmd BufWinEnter * NERDTreeMirror
+"autocmd VimEnter * wincmd p " go back to editor tab
 
 " Auto close NERDTree when the only open window left is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
