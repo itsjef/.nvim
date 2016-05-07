@@ -13,6 +13,7 @@ Plug 'scrooloose/syntastic'
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-endwise', { 'for': 'ruby' }
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'rails'] }
+Plug 'tpope/vim-rake', { 'for': ['ruby', 'rails'] }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline-themes' | Plug 'vim-airline/vim-airline'
