@@ -12,9 +12,6 @@ Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/syntastic'
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-endwise', { 'for': 'ruby' }
-Plug 'tpope/vim-rails', { 'for': ['ruby', 'rails'] }
-Plug 'tpope/vim-rake', { 'for': ['ruby', 'rails'] }
-Plug 'tpope/vim-bundler', { 'for': ['ruby', 'rails'] }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline-themes' | Plug 'vim-airline/vim-airline'
@@ -44,6 +41,10 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/deoplete.nvim'
+
+" Rails
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-bundler'
 call plug#end()
 
 """"""""""""""""
