@@ -19,6 +19,10 @@ Plug 'vim-scripts/YankRing.vim'
 Plug 'vim-scripts/mru.vim'
 Plug 'vim-scripts/taglist.vim'
 
+" Haskell 
+Plug 'neovimhaskell/haskell-vim'
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+
 " Colorscheme & Display helper
 Plug 'mhartington/oceanic-next'
 Plug 'morhetz/gruvbox'
