@@ -33,6 +33,10 @@ Plug 'Raimondi/delimitMate'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
+Plug 'othree/yajs.vim'
+Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
+let g:jsx_ext_required = 0
+
 " Autocompletion and snippets
 Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips'
