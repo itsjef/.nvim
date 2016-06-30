@@ -16,8 +16,8 @@ set nu
 " Show matching parenthese
 set showmatch
 
-" Set timeout length for double key
-" set timeoutlen=200
+" Clipboard
+set clipboard+=unnamedplus
 
 " Enable syntax highlight "
 syntax on

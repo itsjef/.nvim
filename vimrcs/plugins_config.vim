@@ -41,7 +41,7 @@ let g:jsx_ext_required = 0
 Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
+"Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 
 " Shougo
@@ -53,6 +53,9 @@ Plug 'Shougo/deoplete.nvim'
 " Rails
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-bundler'
+
+" Vue
+"Plug 'posva/vim-vue'
 call plug#end()
 
 """"""""""""""""
@@ -62,8 +65,8 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 
 " In order for deoplete-clang to work
-let g:deoplete#sources#clang#libclang_path='/usr/lib/llvm-3.8/lib/libclang.so.1'
-let g:deoplete#sources#clang#clang_header='/usr/lib/llvm-3.8/lib/clang'
+"let g:deoplete#sources#clang#libclang_path='/usr/lib/llvm-3.8/lib/libclang.so.1'
+"let g:deoplete#sources#clang#clang_header='/usr/lib/llvm-3.8/lib/clang'
 
 " No need for previewing
 set completeopt-=preview
