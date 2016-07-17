@@ -10,8 +10,8 @@ set autoread
 " Set uncompatible with old Vi
 set nocp
 
-" Show line number
-set nu
+" Show relative line number
+set rnu
 
 " Show matching parenthese
 set showmatch
