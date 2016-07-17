@@ -11,7 +11,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/syntastic'
 Plug 'slim-template/vim-slim'
-Plug 'tpope/vim-endwise', { 'for': 'ruby' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline-themes' | Plug 'vim-airline/vim-airline'
@@ -50,12 +49,22 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/deoplete.nvim'
 
-" Rails
+" Ruby & Rails
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-cucumber'
+Plug 'tpope/vim-endwise', { 'for': 'ruby' }
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'skalnik/vim-vroom'
+let g:vroom_cucumber_path='$HOME/.rvm/gems/ruby-2.3.0/bin/cucumber'
 
 " Vue
 "Plug 'posva/vim-vue'
+
+" Angular2 & Typescript
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+Plug 'Quramy/tsuquyomi'          , { 'for': 'typescript' }
+
 call plug#end()
 
 """"""""""""""""
