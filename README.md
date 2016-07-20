@@ -13,7 +13,7 @@ git clone https://github.com/itsjef/.nvim $HOME/.nvim --depth 1
 
 ##Edit your dotfile
 
-Copy and paste these line to __~/.config/nvim/init.vim__ (NeoVim) and/or __~/.config/.vimrc__ (Vim):
+Copy and paste these line to __~/.config/nvim/init.vim__ (NeoVim) and/or __~/.vimrc__ (Vim):
 ```vimL
 set runtimepath+=~/.nvim
 
@@ -24,7 +24,7 @@ source ~/.nvim/vimrcs/filetype.vim
 colorscheme gruvbox " <= Replace this with your favorite theme
 ```
 
-##Install Neovim python-client
+##Install Neovim python-client (if you use NeoVim)
 ```
 pip2 install -U neovim
 pip3 install -U neovim
