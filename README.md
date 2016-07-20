@@ -24,7 +24,7 @@ source ~/.nvim/vimrcs/filetype.vim
 colorscheme gruvbox " <= Replace this with your favorite theme
 ```
 
-##Install Neovim python-client
+##Install Neovim python-client (if you use NeoVim)
 ```
 pip2 install -U neovim
 pip3 install -U neovim
