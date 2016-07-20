@@ -11,6 +11,7 @@ set autoread
 set nocp
 
 " Show relative line number
+set nu
 set rnu
 
 " Show matching parenthese
