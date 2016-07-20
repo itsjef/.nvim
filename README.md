@@ -8,12 +8,12 @@ My NeoVim configuration
 
 ##Clone this repo
 ```bash
-git clone https://github.com/itsjef/.nvim
+git clone https://github.com/itsjef/.nvim $HOME/.nvim --depth 1
 ```
 
 ##Edit your dotfile
 
-Copy and paste these line to __~/.config/nvim/init.vim__:
+Copy and paste these line to __~/.config/nvim/init.vim__ (NeoVim) and/or __~/.config/.vimrc__ (Vim):
 ```vimL
 set runtimepath+=~/.nvim
 
@@ -21,7 +21,7 @@ source ~/.nvim/vimrcs/basic.vim
 source ~/.nvim/vimrcs/plugins_config.vim
 source ~/.nvim/vimrcs/filetype.vim
 
-" colorscheme <your_favorite_colorscheme>
+colorscheme gruvbox " <= Replace this with your favorite theme
 ```
 
 ##Install Neovim python-client
@@ -35,18 +35,20 @@ pip3 install -U neovim
 :PlugInstall
 ```
 
-###FAQs
+#FAQs
 
-1, In order to display powerline symbols correctly in __vim-airline__, change your Terminal font to __Inconsolata-dz for Powerline__
+##TrueColor and Icons
+> In order to display powerline symbols as well as colorscheme correctly, use a [Terminal that supports TrueColor](https://gist.github.com/XVilka/8346728) and change your Terminal font to a [Powerline Font](https://github.com/powerline/fonts) (mine is __Inconsolata-dz for Powerline__)
 
-2, No clipboard tool
+##No clipboard tool
 > clipboard: No clipboard too available. See :help nvim-clipboard
 
 Install xclip: `sudo apt-get install xclip`
 
-3, Plugin is not loaded
+##Plugin is not loaded
 > Taglist: Exuberant ctags (http://ctags.sf.net) not found in PATH. Plugin is not loaded.
 
 Install ctags: `sudo apt-get install exuberant-ctags`
 
-4, [Deoplete Requirements](https://github.com/Shougo/deoplete.nvim)
+##Autocomplete
+> [Deoplete Requirements](https://github.com/Shougo/deoplete.nvim)
