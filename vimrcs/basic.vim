@@ -2,13 +2,13 @@
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set how many lines of history VIM has to remember
-set history=700
+" set history=700
 
 " Set autoread when a file is changed from outside
-set autoread
+" set autoread
 
 " Set uncompatible with old Vi
-set nocp
+" set nocp
 
 " Show relative line number
 set nu
@@ -21,11 +21,11 @@ set showmatch
 set clipboard+=unnamedplus
 
 " Enable syntax highlight "
-syntax on
+" syntax on
 
 " Enable filetype plugins "
-filetype plugin on
-filetype indent on
+" filetype plugin on
+" filetype indent on
 
 " Mapping leader key
 let mapleader = ","
@@ -49,7 +49,8 @@ set so=999
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
-set expandtab autoindent
+set expandtab
+" set autoindent
 
 " Line mark
 set list
@@ -58,23 +59,23 @@ set lcs=eol:¬
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
-set hlsearch
+" set hlsearch
 
 " Makes search act like search in modern browsers
-set incsearch 
+" set incsearch
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw 
+set lazyredraw
 
 " For regular expressions turn magic on
 set magic
 
 " Show matching brackets when text indicator is over them
-set showmatch 
+set showmatch
 
 " How many tenths of a second to blink when matching brackets
 set mat=2
@@ -83,12 +84,12 @@ set mat=2
 set cmdheight=2
 
 " Set Wild menu
-set wildmenu
+" set wildmenu
 set wildmode=longest,full
 
 " Status line
 " Always show the status line - Mandatory for vim-airline to show"
-set laststatus=2
+" set laststatus=2
 
 """""""""""""""""""""""""""""""""""""""""
 " => Colors
@@ -103,8 +104,8 @@ set background=dark
 " set encoding=utf8
 
 " Quickly open/reload nvimrc
-nnoremap <leader>ev :split ~/.config/nvim/init.vim<cr>
-nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
+nnoremap <leader>ev :split ~/.nvimrc<cr>
+nnoremap <leader>sv :source ~/.nvimrc<cr>
 
 " Persistent undo - You can undo even after closing a buffer or Vim itself
 try
@@ -114,5 +115,10 @@ catch
 endtry
 
 " highlight cursor line when in Insert Mode
-autocmd InsertEnter * set cul
-autocmd InsertLeave * set nocul
+"autocmd InsertEnter * set cul
+"autocmd InsertLeave * set nocul
+set cul
+
+"" Quick shortcut for splittling
+nnoremap <C-W>- :split<CR>
+nnoremap <C-W>\ :vsplit<CR>
