@@ -21,6 +21,10 @@ source ~/.nvim/vimrcs/basic.vim
 source ~/.nvim/vimrcs/plugins_config.vim
 source ~/.nvim/vimrcs/filetype.vim
 
+" Theme
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " Uncomment this line if using NeoVim 0.1.4 and below
+" set termguicolors " NeoVim 0.1.5 and above
+" No need to uncomment those 2 lines above if you are using Vim, not NeoVim
 colorscheme gruvbox " <= Replace this with your favorite theme
 ```
 
@@ -36,9 +40,18 @@ gem install neovim
 ```
 
 ##Install Plugins
+
+Open (Neo)Vim, run:
 ```
 :PlugInstall
 ```
+
+To update plugins, run:
+```
+:PlugUpdate
+```
+
+Reference: [Here](https://github.com/junegunn/vim-plug)
 
 #Features
 
