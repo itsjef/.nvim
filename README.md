@@ -30,12 +30,30 @@ pip2 install -U neovim
 pip3 install -U neovim
 ```
 
+##Install Neovim gem (if you use NeoVim)
+```
+gem install neovim
+```
+
 ##Install Plugins
 ```
 :PlugInstall
 ```
 
+#Features
+
+1. You can undo change to a file even after quitting Vim.
+2. Press ,f to open a list of mru (most recently used files)
+3. Ctrl-W and | for vertical split, Ctrl-W and - for horizontal split
+4. Autocompletion for certain programming languages (checkout __plugins_config.vim__)
+5. Easy plugin installation, thanks to [vim-plug](https://github.com/junegunn/vim-plug)
+6. ...
+
 #FAQs
+
+##You are using Vim, not NeoVim
+> I commented out some Vim configurations which are default in NeoVim. If you are using Vim and things don't look right then go edit __basic.vim__ by removing those comments.
+> However, I recommend you to switch to [neovim](https://github.com/neovim/neovim/)
 
 ##TrueColor and Icons
 > In order to display powerline symbols as well as colorscheme correctly, use a [Terminal that supports TrueColor](https://gist.github.com/XVilka/8346728) and change your Terminal font to a [Powerline Font](https://github.com/powerline/fonts) (mine is __Inconsolata-dz for Powerline__)
