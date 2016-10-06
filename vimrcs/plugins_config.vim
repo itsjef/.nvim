@@ -9,64 +9,75 @@ Plug 'mileszs/ack.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'scrooloose/syntastic'
-Plug 'slim-template/vim-slim'
+Plug 'ervandew/supertab'
+Plug 'digitaltoad/vim-pug'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline-themes' | Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/YankRing.vim'
-Plug 'vim-scripts/mru.vim'
-Plug 'vim-scripts/taglist.vim'
+Plug 'Raimondi/delimitMate'
 
-" Haskell 
-Plug 'neovimhaskell/haskell-vim'
-Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+" Haskell
+"Plug 'neovimhaskell/haskell-vim'
+"Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 
 " Colorscheme & Display helper
-Plug 'mhartington/oceanic-next'
-Plug 'morhetz/gruvbox'
 Plug 'chriskempson/base16-vim'
 
 Plug 'Yggdroot/indentLine'
-Plug 'Raimondi/delimitMate'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-
-Plug 'othree/yajs.vim'
-Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
-let g:jsx_ext_required = 0
+Plug 'elzr/vim-json', { 'for': 'json' }
+Plug 'othree/yajs.vim', { 'for': ['json', 'javascript', 'jsx'] }
 
 " Autocompletion and snippets
 Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 "Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+"Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 
 " Shougo
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'Shougo/unite.vim'
+
+" Unite Plugins
 Plug 'Shougo/neomru.vim'
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/vimfiler.vim'
+Plug 'Shougo/neoyank.vim'
+Plug 'Shougo/unite-outline'
+Plug 'tsukkee/unite-tag'
 
 " Ruby & Rails
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-cucumber'
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
+Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-endwise', { 'for': 'ruby' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'skalnik/vim-vroom'
-let g:vroom_cucumber_path='$HOME/.rvm/gems/ruby-2.3.0/bin/cucumber'
 
 " Vue
 "Plug 'posva/vim-vue'
 
 " Angular2 & Typescript
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-Plug 'Quramy/tsuquyomi'          , { 'for': 'typescript' }
+"Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+"Plug 'Quramy/tsuquyomi'          , { 'for': 'typescript' }
 
 call plug#end()
+
+"""""""""""""""""""""""""""""
+" => Unite
+"""""""""""""""""""""""""""""
+call unite#custom#profile('default', 'context', {
+  \ 'winheight': 10,
+  \ 'direction': 'dynamicbottom',
+  \ 'prompt': '» '
+  \ })
+
+"autocmd FileType unite setlocal number relativenumber
+"autocmd BufWinEnter,BufEnter * setlocal number relativenumber
+
+nmap <leader>f :Unite -start-insert neomru/file<CR>
+nmap <F10> :Unite -vertical -winwidth=30 -toggle outline<CR>
 
 """"""""""""""""
 " => Deoplete  "
@@ -77,21 +88,23 @@ let g:deoplete#enable_smart_case = 1
 " In order for deoplete-clang to work
 "let g:deoplete#sources#clang#libclang_path='/usr/lib/llvm-3.8/lib/libclang.so.1'
 "let g:deoplete#sources#clang#clang_header='/usr/lib/llvm-3.8/lib/clang'
+"let g:clang_library_path='/usr/lib/llvm-3.5/lib/libclang.so.1'
 
 " No need for previewing
 set completeopt-=preview
-""""""""""""""""
-" => UtilSnips "
-""""""""""""""""
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-""""""""""""""""""""""""""""""
-" => MRU
-""""""""""""""""""""""""""""""
-let MRU_Max_Entries = 100
-map <leader>f :MRU<cr>
+""""""""""""""""
+" => NeoMake   "
+""""""""""""""""
+autocmd! BufWritePost * Neomake
+
+let g:neomake_ruby_enabled_makers = ['reek', 'mri']
+let g:neomake_javascript_enabled_makers = ['jshint']
+
+""""""""""""""""
+" => UltiSnips "
+""""""""""""""""
+let g:UltiSnipsExpandTrigger="<c-j>"
 
 """"""""""""""""""""""""""""""
 " => YankRing
@@ -111,7 +124,7 @@ endif
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
-let g:NERDTreeWinSize=25
+let g:NERDTreeWinSize=30
 let g:NERDTreeWinPos="right"
 
 " Set NERDTree on by default
@@ -136,25 +149,8 @@ if !exists('g:airline_symbols')
 endif
 
 let g:airline_powerline_fonts=1
-let g:airline_extensions = ['tabline']
-let g:airline#extensions#tabline#fnamemod = ':t' 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vimroom - Goyo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:goyo_width=100
-let g:goyo_margin_top = 2
-let g:goyo_margin_bottom = 2
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-nnoremap <silent> <leader>z :Goyo<cr>
-
-""""""""""""""""""""""""""""
-" => CtrlP
-""""""""""""""""""""""""""""
-let g:ctrlp_map = '<c-f>' " Avoid conflict with YankRing <c-p>
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|^\.DS_Store\|^\.git\|^\.coffee'
+let g:airline_extensions = ['branch', 'tabline', 'neomake', 'unite']
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 """""""""""""""""""""""
 " => Markdown
@@ -166,3 +162,10 @@ let g:vim_markdown_folding_disabled = 1
 """""""""""""""""""""""
 " No mapping at all
 let g:gitgutter_map_keys = 0
+
+""""""""""""""""""""
+" => IndentLine
+""""""""""""""""""""
+" for vim-json to work
+let g:indentLine_concealcursor = ''
+let g:indentLine_char = '¦'
