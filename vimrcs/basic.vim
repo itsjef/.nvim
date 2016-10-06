@@ -11,11 +11,10 @@
 " set nocp
 
 " Show relative line number
-set nu
-set rnu
+set nu rnu
 
 " Show matching parenthese
-set showmatch
+" set showmatch
 
 " Clipboard
 set clipboard+=unnamedplus
@@ -81,7 +80,7 @@ set showmatch
 set mat=2
 
 " Set command bar height
-set cmdheight=2
+"set cmdheight=2
 
 " Set Wild menu
 " set wildmenu
@@ -95,7 +94,7 @@ set wildmode=longest,full
 " => Colors
 """""""""""""""""""""""""""""""""""""""""
 " Background theme
-set background=dark
+"set background=dark
 
 """"""""""""""""""""""""""""""
 " => Misc
@@ -104,7 +103,7 @@ set background=dark
 " set encoding=utf8
 
 " Quickly open/reload nvimrc
-nnoremap <leader>ev :split ~/.nvimrc<cr>
+nnoremap <leader>ev :e ~/.nvimrc<cr>
 nnoremap <leader>sv :source ~/.nvimrc<cr>
 
 " Persistent undo - You can undo even after closing a buffer or Vim itself
@@ -115,9 +114,7 @@ catch
 endtry
 
 " highlight cursor line when in Insert Mode
-"autocmd InsertEnter * set cul
-"autocmd InsertLeave * set nocul
-set cul
+" set cul
 
 "" Quick shortcut for splittling
 nnoremap <C-W>- :split<CR>
