@@ -13,7 +13,7 @@ git clone https://github.com/itsjef/.nvim $HOME/.nvim --depth 1
 
 ##Edit your dotfile
 
-Copy and paste these line to `$HOME/.nvimrc`
+Copy and paste these line into your `$HOME/.nvimrc`
 
 ```vimL
 set runtimepath+=~/.nvim
@@ -23,11 +23,12 @@ source ~/.nvim/vimrcs/plugins_config.vim
 source ~/.nvim/vimrcs/filetype.vim
 ```
 
-##Install Neovim python-client (if you use NeoVim)
+##Install Neovim python-client
 
 ```bash
-pip2 install -U neovim
-pip3 install -U neovim
+sudo apt-get install python-pip python3-pip
+sudo pip2 install -U neovim
+sudo pip3 install -U neovim
 ```
 
 ##Install Plugins
@@ -48,7 +49,7 @@ Reference: [Here](https://github.com/junegunn/vim-plug)
 #Features
 
 1. You can undo change to a file even after quitting Vim.
-2. Press ,f to open a list of mru (most recently used files)
+2. Press *,f* to open a list of mru (most recently used files)
 3. Ctrl-W and | for vertical split, Ctrl-W and - for horizontal split
 4. Autocompletion for certain programming languages (checkout __plugins_config.vim__)
 5. Easy plugin installation, thanks to [vim-plug](https://github.com/junegunn/vim-plug)
