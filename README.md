@@ -13,35 +13,27 @@ git clone https://github.com/itsjef/.nvim $HOME/.nvim --depth 1
 
 ##Edit your dotfile
 
-Copy and paste these line to __~/.config/nvim/init.vim__ (NeoVim) and/or __~/.vimrc__ (Vim):
+Copy and paste these line to `$HOME/.nvimrc`
+
 ```vimL
 set runtimepath+=~/.nvim
 
 source ~/.nvim/vimrcs/basic.vim
 source ~/.nvim/vimrcs/plugins_config.vim
 source ~/.nvim/vimrcs/filetype.vim
-
-" Theme
-" let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " Uncomment this line if using NeoVim 0.1.4 and below
-" set termguicolors " NeoVim 0.1.5 and above
-" No need to uncomment those 2 lines above if you are using Vim, not NeoVim
-colorscheme gruvbox " <= Replace this with your favorite theme
 ```
 
 ##Install Neovim python-client (if you use NeoVim)
-```
+
+```bash
 pip2 install -U neovim
 pip3 install -U neovim
 ```
 
-##Install Neovim gem (if you use NeoVim)
-```
-gem install neovim
-```
-
 ##Install Plugins
 
-Open (Neo)Vim, run:
+In `nvim`, run:
+
 ```
 :PlugInstall
 ```

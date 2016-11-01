@@ -5,18 +5,21 @@ call plug#begin('~/.nvim/bundle')
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'airblade/vim-gitgutter'
 Plug 'benekastah/neomake'
+Plug 'jiangmiao/auto-pairs'
 Plug 'mileszs/ack.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ervandew/supertab'
-Plug 'digitaltoad/vim-pug'
+" Plug 'digitaltoad/vim-pug'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'Raimondi/delimitMate'
+Plug 'slim-template/vim-slim', { 'for': 'slim' }
+Plug 'godlygeek/tabular'
 
 " Haskell
 "Plug 'neovimhaskell/haskell-vim'
@@ -24,22 +27,24 @@ Plug 'Raimondi/delimitMate'
 
 " Colorscheme & Display helper
 Plug 'chriskempson/base16-vim'
-
+Plug 'morhetz/gruvbox'
 Plug 'Yggdroot/indentLine'
-Plug 'elzr/vim-json', { 'for': 'json' }
-Plug 'othree/yajs.vim', { 'for': ['json', 'javascript', 'jsx'] }
+Plug 'elzr/vim-json',   { 'for': ['html', 'json'] }
+Plug 'othree/yajs.vim', { 'for': ['html', 'json', 'javascript.jsx'] }
+Plug 'mxw/vim-jsx',     { 'for': ['html', 'javascript.jsx'] }
+Plug 'othree/jspc.vim', { 'for': ['html', 'javascript.jsx'] }
 
 " Autocompletion and snippets
 Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-"Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
-"Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+Plug 'zchee/deoplete-jedi',      { 'for': 'python' }
+Plug 'carlitux/deoplete-ternjs', { 'for': 'javascript.jsx', 'do': 'npm install -g tern' }
 
 " Shougo
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neoinclude.vim'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Shougo/vimproc.vim',   { 'do': 'make' }
 Plug 'Shougo/unite.vim'
 
 " Unite Plugins
@@ -48,21 +53,34 @@ Plug 'Shougo/vimfiler.vim'
 Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/unite-outline'
 Plug 'tsukkee/unite-tag'
+Plug 'ujihisa/unite-colorscheme'
 
 " Ruby & Rails
-Plug 'tpope/vim-rails', { 'for': 'ruby' }
+Plug 'tpope/vim-rails',   { 'for': 'ruby' }
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-endwise', { 'for': 'ruby' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 
-" Vue
-"Plug 'posva/vim-vue'
-
-" Angular2 & Typescript
-"Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-"Plug 'Quramy/tsuquyomi'          , { 'for': 'typescript' }
-
 call plug#end()
+
+au BufRead,BufNewFile *.vue set ft=html
+
+""""""""""""""
+" => Tabular "
+""""""""""""""
+nmap <leader><Tab>=  :Tabularize /=<CR>
+vmap <leader><Tab>=  :Tabularize /=<CR>
+nmap <leader><Tab>:  :Tabularize /:\zs<CR>
+vmap <leader><Tab>:  :Tabularize /:\zs<CR>
+nmap <leader><Tab>,  :Tabularize /,<CR>
+vmap <leader><Tab>,  :Tabularize /,<CR>
+nmap <leader><Tab>=> :Tabularize /=><CR>
+vmap <leader><Tab>=> :Tabularize /=><CR>
+
+""""""""""""""""
+" => SuperTab
+""""""""""""""""
+let g:SuperTabDefaultCompletionType = "<tab>"
 
 """""""""""""""""""""""""""""
 " => Unite
@@ -72,9 +90,6 @@ call unite#custom#profile('default', 'context', {
   \ 'direction': 'dynamicbottom',
   \ 'prompt': '» '
   \ })
-
-"autocmd FileType unite setlocal number relativenumber
-"autocmd BufWinEnter,BufEnter * setlocal number relativenumber
 
 nmap <leader>f :Unite -start-insert neomru/file<CR>
 nmap <F10> :Unite -vertical -winwidth=30 -toggle outline<CR>
@@ -93,13 +108,19 @@ let g:deoplete#enable_smart_case = 1
 " No need for previewing
 set completeopt-=preview
 
+" Tern
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = '0'
+
 """"""""""""""""
 " => NeoMake   "
 """"""""""""""""
 autocmd! BufWritePost * Neomake
+let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
+let b:neomake_jsx_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 
 let g:neomake_ruby_enabled_makers = ['reek', 'mri']
-let g:neomake_javascript_enabled_makers = ['jshint']
+let g:neomake_jsx_enabled_makers  = ['eslint']
 
 """"""""""""""""
 " => UltiSnips "
@@ -128,9 +149,9 @@ let g:NERDTreeWinSize=30
 let g:NERDTreeWinPos="right"
 
 " Set NERDTree on by default
-"autocmd VimEnter * NERDTree
-"autocmd BufWinEnter * NERDTreeMirror
-"autocmd VimEnter * wincmd p " go back to editor tab
+" autocmd VimEnter * NERDTree
+" autocmd BufWinEnter * NERDTreeMirror
+" autocmd VimEnter * wincmd p " go back to editor tab
 
 " Auto close NERDTree when the only open window left is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -149,13 +170,8 @@ if !exists('g:airline_symbols')
 endif
 
 let g:airline_powerline_fonts=1
-let g:airline_extensions = ['branch', 'tabline', 'neomake', 'unite']
-let g:airline#extensions#tabline#fnamemod = ':t'
-
-"""""""""""""""""""""""
-" => Markdown
-"""""""""""""""""""""""
-let g:vim_markdown_folding_disabled = 1
+let g:airline_extensions = ['branch', 'tabline', 'whitespace', 'neomake', 'unite']
+let g:airline#extensions#tabline#fnamemod = ':t'" Just show the filename (no path) in the tab
 
 """""""""""""""""""""""
 " => GitGutter
@@ -168,4 +184,3 @@ let g:gitgutter_map_keys = 0
 """"""""""""""""""""
 " for vim-json to work
 let g:indentLine_concealcursor = ''
-let g:indentLine_char = '¦'
