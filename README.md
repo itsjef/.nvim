@@ -6,6 +6,14 @@ My NeoVim configuration
 
 #How to install
 
+##Install Neovim python-client
+
+```bash
+sudo apt-get install python-pip python3-pip
+sudo pip2 install -U neovim
+sudo pip3 install -U neovim
+```
+
 ##Clone this repo
 ```bash
 git clone https://github.com/itsjef/.nvim $HOME/.nvim --depth 1
@@ -23,14 +31,6 @@ source ~/.nvim/vimrcs/plugins_config.vim
 source ~/.nvim/vimrcs/filetype.vim
 ```
 
-##Install Neovim python-client
-
-```bash
-sudo apt-get install python-pip python3-pip
-sudo pip2 install -U neovim
-sudo pip3 install -U neovim
-```
-
 ##Install Plugins
 
 In `nvim`, run:
@@ -44,7 +44,9 @@ To update plugins, run:
 :PlugUpdate
 ```
 
-Reference: [Here](https://github.com/junegunn/vim-plug)
+Reference: [vim-plug](https://github.com/junegunn/vim-plug)
+
+## Restart NeoVim
 
 #Features
 
