@@ -1,6 +1,6 @@
 """""""""""""""""""""""""""""
 " JavaScript                "
 """""""""""""""""""""""""""""
+let g:used_javascript_libs = 'jquery,vue'
 
-" Highlight JSX syntax within .js files
-let g:jsx_ext_required = 0
+au BufRead,BufNewFile *.vue setf html
