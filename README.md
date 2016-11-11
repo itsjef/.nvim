@@ -14,21 +14,11 @@ sudo pip2 install -U neovim
 sudo pip3 install -U neovim
 ```
 
-##Clone this repo
+##Install configs
+
 ```bash
 git clone https://github.com/itsjef/.nvim $HOME/.nvim --depth 1
-```
-
-##Edit your dotfile
-
-Copy and paste these line into your `$HOME/.nvimrc`
-
-```vimL
-set runtimepath+=~/.nvim
-
-source ~/.nvim/vimrcs/basic.vim
-source ~/.nvim/vimrcs/plugins_config.vim
-source ~/.nvim/vimrcs/filetype.vim
+bash $HOME/.nvim/install-awesome.sh
 ```
 
 ##Install Plugins

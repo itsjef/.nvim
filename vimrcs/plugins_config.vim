@@ -62,6 +62,9 @@ Plug 'othree/jspc.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'othree/es.next.syntax.vim'
 
+" Python
+Plug 'Glench/Vim-Jinja2-Syntax'
+
 call plug#end()
 
 """"""""""""""""
