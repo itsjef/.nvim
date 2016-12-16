@@ -6,33 +6,27 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'airblade/vim-gitgutter'
 Plug 'benekastah/neomake'
 Plug 'jiangmiao/auto-pairs'
-Plug 'mileszs/ack.vim'
-Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-scripts/YankRing.vim'
-Plug 'Raimondi/delimitMate'
 Plug 'junegunn/vim-easy-align'
 
-" Haskell
-"Plug 'neovimhaskell/haskell-vim'
-"Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
-
 " Colorscheme & Display helper
-Plug 'chriskempson/base16-vim'
-Plug 'Yggdroot/indentLine'
+Plug 'joshdick/onedark.vim'
+Plug 'mhartington/oceanic-next'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'ryanoasis/vim-devicons'
 
 " Autocompletion and snippets
 Plug 'mattn/emmet-vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'zchee/deoplete-jedi',      { 'for': 'python' }
 Plug 'carlitux/deoplete-ternjs', { 'for': 'javascript', 'do': 'npm install -g tern' }
+Plug 'Quramy/tsuquyomi',         { 'for': 'typescript', 'do': 'npm isntall -g typescript' }
 
 " Shougo
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -48,11 +42,11 @@ Plug 'Shougo/unite-outline'
 Plug 'tsukkee/unite-tag'
 
 " Ruby & Rails
-Plug 'tpope/vim-rails',   { 'for': 'ruby' }
-Plug 'tpope/vim-bundler', { 'for': 'ruby' }
-Plug 'tpope/vim-endwise', { 'for': 'ruby' }
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'slim-template/vim-slim'
+"Plug 'tpope/vim-rails',   {'for': 'ruby'}
+"Plug 'tpope/vim-bundler', {'for': 'ruby'}
+"Plug 'tpope/vim-endwise', {'for': 'ruby'}
+"Plug 'vim-ruby/vim-ruby', {'for': 'ruby'}
+"Plug 'slim-template/vim-slim'
 
 " HTML & CSS & Javascript
 Plug 'elzr/vim-json'
@@ -61,9 +55,13 @@ Plug 'othree/yajs.vim'
 Plug 'othree/jspc.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'othree/es.next.syntax.vim'
+Plug 'hail2u/vim-css3-syntax'
+
+" TypeScript
+Plug 'HerringtonDarkholme/yats.vim'
 
 " Python
-Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'klen/python-mode', { 'for': 'python' }
 
 call plug#end()
 
@@ -96,11 +94,6 @@ nmap <F10> :Unite -vertical -winwidth=30 -toggle outline<CR>
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 
-" In order for deoplete-clang to work
-"let g:deoplete#sources#clang#libclang_path='/usr/lib/llvm-3.8/lib/libclang.so.1'
-"let g:deoplete#sources#clang#clang_header='/usr/lib/llvm-3.8/lib/clang'
-"let g:clang_library_path='/usr/lib/llvm-3.5/lib/libclang.so.1'
-
 " No need for previewing
 set completeopt-=preview
 
@@ -124,13 +117,13 @@ let g:neomake_javascript_enabled_makers  = ['eslint']
 let g:UltiSnipsExpandTrigger="<c-j>"
 
 """"""""""""""""""""""""""""""
-" => YankRing
+" => NeoYank
 """"""""""""""""""""""""""""""
 if has("win32") || has("win64")
     " Do nothing
 else
   try
-    let g:yankring_history_dir = '$HOME/.nvim/temp_dir'
+    let g:neoyank#file = $HOME.'/.nvim/temp_dir/neoyank.txt'
   catch
   endtry
 endif
@@ -162,12 +155,12 @@ let g:loaded_airline_themes = 1
 
 " Avoid accidentally overwritting existing symbols
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 
 let g:airline_powerline_fonts=1
 let g:airline_extensions = ['branch', 'tabline', 'whitespace', 'neomake', 'unite']
-let g:airline#extensions#tabline#fnamemod = ':t'" Just show the filename (no path) in the tab
+let g:airline#extensions#tabline#fnamemod = ':t' " Just show the filename (no path) in the tab
 
 """""""""""""""""""""""
 " => GitGutter
@@ -176,7 +169,25 @@ let g:airline#extensions#tabline#fnamemod = ':t'" Just show the filename (no pat
 let g:gitgutter_map_keys = 0
 
 """"""""""""""""""""
-" => IndentLine
+" => IndentGuide
 """"""""""""""""""""
-" for vim-json to work
-let g:indentLine_concealcursor = ''
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_exclude_filetypes = ['json']
+
+""""""""""""""""""""
+" => NERDCommenter
+""""""""""""""""""""
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCommentEmptyLines = 1
+
+"""""""""""""
+" => PyMode "
+"""""""""""""
+let g:pymode_folding = 0
+let g:pymode_run = 0
+let g:pymode_rope_complete_on_dot = 0
+let g:pymode_lint_ignore = 'E731'
+nmap <leader>r = :!python2 %<CR>
