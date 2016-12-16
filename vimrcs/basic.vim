@@ -58,14 +58,10 @@ set wildmode=longest,full
 """""""""""""""""""""""""""""""""""""""""
 " => Colors
 """""""""""""""""""""""""""""""""""""""""
-if (empty($TMUX))
-  if (has('nvim'))
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " NeoVim 0.1.4 and below
-  endif
-
-  if (has("termguicolors"))
-    set termguicolors " NeoVim 0.1.5 and above
-  endif
+if has("termguicolors")
+  set termguicolors " NeoVim 0.1.5 and above
+elseif has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " NeoVim 0.1.4 and below
 endif
 
 """"""""""""""""""""""""""""""
@@ -73,6 +69,7 @@ endif
 """"""""""""""""""""""""""""""
 " Quickly open/reload nvimrc
 nnoremap <leader>ev :e ~/.nvimrc<cr>
+nnoremap <leader>ep :e ~/.nvim/vimrcs/plugins_config.vim<cr>
 nnoremap <leader>sv :source ~/.nvimrc<cr>
 
 " Persistent undo - You can undo even after closing a buffer or Vim itself
@@ -85,3 +82,8 @@ endtry
 "" Quick shortcut for splittling
 nnoremap <C-W>- :split<CR>
 nnoremap <C-W>\ :vsplit<CR>
+
+" Live substitute
+if has('nvim')
+  set inccommand=nosplit
+endif
