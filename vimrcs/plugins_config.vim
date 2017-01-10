@@ -17,7 +17,6 @@ Plug 'junegunn/vim-easy-align'
 
 " Colorscheme & Display helper
 Plug 'joshdick/onedark.vim'
-Plug 'mhartington/oceanic-next'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ryanoasis/vim-devicons'
 
@@ -26,7 +25,7 @@ Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'zchee/deoplete-jedi',      { 'for': 'python' }
 Plug 'carlitux/deoplete-ternjs', { 'for': 'javascript', 'do': 'npm install -g tern' }
-Plug 'Quramy/tsuquyomi',         { 'for': 'typescript', 'do': 'npm isntall -g typescript' }
+" Plug 'Quramy/tsuquyomi',         { 'for': 'typescript', 'do': 'npm isntall -g typescript' }
 
 " Shougo
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -58,10 +57,14 @@ Plug 'othree/es.next.syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
 
 " TypeScript
-Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'HerringtonDarkholme/yats.vim'
 
 " Python
-Plug 'klen/python-mode', { 'for': 'python' }
+" Plug 'python-mode/python-mode', { 'for': 'python' }
+
+" Haskell
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell', 'do': 'cabal install ghc-mod' }
+Plug 'neovimhaskell/haskell-vim'
 
 call plug#end()
 
@@ -101,6 +104,9 @@ set completeopt-=preview
 let g:tern_request_timeout = 1
 let g:tern_show_signature_in_pum = '0'
 
+" Haskell
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 """"""""""""""""
 " => NeoMake   "
 """"""""""""""""
@@ -108,8 +114,9 @@ autocmd! BufWritePost * Neomake
 let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
 let b:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 
-let g:neomake_ruby_enabled_makers = ['reek', 'mri']
-let g:neomake_javascript_enabled_makers  = ['eslint']
+let g:neomake_ruby_enabled_makers       = ['reek', 'mri']
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_python_tenabled_makers    = ['flake8']
 
 """"""""""""""""
 " => UltiSnips "
@@ -136,6 +143,7 @@ map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
 let g:NERDTreeWinSize=30
 let g:NERDTreeWinPos="right"
+let g:NERDTreeIgnore=["\.pyc$"]
 
 " Set NERDTree on by default
 " autocmd VimEnter * NERDTree
@@ -186,8 +194,9 @@ let g:NERDCommentEmptyLines = 1
 """""""""""""
 " => PyMode "
 """""""""""""
-let g:pymode_folding = 0
-let g:pymode_run = 0
-let g:pymode_rope_complete_on_dot = 0
-let g:pymode_lint_ignore = 'E731'
+" let g:pymode_run = 0
+" let g:pymode_folding = 0
+" let g:pymode_lint_cwindow = 0
+" let g:pymode_rope_complete_on_dot = 0
+" let g:pymode_lint_ignore = 'E731,E221'
 nmap <leader>r = :!python2 %<CR>

@@ -87,3 +87,6 @@ nnoremap <C-W>\ :vsplit<CR>
 if has('nvim')
   set inccommand=nosplit
 endif
+
+" Quick open terminal
+nnoremap <leader>t :vs<BAR>term<CR>
