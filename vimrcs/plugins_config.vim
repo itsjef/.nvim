@@ -63,9 +63,6 @@ Plug 'hail2u/vim-css3-syntax'
 " TypeScript
 " Plug 'HerringtonDarkholme/yats.vim'
 
-" Python
-" Plug 'python-mode/python-mode', { 'for': 'python' }
-
 " Haskell
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell', 'do': 'cabal install ghc-mod' }
 Plug 'neovimhaskell/haskell-vim'
@@ -118,9 +115,12 @@ autocmd! BufWritePost * Neomake
 let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
 let b:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 
+let g:neomake_python_flake8_maker = {
+  \ 'args': ['--ignore=E221,E402,E501,E126'],
+  \ }
 let g:neomake_ruby_enabled_makers       = ['reek', 'mri']
 let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_python_tenabled_makers    = ['flake8']
+let g:neomake_python_enabled_makers    = ['flake8']
 
 """"""""""""""""
 " => UltiSnips "
@@ -189,7 +189,7 @@ let g:indent_guides_exclude_filetypes = ['json']
 """"""""""""""""""""
 " => NERDCommenter
 """"""""""""""""""""
-let g:NERDSpaceDelims = 1
+let g:NERDSpaceDelims = 0
 let g:NERDCompactSexyComs = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDDefaultAlign = 'left'
