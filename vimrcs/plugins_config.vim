@@ -1,6 +1,10 @@
 """"""""""""
 " vim-plug "
 """"""""""""
+if empty(glob("~/.nvim/autoload/plug.vim"))
+  execute '!curl -fLo ~/.nvim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+
 call plug#begin('~/.nvim/bundle')
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'airblade/vim-gitgutter'
