@@ -2,7 +2,7 @@
 " vim-plug "
 """"""""""""
 if empty(glob("~/.nvim/autoload/plug.vim"))
-  execute '!curl -fLo ~/.nvim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+  execute '!curl https://raw.github.com/junegunn/vim-plug/master/plug.vim -fLo ~/.nvim/autoload/plug.vim --create-dirs'
 endif
 
 call plug#begin('~/.nvim/bundle')
