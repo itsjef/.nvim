@@ -21,27 +21,27 @@ Plug 'junegunn/vim-easy-align'
 
 " Colorscheme & Display helper
 Plug 'joshdick/onedark.vim'
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'Yggdroot/indentLine'
 Plug 'ryanoasis/vim-devicons'
+Plug 'kshenoy/vim-signature'
 
 " Autocompletion and snippets
 Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'zchee/deoplete-jedi',      { 'for': 'python' }
 Plug 'carlitux/deoplete-ternjs', { 'for': 'javascript', 'do': 'npm install -g tern' }
-" Plug 'Quramy/tsuquyomi',         { 'for': 'typescript', 'do': 'npm isntall -g typescript' }
 
 " Shougo
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/vimproc.vim',   { 'do': 'make' }
-Plug 'Shougo/unite.vim'
 
-" Unite Plugins
+" Denite/Unite
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Shougo/unite.vim' " Obsolete, replaced by denite.nvim
 Plug 'Shougo/neomru.vim'
-Plug 'Shougo/vimfiler.vim'
+"Plug 'Shougo/vimfiler.vim'
 Plug 'Shougo/neoyank.vim'
-Plug 'Shougo/unite-outline'
 Plug 'tsukkee/unite-tag'
 
 " Ruby & Rails
@@ -51,17 +51,20 @@ Plug 'tsukkee/unite-tag'
 "Plug 'vim-ruby/vim-ruby', {'for': 'ruby'}
 "Plug 'slim-template/vim-slim'
 
+" TypeScript
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/deoplete-typescript', { 'do': ':UpdateRemotePlugins' }
+
 " HTML & CSS & Javascript
 Plug 'elzr/vim-json'
 Plug 'othree/html5.vim'
-Plug 'othree/yajs.vim'
-Plug 'othree/jspc.vim'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'othree/es.next.syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
-
-" TypeScript
-" Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'othree/javascript-libraries-syntax.vim'
+"Plug 'othree/yajs.vim'
+"Plug 'othree/jspc.vim'
+"Plug 'othree/es.next.syntax.vim'
 
 " Haskell
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell', 'do': 'cabal install ghc-mod' }
@@ -83,18 +86,32 @@ let g:SuperTabDefaultCompletionType = "<tab>"
 """""""""""""""""""""""""""""
 " => Unite
 """""""""""""""""""""""""""""
-call unite#custom#profile('default', 'context', {
-  \ 'winheight': 10,
-  \ 'direction': 'dynamicbottom',
-  \ 'prompt': '» '
-  \ })
+"call unite#custom#profile('default', 'context', {
+"  \ 'winheight': 10,
+"  \ 'direction': 'dynamicbottom',
+"  \ 'prompt': '» '
+"  \ })
+"
+"nmap <leader>f :Unite -start-insert neomru/file<CR>
+"nmap <leader>b :Unite buffer<CR>
+"nmap <F10> :Unite -vertical -winwidth=35 -toggle outline<CR>
 
-nmap <leader>f :Unite -start-insert neomru/file<CR>
-nmap <F10> :Unite -vertical -winwidth=30 -toggle outline<CR>
+"""""""""""""""""""""""""""""
+" => Denite
+"""""""""""""""""""""""""""""
+call denite#custom#option('default', 'prompt', '»')
+call denite#custom#option('default', 'reversed', 'true')
+call denite#custom#option('default', 'winheight', 10)
 
-""""""""""""""""
-" => Deoplete  "
-""""""""""""""""
+call denite#custom#source('file_mru', 'matchers', ['matcher_cpsm'])
+
+nmap <leader>f :Denite file_mru<CR>
+nmap <leader>b :Denite -mode=normal buffer<CR>
+nmap <F10> :Denite outline<CR>
+
+"""""""""""""""
+" => Deoplete "
+"""""""""""""""
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 
@@ -116,9 +133,9 @@ let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
 let b:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 
 let g:neomake_python_flake8_maker = {
-  \ 'args': ['--ignore=E221,E402,E501,E126'],
+  \ 'args': ['--ignore=E221,E402,E501,E126,F401'],
   \ }
-let g:neomake_ruby_enabled_makers       = ['reek', 'mri']
+"let g:neomake_ruby_enabled_makers       = ['reek', 'mri']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_python_enabled_makers    = ['flake8']
 
@@ -171,7 +188,7 @@ if !exists('g:airline_symbols')
 endif
 
 let g:airline_powerline_fonts=1
-let g:airline_extensions = ['branch', 'tabline', 'whitespace', 'neomake', 'unite']
+let g:airline_extensions = ['branch', 'tabline', 'whitespace', 'neomake']
 let g:airline#extensions#tabline#fnamemod = ':t' " Just show the filename (no path) in the tab
 
 """""""""""""""""""""""
