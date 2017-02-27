@@ -16,12 +16,13 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim' " replacing vim-airline
 Plug 'junegunn/vim-easy-align'
 
 " Colorscheme & Display helper
 Plug 'joshdick/onedark.vim'
-Plug 'Yggdroot/indentLine'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kshenoy/vim-signature'
 
@@ -36,11 +37,10 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/vimproc.vim',   { 'do': 'make' }
 
-" Denite/Unite
+" Denite
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'Shougo/unite.vim' " Obsolete, replaced by denite.nvim
 Plug 'Shougo/neomru.vim'
-"Plug 'Shougo/vimfiler.vim'
 Plug 'Shougo/neoyank.vim'
 Plug 'tsukkee/unite-tag'
 
@@ -61,15 +61,17 @@ Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
-Plug 'othree/javascript-libraries-syntax.vim'
+"Plug 'othree/javascript-libraries-syntax.vim'
 "Plug 'othree/yajs.vim'
-"Plug 'othree/jspc.vim'
+Plug 'othree/jspc.vim'
 "Plug 'othree/es.next.syntax.vim'
 
 " Haskell
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell', 'do': 'cabal install ghc-mod' }
 Plug 'neovimhaskell/haskell-vim'
 
+" Vue
+Plug 'posva/vim-vue'
 call plug#end()
 
 """"""""""""""""
@@ -82,19 +84,6 @@ nmap ga <Plug>(EasyAlign)
 " => SuperTab
 """"""""""""""""
 let g:SuperTabDefaultCompletionType = "<tab>"
-
-"""""""""""""""""""""""""""""
-" => Unite
-"""""""""""""""""""""""""""""
-"call unite#custom#profile('default', 'context', {
-"  \ 'winheight': 10,
-"  \ 'direction': 'dynamicbottom',
-"  \ 'prompt': '» '
-"  \ })
-"
-"nmap <leader>f :Unite -start-insert neomru/file<CR>
-"nmap <leader>b :Unite buffer<CR>
-"nmap <F10> :Unite -vertical -winwidth=35 -toggle outline<CR>
 
 """""""""""""""""""""""""""""
 " => Denite
@@ -174,22 +163,28 @@ let g:NERDTreeIgnore=["\.pyc$"]
 " Auto close NERDTree when the only open window left is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-""""""""""""""""""""""""""""""
+""""""""""""""""
+" => Lightline "
+""""""""""""""""
+let g:lightline = {
+\ 'colorscheme': 'onedark',
+\ }
+
 " => Airline
 """"""""""""""""""""""""""""""
-if (exists('g:loaded_airline_themes') && g:loaded_airline_themes)
-  finish
-endif
-let g:loaded_airline_themes = 1
-
-" Avoid accidentally overwritting existing symbols
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-let g:airline_powerline_fonts=1
-let g:airline_extensions = ['branch', 'tabline', 'whitespace', 'neomake']
-let g:airline#extensions#tabline#fnamemod = ':t' " Just show the filename (no path) in the tab
+"if (exists('g:loaded_airline_themes') && g:loaded_airline_themes)
+"  finish
+"endif
+"let g:loaded_airline_themes = 1
+"
+"" Avoid accidentally overwritting existing symbols
+"if !exists('g:airline_symbols')
+"  let g:airline_symbols = {}
+"endif
+"
+"let g:airline_powerline_fonts=1
+"let g:airline_extensions = ['branch', 'tabline', 'whitespace', 'neomake']
+"let g:airline#extensions#tabline#fnamemod = ':t' " Just show the filename (no path) in the tab
 
 """""""""""""""""""""""
 " => GitGutter
