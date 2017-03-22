@@ -12,7 +12,7 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Remapping ESC key
-inoremap ii <ESC>
+" inoremap ii <ESC>
 
 " Buffer navigation
 nmap <leader>h :bprevious<CR>
@@ -30,7 +30,6 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
-" set autoindent
 
 " Line mark
 set list
@@ -52,9 +51,10 @@ set magic
 set showmatch
 
 " Set Wild menu
-set wildmenu
 set wildmode=longest,full
 
+" Display the line you are in
+set cursorline
 """""""""""""""""""""""""""""""""""""""""
 " => Colors
 """""""""""""""""""""""""""""""""""""""""
