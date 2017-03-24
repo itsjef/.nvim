@@ -122,14 +122,11 @@ let g:tern#filetypes = [
 " => NeoMake   "
 """"""""""""""""
 autocmd! BufWritePost * Neomake
-let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
-let b:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 
 let g:neomake_python_flake8_maker = {
   \ 'args': ['--ignore=E221,E402,E501,E126'],
   \ }
 "let g:neomake_ruby_enabled_makers       = ['reek', 'mri']
-let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_python_enabled_makers    = ['flake8']
 
 """"""""""""""""
