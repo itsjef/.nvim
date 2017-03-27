@@ -16,7 +16,6 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-"Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'itchyny/lightline.vim' " replacing vim-airline
 Plug 'ap/vim-buftabline' " replacing vim-airline
 Plug 'junegunn/vim-easy-align'
@@ -42,7 +41,6 @@ Plug 'Shougo/vimproc.vim',   { 'do': 'make' }
 
 " Denite
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'Shougo/unite.vim' " Obsolete, replaced by denite.nvim
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/neoyank.vim'
 Plug 'tsukkee/unite-tag'
@@ -62,7 +60,7 @@ Plug 'tsukkee/unite-tag'
 Plug 'elzr/vim-json'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
-Plug 'mxw/vim-jsx'
+"Plug 'mxw/vim-jsx'
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 "Plug 'othree/jspc.vim'
