@@ -3,3 +3,4 @@ temp_dir/*
 bundle/*
 doc/tags
 .DS_Store
+vimrcs/custom.vim
