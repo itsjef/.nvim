@@ -6,9 +6,7 @@ if empty(glob("~/.nvim/autoload/plug.vim"))
 endif
 
 call plug#begin('~/.nvim/bundle')
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'airblade/vim-gitgutter'
-Plug 'benekastah/neomake'
+Plug 'neomake/neomake'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } | Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -16,23 +14,23 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'itchyny/lightline.vim' " replacing vim-airline
-Plug 'ap/vim-buftabline' " replacing vim-airline
+Plug 'itchyny/lightline.vim'
+Plug 'ap/vim-buftabline'
 Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
 
 " Colorscheme & Display helper
 Plug 'joshdick/onedark.vim'
-Plug 'mhartington/oceanic-next'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kshenoy/vim-signature'
+Plug 'mhinz/vim-signify'
 
 " Autocompletion and snippets
 Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'zchee/deoplete-jedi',      { 'for': 'python' }
-Plug 'carlitux/deoplete-ternjs', { 'for': 'javascript', 'do': 'npm install -g tern' }
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'vue'], 'do': 'npm install -g tern' }
 
 " Shougo
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -60,14 +58,15 @@ Plug 'tsukkee/unite-tag'
 Plug 'elzr/vim-json'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
-"Plug 'mxw/vim-jsx'
-Plug 'othree/yajs.vim'
+Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
-"Plug 'othree/jspc.vim'
 
 " Haskell
 "Plug 'eagletmt/neco-ghc', { 'for': 'haskell', 'do': 'cabal install ghc-mod' }
 "Plug 'neovimhaskell/haskell-vim'
+
+" Vue
+Plug 'posva/vim-vue'
 
 call plug#end()
 
@@ -89,8 +88,6 @@ call denite#custom#option('default', 'prompt', '»')
 call denite#custom#option('default', 'reversed', 'true')
 call denite#custom#option('default', 'winheight', 10)
 
-call denite#custom#source('file_mru', 'matchers', ['matcher_project_files'])
-
 nmap <leader>f :Denite file_mru<CR>
 nmap <leader>b :Denite -mode=normal buffer<CR>
 nmap <F10> :Denite outline<CR>
@@ -108,8 +105,7 @@ set completeopt-=preview
 let g:tern_request_timeout = 1
 let g:tern_show_signature_in_pum = '0'
 let g:tern#filetypes = [
-                \ 'jsx',
-                \ 'javascript.jsx',
+                \ 'html',
                 \ 'vue',
                 \ ]
 
@@ -125,7 +121,7 @@ let g:neomake_python_flake8_maker = {
   \ 'args': ['--ignore=E221,E402,E501,E126'],
   \ }
 "let g:neomake_ruby_enabled_makers       = ['reek', 'mri']
-let g:neomake_python_enabled_makers    = ['flake8']
+let g:neomake_python_enabled_makers = ['flake8']
 
 """"""""""""""""
 " => UltiSnips "
@@ -169,27 +165,11 @@ let g:lightline = {
 \ 'colorscheme': 'onedark',
 \ }
 
-" => Airline
-""""""""""""""""""""""""""""""
-"if (exists('g:loaded_airline_themes') && g:loaded_airline_themes)
-"  finish
-"endif
-"let g:loaded_airline_themes = 1
-"
-"" Avoid accidentally overwritting existing symbols
-"if !exists('g:airline_symbols')
-"  let g:airline_symbols = {}
-"endif
-"
-"let g:airline_powerline_fonts=1
-"let g:airline_extensions = ['branch', 'tabline', 'whitespace', 'neomake']
-"let g:airline#extensions#tabline#fnamemod = ':t' " Just show the filename (no path) in the tab
-
 """""""""""""""""""""""
 " => GitGutter
 """""""""""""""""""""""
 " No mapping at all
-let g:gitgutter_map_keys = 0
+" let g:gitgutter_map_keys = 0
 
 """"""""""""""""""""
 " => IndentGuide
