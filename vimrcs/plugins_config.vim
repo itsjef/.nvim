@@ -1,26 +1,25 @@
 """"""""""""
 " vim-plug "
 """"""""""""
-if empty(glob("~/.nvim/autoload/plug.vim"))
-  execute '!curl https://raw.github.com/junegunn/vim-plug/master/plug.vim -fLo ~/.nvim/autoload/plug.vim --create-dirs'
+if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
+  execute '!curl https://raw.github.com/junegunn/vim-plug/master/plug.vim -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs'
 endif
 
 call plug#begin('~/.nvim/bundle')
-Plug 'neomake/neomake'
+Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ervandew/supertab'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'itchyny/lightline.vim'
-Plug 'ap/vim-buftabline'
+Plug 'vim-airline/vim-airline'
 Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
 
 " Colorscheme & Display helper
 Plug 'joshdick/onedark.vim'
+Plug 'rakr/vim-one'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kshenoy/vim-signature'
@@ -60,6 +59,7 @@ Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'mxw/vim-jsx'
 
 " Haskell
 "Plug 'eagletmt/neco-ghc', { 'for': 'haskell', 'do': 'cabal install ghc-mod' }
@@ -112,16 +112,6 @@ let g:tern#filetypes = [
 " Haskell
 " let g:haskellmode_completion_ghc = 0
 " autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-""""""""""""""""
-" => NeoMake   "
-""""""""""""""""
-autocmd! BufWritePost * Neomake
-
-let g:neomake_python_flake8_maker = {
-  \ 'args': ['--ignore=E221,E402,E501,E126'],
-  \ }
-"let g:neomake_ruby_enabled_makers       = ['reek', 'mri']
-let g:neomake_python_enabled_makers = ['flake8']
 
 """"""""""""""""
 " => UltiSnips "
@@ -159,17 +149,17 @@ let g:NERDTreeIgnore=["\.pyc$"]
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 """"""""""""""""
-" => Lightline "
+" => Airline
 """"""""""""""""
-let g:lightline = {
-\ 'colorscheme': 'onedark',
-\ }
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
 
-"""""""""""""""""""""""
-" => GitGutter
-"""""""""""""""""""""""
-" No mapping at all
-" let g:gitgutter_map_keys = 0
+" let g:airline_powerline_fonts=1
+let g:airline_extensions = ['tabline']
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 
 """"""""""""""""""""
 " => IndentGuide
@@ -185,13 +175,3 @@ let g:NERDCompactSexyComs = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
-
-"""""""""""""
-" => PyMode "
-"""""""""""""
-" let g:pymode_run = 0
-" let g:pymode_folding = 0
-" let g:pymode_lint_cwindow = 0
-" let g:pymode_rope_complete_on_dot = 0
-" let g:pymode_lint_ignore = 'E731,E221'
-nmap <leader>r = :!python2 %<CR>
