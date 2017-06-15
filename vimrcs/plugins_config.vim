@@ -13,7 +13,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } | Plug 'Xuyuanp/nerdtree-
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
 
@@ -42,17 +42,6 @@ Plug 'Shougo/neomru.vim'
 Plug 'Shougo/neoyank.vim'
 Plug 'tsukkee/unite-tag'
 
-" Ruby & Rails
-"Plug 'tpope/vim-rails',   {'for': 'ruby'}
-"Plug 'tpope/vim-bundler', {'for': 'ruby'}
-"Plug 'tpope/vim-endwise', {'for': 'ruby'}
-"Plug 'vim-ruby/vim-ruby', {'for': 'ruby'}
-"Plug 'slim-template/vim-slim'
-
-" TypeScript
-"Plug 'HerringtonDarkholme/yats.vim'
-"Plug 'mhartington/deoplete-typescript', { 'do': ':UpdateRemotePlugins' }
-
 " HTML & CSS & Javascript
 Plug 'elzr/vim-json'
 Plug 'othree/html5.vim'
@@ -60,10 +49,6 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'mxw/vim-jsx'
-
-" Haskell
-"Plug 'eagletmt/neco-ghc', { 'for': 'haskell', 'do': 'cabal install ghc-mod' }
-"Plug 'neovimhaskell/haskell-vim'
 
 " Vue
 Plug 'posva/vim-vue'
@@ -109,10 +94,6 @@ let g:tern#filetypes = [
                 \ 'vue',
                 \ ]
 
-" Haskell
-" let g:haskellmode_completion_ghc = 0
-" autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-
 """"""""""""""""
 " => UltiSnips "
 """"""""""""""""
@@ -121,9 +102,7 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 """"""""""""""""""""""""""""""
 " => NeoYank
 """"""""""""""""""""""""""""""
-if has("win32") || has("win64")
-    " Do nothing
-else
+if has("clipboard")
   try
     let g:neoyank#file = $HOME.'/.nvim/temp_dir/neoyank.txt'
   catch
@@ -139,11 +118,6 @@ map <leader>nf :NERDTreeFind<cr>
 let g:NERDTreeWinSize=30
 let g:NERDTreeWinPos="right"
 let g:NERDTreeIgnore=["\.pyc$"]
-
-" Set NERDTree on by default
-" autocmd VimEnter * NERDTree
-" autocmd BufWinEnter * NERDTreeMirror
-" autocmd VimEnter * wincmd p " go back to editor tab
 
 " Auto close NERDTree when the only open window left is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
