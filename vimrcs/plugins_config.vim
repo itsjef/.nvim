@@ -19,8 +19,8 @@ Plug 'easymotion/vim-easymotion'
 
 " Colorscheme & Display helper
 Plug 'joshdick/onedark.vim'
-Plug 'rakr/vim-one'
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'chriskempson/base16-vim'
+" Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kshenoy/vim-signature'
 Plug 'mhinz/vim-signify'
@@ -29,7 +29,7 @@ Plug 'mhinz/vim-signify'
 Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'zchee/deoplete-jedi',      { 'for': 'python' }
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'vue'], 'do': 'npm install -g tern' }
+" Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'vue'], 'do': 'npm install -g tern' }
 
 " Shougo
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
