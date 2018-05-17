@@ -17,7 +17,10 @@ let g:mapleader = ","
 " Buffer navigation
 nmap <leader>h :bprevious<CR>
 nmap <leader>l :bnext<CR>
-nmap <leader>bd :bp<BAR>bd#<CR>
+" nmap <leader>bd :bd<CR>
+
+" Mouse
+set mouse=n
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM UI
@@ -58,19 +61,16 @@ set cursorline
 """""""""""""""""""""""""""""""""""""""""
 " => Colors
 """""""""""""""""""""""""""""""""""""""""
-if has("termguicolors")
-  set termguicolors " NeoVim 0.1.5 and above
-elseif has('nvim')
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " NeoVim 0.1.4 and below
-endif
+set termguicolors
 
 """"""""""""""""""""""""""""""
 " => Misc
 """"""""""""""""""""""""""""""
 " Quickly open/reload nvimrc
 nnoremap <leader>ev :e ~/.nvimrc<cr>
+nnoremap <leader>eb :e ~/.nvim/vimrcs/basic.vim<cr>
 nnoremap <leader>ep :e ~/.nvim/vimrcs/plugins_config.vim<cr>
-nnoremap <leader>sv :source ~/.nvimrc<cr>
+nnoremap <leader>sv :so ~/.nvimrc<cr>
 
 " Persistent undo - You can undo even after closing a buffer or Vim itself
 try
@@ -89,4 +89,8 @@ if has('nvim')
 endif
 
 " Quick open terminal
-nnoremap <leader>t :vs<BAR>term<CR>
+nnoremap <leader>t :bo sp<BAR>te<CR>
+set shell=/bin/zsh
+au TermOpen term://* startinsert
+" au TermClose term://* bd!
+tnoremap <Esc> <C-\><C-n>
