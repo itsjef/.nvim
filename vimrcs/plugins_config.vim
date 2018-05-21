@@ -65,6 +65,9 @@ Plug 'Shougo/neoyank.vim'
 "
 " Go
 " Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+"
+" Latex
+Plug 'lervag/vimtex'
 call plug#end()
 
 """"""""""""""""
