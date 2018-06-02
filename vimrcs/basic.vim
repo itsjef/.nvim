@@ -58,6 +58,11 @@ set wildmode=longest,full
 
 " Display the line you are in
 set cursorline
+
+" 'Natural' splitting
+set splitbelow
+set splitright
+
 """""""""""""""""""""""""""""""""""""""""
 " => Colors
 """""""""""""""""""""""""""""""""""""""""
@@ -79,7 +84,7 @@ try
 catch
 endtry
 
-"" Quick shortcut for splittling
+" Quick shortcut for splittling
 nnoremap <C-W>- :split<CR>
 nnoremap <C-W>\ :vsplit<CR>
 
