@@ -95,7 +95,13 @@ endif
 
 " Quick open terminal
 nnoremap <leader>t :bo sp<BAR>te<CR>
-set shell=/bin/zsh
+set shell=/bin/bash
 au TermOpen term://* startinsert
 " au TermClose term://* bd!
 tnoremap <Esc> <C-\><C-n>
+
+" Break undo sequence to smaller chunks
+inoremap . .<C-g>u
+inoremap ? ?<C-g>u
+inoremap ! !<C-g>u
+inoremap , ,<C-g>u
