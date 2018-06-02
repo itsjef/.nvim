@@ -17,10 +17,13 @@ Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 " Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
+" Plug 'lambdalisue/gina.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Colorscheme & Display helper
 " Plug 'joshdick/onedark.vim'
-Plug 'rakr/vim-one'
+" Plug 'rakr/vim-one'
 Plug 'chriskempson/base16-vim'
 " Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ryanoasis/vim-devicons'
@@ -40,9 +43,9 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'Shougo/vimproc.vim',   { 'do': 'make' }
 
 " Denite
-Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neomru.vim'
-Plug 'Shougo/neoyank.vim'
+" Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/neomru.vim'
+" Plug 'Shougo/neoyank.vim'
 " Plug 'tsukkee/unite-tag'
 
 " HTML & CSS & Javascript
@@ -67,7 +70,7 @@ Plug 'Shougo/neoyank.vim'
 " Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 "
 " Latex
-Plug 'lervag/vimtex'
+" Plug 'lervag/vimtex'
 call plug#end()
 
 """"""""""""""""
@@ -84,13 +87,13 @@ let g:SuperTabDefaultCompletionType = "<tab>"
 """""""""""""""""""""""""""""
 " => Denite
 """""""""""""""""""""""""""""
-call denite#custom#option('default', 'prompt', '»')
-call denite#custom#option('default', 'reversed', 'true')
-call denite#custom#option('default', 'winheight', 10)
-
-nmap <leader>f :Denite file_mru<CR>
-nmap <leader>b :Denite -mode=normal buffer<CR>
-nmap <F10> :Denite outline<CR>
+" call denite#custom#option('default', 'prompt', '»')
+" call denite#custom#option('default', 'reversed', 'true')
+" call denite#custom#option('default', 'winheight', 10)
+"
+" nmap <leader>f :Denite file_mru<CR>
+" nmap <leader>b :Denite -mode=normal buffer<CR>
+" nmap <F10> :Denite outline<CR>
 
 """""""""""""""
 " => Deoplete "
