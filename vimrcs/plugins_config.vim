@@ -14,86 +14,31 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
-" Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
-" Plug 'lambdalisue/gina.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Colorscheme & Display helper
-" Plug 'joshdick/onedark.vim'
-" Plug 'rakr/vim-one'
 Plug 'chriskempson/base16-vim'
-" Plug 'nathanaelkane/vim-indent-guides'
+Plug 'Yggdroot/indentLine'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kshenoy/vim-signature'
 Plug 'mhinz/vim-signify'
-
-" Autocompletion and snippets
-" Plug 'mattn/emmet-vim'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-" Plug 'zchee/deoplete-go', { 'for': 'go', 'do': 'make' }
-" Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'vue'], 'do': 'npm install -g tern' }
+Plug 'sheerun/vim-polyglot', {'do': './build'}
 
 " Shougo
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'Shougo/neoinclude.vim'
-" Plug 'Shougo/vimproc.vim',   { 'do': 'make' }
 
-" Denite
-" Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'Shougo/neomru.vim'
-" Plug 'Shougo/neoyank.vim'
-" Plug 'tsukkee/unite-tag'
-
-" HTML & CSS & Javascript
-" Plug 'elzr/vim-json'
-" Plug 'othree/html5.vim'
-" Plug 'hail2u/vim-css3-syntax'
-" Plug 'pangloss/vim-javascript'
-" Plug 'othree/javascript-libraries-syntax.vim'
-" Plug 'mxw/vim-jsx'
-" Plug 'Glench/Vim-Jinja2-Syntax'
-
-" Vue
-" Plug 'posva/vim-vue'
-
-" Elm
-" Plug 'ElmCast/elm-vim'
-
-" Nim
-" Plug 'baabelfish/nvim-nim'
-"
-" Go
-" Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-"
-" Latex
-" Plug 'lervag/vimtex'
+" Autocompletion and snippets
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 call plug#end()
-
-""""""""""""""""
-" => EasyAlign "
-""""""""""""""""
-" xmap ga <Plug>(EasyAlign)
-" nmap ga <Plug>(EasyAlign)
 
 """"""""""""""""
 " => SuperTab
 """"""""""""""""
 let g:SuperTabDefaultCompletionType = "<tab>"
-
-"""""""""""""""""""""""""""""
-" => Denite
-"""""""""""""""""""""""""""""
-" call denite#custom#option('default', 'prompt', '»')
-" call denite#custom#option('default', 'reversed', 'true')
-" call denite#custom#option('default', 'winheight', 10)
-"
-" nmap <leader>f :Denite file_mru<CR>
-" nmap <leader>b :Denite -mode=normal buffer<CR>
-" nmap <F10> :Denite outline<CR>
 
 """""""""""""""
 " => Deoplete "
@@ -103,14 +48,6 @@ let g:deoplete#enable_smart_case = 1
 
 " No need for previewing
 set completeopt-=preview
-
-" Tern
-let g:tern_request_timeout = 1
-let g:tern_show_signature_in_pum = '0'
-let g:tern#filetypes = [
-                \ 'html',
-                \ 'vue',
-                \ ]
 
 """"""""""""""""
 " => UltiSnips "
@@ -135,7 +72,7 @@ map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
 let g:NERDTreeWinSize=30
 let g:NERDTreeWinPos="right"
-let g:NERDTreeIgnore=["\.pyc$", "venv"]
+let g:NERDTreeIgnore=["\.pyc$", "venv", "__pycache__"]
 
 " Auto close NERDTree when the only open window left is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -154,12 +91,6 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
 """"""""""""""""""""
-" => IndentGuide
-""""""""""""""""""""
-" let g:indent_guides_enable_on_vim_startup = 1
-" let g:indent_guides_exclude_filetypes = ['json', 'nerdtree']
-
-""""""""""""""""""""
 " => NERDCommenter
 """"""""""""""""""""
 let g:NERDSpaceDelims = 1
@@ -175,3 +106,9 @@ let g:NERDCommentEmptyLines = 1
 let g:ale_pattern_options = {
 \ '\.py$': {'ale_linters': ['flake8'], 'ale_fixers': []},
 \}
+
+
+""""""""""
+" => FZF "
+""""""""""
+nnoremap <leader>ff :FZF<cr>
