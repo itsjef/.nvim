@@ -17,7 +17,7 @@ let g:mapleader = ","
 " Buffer navigation
 nmap <leader>h :bprevious<CR>
 nmap <leader>l :bnext<CR>
-" nmap <leader>bd :bd<CR>
+nmap <leader>bd :bd<CR>
 
 " Mouse
 set mouse=n
@@ -46,9 +46,6 @@ set smartcase
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
-
-" For regular expressions turn magic on
-set magic
 
 " Show matching brackets when text indicator is over them
 set showmatch
@@ -98,10 +95,16 @@ nnoremap <leader>t :bo sp<BAR>te<CR>
 set shell=/bin/bash
 au TermOpen term://* startinsert
 " au TermClose term://* bd!
-tnoremap <Esc> <C-\><C-n>
+" tnoremap <Esc> <C-\><C-n>
 
 " Break undo sequence to smaller chunks
 inoremap . .<C-g>u
 inoremap ? ?<C-g>u
 inoremap ! !<C-g>u
 inoremap , ,<C-g>u
+
+" Moving between windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
