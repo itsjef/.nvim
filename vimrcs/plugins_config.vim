@@ -27,13 +27,22 @@ Plug 'kshenoy/vim-signature'
 Plug 'mhinz/vim-signify'
 Plug 'sheerun/vim-polyglot', {'do': './build'}
 
-" Shougo
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Utils
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Autocompletion and snippets
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-jedi'
 call plug#end()
+
+"""""""""""
+" => NCM2 "
+"""""""""""
+autocmd BufEnter * call ncm2#enable_for_buffer()
 
 """"""""""""""""
 " => SuperTab
@@ -43,11 +52,12 @@ let g:SuperTabDefaultCompletionType = "<tab>"
 """""""""""""""
 " => Deoplete "
 """""""""""""""
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_smart_case = 1
 
 " No need for previewing
-set completeopt-=preview
+" set completeopt-=preview
+set completeopt=noinsert,menuone,noselect
 
 """"""""""""""""
 " => UltiSnips "
@@ -104,8 +114,9 @@ let g:NERDCommentEmptyLines = 1
 " => ALE  "
 """""""""""
 let g:ale_pattern_options = {
-\ '\.py$': {'ale_linters': ['flake8'], 'ale_fixers': []},
+\ '\.py$': {'ale_linters': ['flake8'], 'ale_fixers': ['black']},
 \}
+let g:ale_python_flake8_options="--max-line-length=120"
 
 
 """"""""""
