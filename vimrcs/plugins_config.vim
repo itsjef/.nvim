@@ -32,32 +32,12 @@ Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Autocompletion and snippets
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-jedi'
 call plug#end()
-
-"""""""""""
-" => NCM2 "
-"""""""""""
-autocmd BufEnter * call ncm2#enable_for_buffer()
 
 """"""""""""""""
 " => SuperTab
 """"""""""""""""
 let g:SuperTabDefaultCompletionType = "<tab>"
-
-"""""""""""""""
-" => Deoplete "
-"""""""""""""""
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#enable_smart_case = 1
-
-" No need for previewing
-" set completeopt-=preview
-set completeopt=noinsert,menuone,noselect
 
 """"""""""""""""
 " => UltiSnips "
@@ -95,7 +75,7 @@ if !exists('g:airline_symbols')
 endif
 
 " let g:airline_powerline_fonts=1
-let g:airline_extensions = ['tabline', 'branch']
+let g:airline_extensions = ['tabline', 'branch', 'ale']
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -113,11 +93,32 @@ let g:NERDCommentEmptyLines = 1
 """""""""""
 " => ALE  "
 """""""""""
+" Linting and auto-formatting code
 let g:ale_pattern_options = {
-\ '\.py$': {'ale_linters': ['flake8'], 'ale_fixers': ['black']},
+\ '*': ['remove_trailing_lines', 'trim_whitespace'],
+\ '\.py$': {
+\  'ale_linters': ['flake8', 'pyls'],
+\  'ale_fixers': ['black', 'isort', 'add_blank_lines_for_python_control_statements']
+\ },
 \}
-let g:ale_python_flake8_options="--max-line-length=120"
 
+let g:ale_linters_ignore = ['pyls'] " Prevent overlapping flake8
+" let g:ale_python_flake8_options = "--max-line-length=120"
+
+" Auto-completion
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+let g:ale_completion_max_suggestions=15
+set completeopt=menu,menuone,noselect,noinsert
+
+" Action mapping
+nnoremap <silent> K :ALEHover<CR>
+nnoremap <silent> gd :ALEGoToDefinition<CR>
+nnoremap <silent> <leader>fr :ALEFindReferences<CR>
+
+" Navigation
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 """"""""""
 " => FZF "
