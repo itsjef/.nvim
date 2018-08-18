@@ -114,11 +114,11 @@ set completeopt=menu,menuone,noselect,noinsert
 " Action mapping
 nnoremap <silent> K :ALEHover<CR>
 nnoremap <silent> gd :ALEGoToDefinition<CR>
-nnoremap <silent> <leader>fr :ALEFindReferences<CR>
+" nnoremap <silent> <leader>fr :ALEFindReferences<CR>
 
 " Navigation
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <leader>an <Plug>(ale_next_wrap)
+nmap <silent> <leader>ap <Plug>(ale_previous_wrap)
 
 """"""""""
 " => FZF "
