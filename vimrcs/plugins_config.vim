@@ -29,6 +29,7 @@ Plug 'sheerun/vim-polyglot', {'do': './build'}
 
 " Utils
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'mileszs/ack.vim'
 
 " Autocompletion and snippets
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -106,7 +107,7 @@ let g:ale_linters_ignore = ['pyls'] " Prevent overlapping flake8
 " let g:ale_python_flake8_options = "--max-line-length=120"
 
 " Auto-completion
-let g:ale_fix_on_save = 1
+" let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_completion_max_suggestions=15
 set completeopt=menu,menuone,noselect,noinsert
@@ -119,8 +120,16 @@ nnoremap <silent> gd :ALEGoToDefinition<CR>
 " Navigation
 nmap <silent> <leader>an <Plug>(ale_next_wrap)
 nmap <silent> <leader>ap <Plug>(ale_previous_wrap)
+nmap <silent> <leader>af <Plug>(ale_fix)
 
 """"""""""
 " => FZF "
 """"""""""
-nnoremap <leader>ff :FZF<cr>
+nnoremap <silent> <leader>ff :FZF<cr>
+
+""""""""""
+" => Ack "
+""""""""""
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
