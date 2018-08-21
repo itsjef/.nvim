@@ -33,7 +33,22 @@ Plug 'mileszs/ack.vim'
 
 " Autocompletion and snippets
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 call plug#end()
+
+"""""""""""""""""""""
+" => Autocompletion "
+"""""""""""""""""""""
+set completeopt=menuone,noselect,noinsert
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('max_list', 15)
+" ALE
+" let g:ale_completion_enabled = 1
+" let g:ale_completion_max_suggestions=10
+" NCM2
+" autocmd BufEnter * call ncm2#enable_for_buffer()
 
 """"""""""""""""
 " => SuperTab
@@ -90,7 +105,6 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 
-
 """""""""""
 " => ALE  "
 """""""""""
@@ -104,13 +118,8 @@ let g:ale_pattern_options = {
 \}
 
 let g:ale_linters_ignore = ['pyls'] " Prevent overlapping flake8
-" let g:ale_python_flake8_options = "--max-line-length=120"
-
-" Auto-completion
+let g:ale_python_flake8_options = "--max-line-length=120"
 " let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
-let g:ale_completion_max_suggestions=15
-set completeopt=menu,menuone,noselect,noinsert
 
 " Action mapping
 nnoremap <silent> K :ALEHover<CR>
