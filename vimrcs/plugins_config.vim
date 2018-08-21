@@ -58,13 +58,12 @@ nnoremap <silent> <leader>fw :<C-u>DeniteCursorWord grep:. -mode=normal -highlig
 if executable('ag')
   " Grep
   call denite#custom#var('grep', 'command', ['ag'])
-  call denite#custom#var('grep', 'default_opts',
-    \ ['-i', '--nogroup', '--nocolor', '--vimgrep'])
+  call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
   call denite#custom#var('grep', 'pattern_opt', [])
 
   " File/rec
   call denite#custom#var('file/rec', 'command',
-    \ ['ag' , '--hidden', '--follow', '--nogroup', '--nocolor', '--vimgrep', '-S', '-g', ''])
+    \ ['ag' , '--hidden', '--follow', '--vimgrep', '-S', '-g', ''])
 endif
 
 """"""""""""""""
