@@ -16,8 +16,6 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 
 " Colorscheme & Display helper
 Plug 'chriskempson/base16-vim'
@@ -32,7 +30,41 @@ Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Autocompletion and snippets
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 call plug#end()
+
+"""""""""""""""""""""
+" => Autocompletion "
+"""""""""""""""""""""
+set completeopt=menuone,noselect,noinsert
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('max_list', 15)
+" ALE
+" let g:ale_completion_enabled = 1
+" let g:ale_completion_max_suggestions=10
+" NCM2
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+
+"""""""""""""
+" => Denite "
+"""""""""""""
+nnoremap <silent> <C-p> :<C-u>Denite file/rec<CR>
+nnoremap <silent> <leader>/ :<C-u>Denite grep:. -mode=normal<CR>
+nnoremap <silent> <leader><space>/ :<C-u>DeniteBufferDir grep:. -mode=normal<CR>
+nnoremap <silent> <leader>fw :<C-u>DeniteCursorWord grep:. -mode=normal -highlight-matched-char=None<CR>
+
+if executable('ag')
+  " Grep
+  call denite#custom#var('grep', 'command', ['ag'])
+  call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
+  call denite#custom#var('grep', 'pattern_opt', [])
+
+  " File/rec
+  call denite#custom#var('file/rec', 'command',
+    \ ['ag' , '--hidden', '--follow', '--vimgrep', '-S', '-g', ''])
+endif
 
 """"""""""""""""
 " => SuperTab
@@ -89,7 +121,6 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 
-
 """""""""""
 " => ALE  "
 """""""""""
@@ -103,24 +134,14 @@ let g:ale_pattern_options = {
 \}
 
 let g:ale_linters_ignore = ['pyls'] " Prevent overlapping flake8
-" let g:ale_python_flake8_options = "--max-line-length=120"
-
-" Auto-completion
-let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
-let g:ale_completion_max_suggestions=15
-set completeopt=menu,menuone,noselect,noinsert
+let g:ale_python_flake8_options = "--max-line-length=120"
+" let g:ale_fix_on_save = 1
 
 " Action mapping
 nnoremap <silent> K :ALEHover<CR>
 nnoremap <silent> gd :ALEGoToDefinition<CR>
-" nnoremap <silent> <leader>fr :ALEFindReferences<CR>
 
 " Navigation
-nmap <silent> <leader>an <Plug>(ale_next_wrap)
-nmap <silent> <leader>ap <Plug>(ale_previous_wrap)
-
-""""""""""
-" => FZF "
-""""""""""
-nnoremap <leader>ff :FZF<cr>
+nmap <silent> <leader>n <Plug>(ale_next_wrap)
+nmap <silent> <leader>p <Plug>(ale_previous_wrap)
+nmap <silent> <leader>fi <Plug>(ale_fix)
