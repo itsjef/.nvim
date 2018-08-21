@@ -55,15 +55,17 @@ nnoremap <silent> <leader>/ :<C-u>Denite grep:. -mode=normal<CR>
 nnoremap <silent> <leader><space>/ :<C-u>DeniteBufferDir grep:. -mode=normal<CR>
 nnoremap <silent> <leader>fw :<C-u>DeniteCursorWord grep:. -mode=normal -highlight-matched-char=None<CR>
 
-" Grep
-call denite#custom#var('grep', 'command', ['ag'])
-call denite#custom#var('grep', 'default_opts',
-  \ ['-i', '--nogroup', '--nocolor', '--vimgrep'])
-call denite#custom#var('grep', 'pattern_opt', [])
+if executable('ag')
+  " Grep
+  call denite#custom#var('grep', 'command', ['ag'])
+  call denite#custom#var('grep', 'default_opts',
+    \ ['-i', '--nogroup', '--nocolor', '--vimgrep'])
+  call denite#custom#var('grep', 'pattern_opt', [])
 
-" File/rec
-call denite#custom#var('file/rec', 'command',
-  \ ['ag' , '--hidden', '--follow', '--nogroup', '--nocolor', '--vimgrep', '-S', '-g', ''])
+  " File/rec
+  call denite#custom#var('file/rec', 'command',
+    \ ['ag' , '--hidden', '--follow', '--nogroup', '--nocolor', '--vimgrep', '-S', '-g', ''])
+endif
 
 """"""""""""""""
 " => SuperTab
