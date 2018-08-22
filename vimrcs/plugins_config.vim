@@ -51,8 +51,8 @@ call deoplete#custom#option('max_list', 15)
 " => Denite "
 """""""""""""
 nnoremap <silent> <C-p> :<C-u>Denite file/rec<CR>
-nnoremap <silent> <leader>/ :<C-u>Denite grep:. -mode=normal<CR>
-nnoremap <silent> <leader><space>/ :<C-u>DeniteBufferDir grep:. -mode=normal<CR>
+nnoremap <silent> <leader>/ :<C-u>Denite grep:. -mode=normal -no-empty<CR>
+nnoremap <silent> <leader><space>/ :<C-u>DeniteBufferDir grep:. -mode=normal -no-empty<CR>
 nnoremap <silent> <leader>fw :<C-u>DeniteCursorWord grep:. -mode=normal -highlight-matched-char=None<CR>
 
 if executable('ag')
@@ -125,12 +125,17 @@ let g:NERDCommentEmptyLines = 1
 " => ALE  "
 """""""""""
 " Linting and auto-formatting code
+let g:ale_maximum_file_size = 500000  " Don't lint large files (> 500KB), it can slow things down
 let g:ale_pattern_options = {
-\ '*': ['remove_trailing_lines', 'trim_whitespace'],
-\ '\.py$': {
-\  'ale_linters': ['flake8', 'pyls'],
-\  'ale_fixers': ['black', 'isort', 'add_blank_lines_for_python_control_statements']
-\ },
+\  '*': ['remove_trailing_lines', 'trim_whitespace'],
+\  '\.py$': {
+\    'ale_linters': ['flake8', 'pyls'],
+\    'ale_fixers': ['black', 'isort', 'add_blank_lines_for_python_control_statements']
+\  },
+\  '.*\.md$': {'ale_enabled': 0},
+\  '.*\.rst$': {'ale_enabled': 0},
+\  '.*\.txt$': {'ale_enabled': 0},
+\  '.*\.tex$': {'ale_enabled': 0},
 \}
 
 let g:ale_linters_ignore = ['pyls'] " Prevent overlapping flake8
@@ -142,6 +147,6 @@ nnoremap <silent> K :ALEHover<CR>
 nnoremap <silent> gd :ALEGoToDefinition<CR>
 
 " Navigation
-nmap <silent> <leader>n <Plug>(ale_next_wrap)
-nmap <silent> <leader>p <Plug>(ale_previous_wrap)
-nmap <silent> <leader>fi <Plug>(ale_fix)
+nmap <silent> ]s <Plug>(ale_next_wrap)
+nmap <silent> [s <Plug>(ale_previous_wrap)
+nmap <silent> <leader>= <Plug>(ale_fix)
