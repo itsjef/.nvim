@@ -126,11 +126,15 @@ let g:NERDCommentEmptyLines = 1
 """""""""""
 " Linting and auto-formatting code
 let g:ale_pattern_options = {
-\ '*': ['remove_trailing_lines', 'trim_whitespace'],
-\ '\.py$': {
-\  'ale_linters': ['flake8', 'pyls'],
-\  'ale_fixers': ['black', 'isort', 'add_blank_lines_for_python_control_statements']
-\ },
+\  '*': ['remove_trailing_lines', 'trim_whitespace'],
+\  '\.py$': {
+\    'ale_linters': ['flake8', 'pyls'],
+\    'ale_fixers': ['black', 'isort', 'add_blank_lines_for_python_control_statements']
+\  },
+\  '.*\.md$': {'ale_enabled': 0},
+\  '.*\.rst$': {'ale_enabled': 0},
+\  '.*\.txt$': {'ale_enabled': 0},
+\  '.*\.tex$': {'ale_enabled': 0},
 \}
 
 let g:ale_linters_ignore = ['pyls'] " Prevent overlapping flake8
@@ -142,6 +146,6 @@ nnoremap <silent> K :ALEHover<CR>
 nnoremap <silent> gd :ALEGoToDefinition<CR>
 
 " Navigation
-nmap <silent> <leader>n <Plug>(ale_next_wrap)
-nmap <silent> <leader>p <Plug>(ale_previous_wrap)
-nmap <silent> <leader>fi <Plug>(ale_fix)
+nmap <silent> ]s <Plug>(ale_next_wrap)
+nmap <silent> [s <Plug>(ale_previous_wrap)
+nmap <silent> <leader>= <Plug>(ale_fix)
