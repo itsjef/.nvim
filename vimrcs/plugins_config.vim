@@ -51,8 +51,8 @@ call deoplete#custom#option('max_list', 15)
 " => Denite "
 """""""""""""
 nnoremap <silent> <C-p> :<C-u>Denite file/rec<CR>
-nnoremap <silent> <leader>/ :<C-u>Denite grep:. -mode=normal<CR>
-nnoremap <silent> <leader><space>/ :<C-u>DeniteBufferDir grep:. -mode=normal<CR>
+nnoremap <silent> <leader>/ :<C-u>Denite grep:. -mode=normal -no-empty<CR>
+nnoremap <silent> <leader><space>/ :<C-u>DeniteBufferDir grep:. -mode=normal -no-empty<CR>
 nnoremap <silent> <leader>fw :<C-u>DeniteCursorWord grep:. -mode=normal -highlight-matched-char=None<CR>
 
 if executable('ag')
