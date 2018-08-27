@@ -125,6 +125,8 @@ let g:NERDCommentEmptyLines = 1
 " => ALE  "
 """""""""""
 " Linting and auto-formatting code
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
 let g:ale_maximum_file_size = 500000  " Don't lint large files (> 500KB), it can slow things down
 let g:ale_pattern_options = {
 \  '*': ['remove_trailing_lines', 'trim_whitespace'],
