@@ -24,6 +24,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'kshenoy/vim-signature'
 Plug 'mhinz/vim-signify'
 Plug 'sheerun/vim-polyglot', {'do': './build'}
+let g:polyglot_disabled = ['markdown']
 
 " Utils
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
