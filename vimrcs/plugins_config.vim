@@ -33,6 +33,8 @@ Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+
 call plug#end()
 
 """""""""""""""""""""
@@ -42,6 +44,9 @@ set completeopt=menuone,noselect,noinsert
 " Deoplete
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('max_list', 15)
+
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap K <Plug>(rust-doc)
 " ALE
 " let g:ale_completion_enabled = 1
 " let g:ale_completion_max_suggestions=10
