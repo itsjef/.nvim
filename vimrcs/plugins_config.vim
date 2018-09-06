@@ -140,6 +140,10 @@ let g:ale_pattern_options = {
 \    'ale_linters': ['flake8', 'pyls'],
 \    'ale_fixers': ['black', 'isort', 'add_blank_lines_for_python_control_statements']
 \  },
+\  '\.rs$': {
+\    'ale_linters': ['rls'],
+\    'ale_fixers': ['rustfmt']
+\  },
 \  '.*\.md$': {'ale_enabled': 0},
 \  '.*\.rst$': {'ale_enabled': 0},
 \  '.*\.txt$': {'ale_enabled': 0},
