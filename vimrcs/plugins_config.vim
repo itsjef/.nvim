@@ -31,9 +31,14 @@ Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Autocompletion and snippets
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+" Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+Plug 'roxma/nvim-yarp' | Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-racer', { 'for': 'rust' }
+Plug 'ncm2/ncm2-jedi', { 'for': 'python' }
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
 
 call plug#end()
 
@@ -42,16 +47,16 @@ call plug#end()
 """""""""""""""""""""
 set completeopt=menuone,noselect,noinsert
 " Deoplete
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('max_list', 15)
-
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap K <Plug>(rust-doc)
+" let g:deoplete#enable_at_startup = 1
+" call deoplete#custom#option('max_list', 15)
+"
+" au FileType rust nmap gd <Plug>(rust-def)
+" au FileType rust nmap K <Plug>(rust-doc)
 " ALE
 " let g:ale_completion_enabled = 1
 " let g:ale_completion_max_suggestions=10
 " NCM2
-" autocmd BufEnter * call ncm2#enable_for_buffer()
+autocmd BufEnter * call ncm2#enable_for_buffer()
 
 """""""""""""
 " => Denite "
