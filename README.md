@@ -1,70 +1,24 @@
-#Intro
 My NeoVim configuration
 
-#Screenshot
-![alt text](https://raw.githubusercontent.com/itsjef/vimrc/268a15b54aef9669228837592ea0153252376043/screenshot.png "Gruvbox Dark High Contrast")
+# Quickstart
 
-#How to install
-
-##Install Neovim python-client
+1. Install python provider lib
 
 ```bash
-sudo apt-get install python-pip python3-pip
-sudo pip2 install -U neovim
-sudo pip3 install -U neovim
+$ sudo apt-get install python-pip python3-pip
+$ sudo python2 -m pip install -U neovim
+$ sudo python3 -m pip install -U neovim
 ```
 
-##Install configs
+2. Run below script
 
 ```bash
-git clone https://github.com/itsjef/.nvim $HOME/.nvim --depth 1
-bash $HOME/.nvim/install-awesome.sh
+$ curl https://raw.githubusercontent.com/itsjef/.nvim/master/installer.sh > installer.sh
+$ sh ./installer.sh
 ```
 
-##Install Plugins
+3. Install plugins (just ignore any error this time)
 
-In `nvim`, run:
-
+```bash
+$ vim +PlugInstall +q
 ```
-:PlugInstall
-```
-
-To update plugins, run:
-```
-:PlugUpdate
-```
-
-Reference: [vim-plug](https://github.com/junegunn/vim-plug)
-
-## Restart NeoVim
-
-#Features
-
-1. You can undo change to a file even after quitting Vim.
-2. Press *,f* to open a list of mru (most recently used files)
-3. Ctrl-W and | for vertical split, Ctrl-W and - for horizontal split
-4. Autocompletion for certain programming languages (checkout __plugins_config.vim__)
-5. Easy plugin installation, thanks to [vim-plug](https://github.com/junegunn/vim-plug)
-6. ...
-
-#FAQs
-
-##You are using Vim, not NeoVim
-> I commented out some Vim configurations which are default in NeoVim. If you are using Vim and things don't look right then go edit __basic.vim__ by removing those comments.
-> However, I recommend you to switch to [neovim](https://github.com/neovim/neovim/)
-
-##TrueColor and Icons
-> In order to display powerline symbols as well as colorscheme correctly, use a [Terminal that supports TrueColor](https://gist.github.com/XVilka/8346728) and change your Terminal font to a [Powerline Font](https://github.com/powerline/fonts) (mine is __Inconsolata-dz for Powerline__)
-
-##No clipboard tool
-> clipboard: No clipboard too available. See :help nvim-clipboard
-
-Install xclip: `sudo apt-get install xclip`
-
-##Plugin is not loaded
-> Taglist: Exuberant ctags (http://ctags.sf.net) not found in PATH. Plugin is not loaded.
-
-Install ctags: `sudo apt-get install exuberant-ctags`
-
-##Autocomplete
-> [Deoplete Requirements](https://github.com/Shougo/deoplete.nvim)
