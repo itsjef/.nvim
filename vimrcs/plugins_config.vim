@@ -1,9 +1,11 @@
 """"""""""""
 " vim-plug "
 """"""""""""
-" if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
-"   execute '!curl https://raw.github.com/junegunn/vim-plug/master/plug.vim -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs'
-" endif
+if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.github.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 call plug#begin('~/.nvim/bundle')
 Plug 'w0rp/ale'
@@ -34,7 +36,8 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 " Plug 'racer-rust/vim-racer', { 'for': 'rust' }
-Plug 'roxma/nvim-yarp' | Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2'
 if executable('racer')
   Plug 'ncm2/ncm2-racer', { 'for': 'rust' }
 endif

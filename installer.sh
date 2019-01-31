@@ -15,21 +15,10 @@ type git || {
 }
 echo ""
 
-# check curl command
-type curl || {
-  echo 'Please install curl or update your path to include the curl executable!'
-  exit 1
-}
-echo ""
-
 # make plugin dir and fetch dein
 if ! [ -e "$INSTALL_DIR" ]; then
   echo "Begin fetching ..."
   git clone https://github.com/itsjef/.nvim "$INSTALL_DIR"
-
-  echo "Installing vim-plug ..."
-  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   echo "Done."
   echo ""
