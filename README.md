@@ -13,8 +13,7 @@ $ sudo python3 -m pip install -U neovim
 2. Run below script
 
 ```bash
-$ curl https://raw.githubusercontent.com/itsjef/.nvim/master/installer.sh > installer.sh
-$ sh ./installer.sh
+$ curl https://raw.githubusercontent.com/itsjef/.nvim/master/installer.sh | sh -
 ```
 
 3. Install plugins (just ignore any error this time)

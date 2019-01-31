@@ -35,7 +35,9 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 " Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 Plug 'roxma/nvim-yarp' | Plug 'ncm2/ncm2'
-Plug 'ncm2/ncm2-racer', { 'for': 'rust' }
+if executable('racer')
+  Plug 'ncm2/ncm2-racer', { 'for': 'rust' }
+endif
 Plug 'ncm2/ncm2-jedi', { 'for': 'python' }
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
