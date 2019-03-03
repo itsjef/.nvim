@@ -20,7 +20,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 
 " Colorscheme & Display helper
-Plug 'chriskempson/base16-vim'
+Plug 'joshdick/onedark.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kshenoy/vim-signature'
