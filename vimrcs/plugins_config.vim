@@ -12,11 +12,10 @@ Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } | Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ervandew/supertab'
 Plug 'machakann/vim-sandwich'
-Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-fugitive'
+Plug 'itchyny/lightline.vim'
+Plug 'itchyny/vim-gitbranch'
 
 " Colorscheme & Display helper
 Plug 'joshdick/onedark.vim'
@@ -114,18 +113,19 @@ let g:NERDTreeIgnore=["\.pyc$", "venv", "__pycache__"]
 " Auto close NERDTree when the only open window left is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-""""""""""""""""
-" => Airline
-""""""""""""""""
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-" let g:airline_powerline_fonts=1
-let g:airline_extensions = ['tabline', 'branch', 'ale']
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+""""""""""""""""""""""""""""""
+" => Lightline
+""""""""""""""""""""""""""""""
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'gitbranch#name'
+  \ },
+  \ }
 
 """"""""""""""""""""
 " => NERDCommenter
