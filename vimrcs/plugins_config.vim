@@ -11,7 +11,7 @@ call plug#begin('~/.nvim/bundle')
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } | Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Shougo/defx.nvim'
 Plug 'machakann/vim-sandwich'
 Plug 'easymotion/vim-easymotion'
 Plug 'itchyny/lightline.vim'
@@ -101,17 +101,8 @@ if has("clipboard")
 endif
 
 """"""""""""""""""""""""""""""
-" => NERDTree
+" => Defx
 """"""""""""""""""""""""""""""
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark
-map <leader>nf :NERDTreeFind<cr>
-let g:NERDTreeWinSize=30
-let g:NERDTreeWinPos="right"
-let g:NERDTreeIgnore=["\.pyc$", "venv", "__pycache__"]
-
-" Auto close NERDTree when the only open window left is NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 """"""""""""""""""""""""""""""
 " => Lightline
