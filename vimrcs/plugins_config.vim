@@ -24,24 +24,22 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'kshenoy/vim-signature'
 Plug 'mhinz/vim-signify'
 Plug 'sheerun/vim-polyglot', {'do': './build'}
-let g:polyglot_disabled = ['markdown']
 
 " Utils
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Autocompletion and snippets
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-" Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
-if executable('racer')
-  Plug 'ncm2/ncm2-racer', { 'for': 'rust' }
-endif
+
 Plug 'ncm2/ncm2-jedi', { 'for': 'python' }
+
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
+
+Plug 'ncm2/ncm2-ultisnips'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
