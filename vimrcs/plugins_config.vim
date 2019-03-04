@@ -11,7 +11,7 @@ call plug#begin('~/.nvim/bundle')
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
-Plug 'Shougo/defx.nvim'
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'machakann/vim-sandwich'
 Plug 'easymotion/vim-easymotion'
 Plug 'ap/vim-buftabline'
