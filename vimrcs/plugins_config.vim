@@ -14,6 +14,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'Shougo/defx.nvim'
 Plug 'machakann/vim-sandwich'
 Plug 'easymotion/vim-easymotion'
+Plug 'ap/vim-buftabline'
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 
