@@ -11,7 +11,6 @@ call plug#begin('~/.nvim/bundle')
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'machakann/vim-sandwich'
 Plug 'easymotion/vim-easymotion'
 Plug 'ap/vim-buftabline'
@@ -28,6 +27,9 @@ Plug 'sheerun/vim-polyglot', {'do': './build'}
 
 " Utils
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'kristijanhusak/defx-icons'
+Plug 'kristijanhusak/defx-git'
 
 " Autocompletion and snippets
 Plug 'roxma/nvim-yarp'
@@ -102,6 +104,7 @@ endif
 """"""""""""""""""""""""""""""
 " => Defx
 """"""""""""""""""""""""""""""
+nnoremap <silent> <leader>nn :<C-u>Defx -toggle -split=vertical -winwidth=30 -columns=git:icons:filename:type<CR>
 
 """"""""""""""""""""""""""""""
 " => Lightline
