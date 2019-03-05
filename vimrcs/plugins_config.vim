@@ -17,6 +17,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'ap/vim-buftabline'
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
+Plug 'ervandew/supertab'
 
 " Colorscheme & Display helper
 Plug 'joshdick/onedark.vim'
