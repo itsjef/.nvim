@@ -24,7 +24,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kshenoy/vim-signature'
 Plug 'mhinz/vim-signify'
-Plug 'sheerun/vim-polyglot', {'do': './build'}
+Plug 'sheerun/vim-polyglot'
 
 " Utils
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
