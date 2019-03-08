@@ -120,10 +120,10 @@ call defx#custom#column('filename', {
 nnoremap <silent> <leader>nn :<C-u>Defx -auto-cd -toggle<CR>
 
 " Close Vim if defx is the only buffer left
-" autocmd WinEnter * if &filetype == 'defx' && winnr('$') == 1 | q | endif
+autocmd WinEnter * if &filetype == 'defx' && winnr('$') == 1 | q | endif
 
 " Move focus to the next window if current buffer is defx
-" autocmd TabLeave * if &ft == 'defx' | wincmd w | endif
+autocmd TabLeave * if &filetype == 'defx' | wincmd w | endif
 
 " Define mappings
 autocmd FileType defx do WinEnter | call s:defx_settings()
@@ -142,7 +142,7 @@ function! s:defx_settings() abort
   nnoremap <silent><buffer><expr> <C-l>
         \ defx#do_action('redraw')
   nnoremap <silent><buffer><expr> <CR>
-        \ defx#is_directory() ? defx#do_action('open') : defx#do_action('drop')
+        \ defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', ['drop', 'quit'])
   nnoremap <silent><buffer><expr> <Space>
         \ defx#do_action('toggle_select') . 'j'
   nnoremap <silent><buffer><expr> C
@@ -166,7 +166,7 @@ function! s:defx_settings() abort
   nnoremap <silent><buffer><expr> h
         \ defx#do_action('cd', ['..'])
   nnoremap <silent><buffer><expr> i
-        \ defx#do_action('drop', 'split')
+        \ defx#do_action('multi', [['drop', 'split'], 'quit'])
   nnoremap <silent><buffer><expr> j
         \ line('.') == line('$') ? 'gg' : 'j'
   nnoremap <silent><buffer><expr> k
@@ -180,7 +180,7 @@ function! s:defx_settings() abort
   nnoremap <silent><buffer><expr> r
         \ defx#do_action('rename')
   nnoremap <silent><buffer><expr> s
-        \ defx#do_action('drop', 'vsplit')
+        \ defx#do_action('multi', [['drop', 'vsplit'], 'quit'])
   nnoremap <silent><buffer><expr> x
         \ defx#do_action('execute_system')
   nnoremap <silent><buffer><expr> yy
