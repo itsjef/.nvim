@@ -107,13 +107,13 @@ endif
 """"""""""""""""""""""""""""""
 call defx#custom#option('_', {
   \ 'columns': 'git:icons:filename:type',
-  \ 'winwidth': 30,
+  \ 'winwidth': 35,
   \ 'split': 'vertical',
   \ 'direction': 'botright',
   \ })
 
 call defx#custom#column('filename', {
-  \ 'min_width': 5,
+  \ 'min_width': 20,
   \ 'max_width': 30,
   \ })
 
