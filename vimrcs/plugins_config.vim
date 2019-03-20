@@ -21,10 +21,12 @@ Plug 'ervandew/supertab'
 " Colorscheme & Display helper
 Plug 'joshdick/onedark.vim'
 Plug 'Yggdroot/indentLine'
+let g:indentLine_fileTypeExclude = ['markdown']
 Plug 'ryanoasis/vim-devicons'
 Plug 'kshenoy/vim-signature'
 Plug 'mhinz/vim-signify'
 Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['markdown']
 
 " Utils
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
