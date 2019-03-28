@@ -8,38 +8,14 @@ if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
 endif
 
 call plug#begin('~/.nvim/bundle')
+" Linting
 Plug 'w0rp/ale'
-Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdcommenter'
-Plug 'machakann/vim-sandwich'
-Plug 'easymotion/vim-easymotion'
-Plug 'ap/vim-buftabline'
-Plug 'itchyny/lightline.vim'
-Plug 'itchyny/vim-gitbranch'
-Plug 'ervandew/supertab'
 
-" Colorscheme & Display helper
-Plug 'joshdick/onedark.vim'
-Plug 'Yggdroot/indentLine'
-let g:indentLine_fileTypeExclude = ['markdown']
-Plug 'ryanoasis/vim-devicons'
-Plug 'kshenoy/vim-signature'
-Plug 'mhinz/vim-signify'
-Plug 'sheerun/vim-polyglot'
-let g:polyglot_disabled = ['markdown']
-
-" Utils
-Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'kristijanhusak/defx-icons'
-Plug 'kristijanhusak/defx-git'
-
-" Autocompletion and snippets
+" Autocompletion & snippets
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
 
 Plug 'ncm2/ncm2-jedi', { 'for': 'python' }
-
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 
@@ -47,7 +23,36 @@ Plug 'ncm2/ncm2-ultisnips'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+Plug 'mattn/emmet-vim'
+
+" Colorscheme & Display helper
+Plug 'joshdick/onedark.vim'
+Plug 'Yggdroot/indentLine'
+Plug 'kshenoy/vim-signature'
+Plug 'mhinz/vim-signify'
+Plug 'sheerun/vim-polyglot'
+Plug 'ap/vim-buftabline'
+Plug 'itchyny/lightline.vim'
+Plug 'itchyny/vim-gitbranch'
+
+" Utils & Helpers
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/nerdcommenter'
+Plug 'machakann/vim-sandwich'
+Plug 'easymotion/vim-easymotion'
+Plug 'ervandew/supertab'
+
+" Fonts & Icons
+Plug 'ryanoasis/vim-devicons'
+Plug 'kristijanhusak/defx-icons'
+Plug 'kristijanhusak/defx-git'
 call plug#end()
+
+" DISABLED
+let g:indentLine_fileTypeExclude = ['markdown']
+let g:polyglot_disabled = ['markdown']
 
 """""""""""""""""""""
 " => Autocompletion "
@@ -107,7 +112,7 @@ endif
 """"""""""""""""""""""""""""""
 " => Defx
 """"""""""""""""""""""""""""""
-call defx#custom#option('_', {
+call defx#custom#option('default', {
   \ 'columns': 'git:icons:filename:type',
   \ 'winwidth': 35,
   \ 'split': 'vertical',
