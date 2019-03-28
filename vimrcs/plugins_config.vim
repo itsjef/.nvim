@@ -43,6 +43,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'machakann/vim-sandwich'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Fonts & Icons
 Plug 'ryanoasis/vim-devicons'
