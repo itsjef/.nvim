@@ -74,6 +74,18 @@ autocmd BufEnter * call ncm2#enable_for_buffer()
 """""""""""""
 " => Denite "
 """""""""""""
+call denite#custom#source('file/rec', 'matchers', ['matcher/fuzzy', 'matcher/ignore_globs'])
+call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
+  \ [ '*~', '*.o', '*.exe', '*.bak',
+  \ '.DS_Store', '*.pyc', '*.sw[po]', '*.class',
+  \ '.hg/', '.git/', '.bzr/', '.svn/',
+  \ 'node_modules/', 'bower_components/', 'tmp/', 'log/', 'vendor/ruby',
+  \ '.idea/', 'dist/',
+  \ '.png', '.jpg', '.jpeg', '.gif',
+  \ 'build/',
+  \ '__pycache__/', 'venv/',
+  \ 'tags', 'tags-*'])
+
 nnoremap <silent> <C-p> :<C-u>Denite file/rec<CR>
 nnoremap <silent> <leader>/ :<C-u>Denite grep:. -mode=normal -no-empty<CR>
 nnoremap <silent> <leader><space>/ :<C-u>DeniteBufferDir grep:. -mode=normal -no-empty<CR>
@@ -87,7 +99,7 @@ if executable('ag')
 
   " File/rec
   call denite#custom#var('file/rec', 'command',
-    \ ['ag' , '--hidden', '--follow', '--vimgrep', '-S', '-g', ''])
+    \ ['ag' , '--follow',  '--nocolor', '--nogroup', '--vimgrep',  '-U', '-S', '-g', ''])
 endif
 
 """"""""""""""""
