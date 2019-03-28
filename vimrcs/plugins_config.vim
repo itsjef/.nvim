@@ -211,6 +211,8 @@ function! s:defx_settings() abort
         \ defx#do_action('yank_path')
   nnoremap <silent><buffer><expr> ~
         \ defx#do_action('cd')
+  nnoremap <silent><buffer><expr> o
+        \ defx#do_action('open_or_close_tree')
 endfunction
 
 """"""""""""""""""""""""""""""
