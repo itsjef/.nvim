@@ -11,11 +11,15 @@ call plug#begin('~/.nvim/bundle')
 " Linting
 Plug 'w0rp/ale'
 
+" Languages
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 " Autocompletion & snippets
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
 
 Plug 'ncm2/ncm2-jedi', { 'for': 'python' }
+Plug 'ncm2/ncm2-go', { 'for': 'go' }
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 
@@ -230,6 +234,7 @@ function! LightlineReload()
   call lightline#colorscheme()
   call lightline#update()
 endfunction
+
 """"""""""""""""""""
 " => NERDCommenter
 """"""""""""""""""""
@@ -251,6 +256,10 @@ let g:ale_pattern_options = {
 \  '\.py$': {
 \    'ale_linters': ['flake8'],
 \    'ale_fixers': ['black', 'isort', 'add_blank_lines_for_python_control_statements']
+\  },
+\  '\.go$': {
+\    'ale_linters': ['golint'],
+\    'ale_fixers': ['goimports']
 \  },
 \  '\.rs$': {
 \    'ale_linters': ['rls'],
@@ -274,3 +283,9 @@ nnoremap <silent> gd :ALEGoToDefinition<CR>
 nmap <silent> ]s <Plug>(ale_next_wrap)
 nmap <silent> [s <Plug>(ale_previous_wrap)
 nmap <silent> <leader>= <Plug>(ale_fix)
+
+""""""""""""""
+" => vim-go  "
+""""""""""""""
+let g:go_fmt_autosave = 0
+let g:go_mod_fmt_autosave = 0
