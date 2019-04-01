@@ -274,7 +274,7 @@ let g:ale_pattern_options = {
 \}
 
 let g:ale_linters_ignore = ['pyls'] " Prevent overlapping flake8
-let g:ale_python_flake8_options = "--max-line-length=120"
+" let g:ale_python_flake8_options = "--max-line-length=120"
 " let g:ale_fix_on_save = 1
 
 " Action mapping
