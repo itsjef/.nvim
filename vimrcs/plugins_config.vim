@@ -46,7 +46,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'machakann/vim-sandwich'
 Plug 'easymotion/vim-easymotion'
-Plug 'ervandew/supertab'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Fonts & Icons
@@ -63,18 +62,11 @@ let g:polyglot_disabled = ['markdown']
 " => Autocompletion "
 """""""""""""""""""""
 set completeopt=menuone,noselect,noinsert
-" Deoplete
-" let g:deoplete#enable_at_startup = 1
-" call deoplete#custom#option('max_list', 15)
-"
-" au FileType rust nmap gd <Plug>(rust-def)
-" au FileType rust nmap K <Plug>(rust-doc)
-" ALE
-" let g:ale_completion_enabled = 1
-" let g:ale_completion_max_suggestions=10
-" NCM2
 autocmd BufEnter * call ncm2#enable_for_buffer()
 
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 """""""""""""
 " => Denite "
 """""""""""""
