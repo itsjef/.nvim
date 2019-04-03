@@ -17,7 +17,7 @@ let g:mapleader = ","
 " Buffer navigation
 nmap <leader>h :bprevious<CR>
 nmap <leader>l :bnext<CR>
-nmap <leader>bd :bd<CR>
+nmap <leader>bd :b#<BAR>bd#<CR>
 
 " Mouse
 set mouse=n
