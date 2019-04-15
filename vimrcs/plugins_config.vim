@@ -11,15 +11,10 @@ call plug#begin('~/.nvim/bundle')
 " Linting
 Plug 'w0rp/ale'
 
-" Languages
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
 " Autocompletion & snippets
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
 
-Plug 'ncm2/ncm2-jedi', { 'for': 'python' }
-Plug 'ncm2/ncm2-go', { 'for': 'go' }
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 
@@ -28,6 +23,14 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 Plug 'mattn/emmet-vim'
+
+" Languages
+if executable("go")
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  Plug 'ncm2/ncm2-go', { 'for': 'go' }
+endif
+
+Plug 'ncm2/ncm2-jedi', { 'for': 'python' }
 
 " Colorscheme & Display helper
 Plug 'joshdick/onedark.vim'
