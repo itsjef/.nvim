@@ -49,7 +49,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'machakann/vim-sandwich'
 Plug 'easymotion/vim-easymotion'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+if executable("yarn")
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+endif
 
 " Fonts & Icons
 Plug 'ryanoasis/vim-devicons'
