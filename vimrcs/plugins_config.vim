@@ -12,6 +12,11 @@ call plug#begin('~/.nvim/bundle')
 Plug 'w0rp/ale'
 
 " Autocompletion & snippets
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
 
@@ -29,8 +34,6 @@ if executable("go")
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'ncm2/ncm2-go', { 'for': 'go' }
 endif
-
-Plug 'ncm2/ncm2-jedi', { 'for': 'python' }
 
 " Colorscheme & Display helper
 Plug 'joshdick/onedark.vim'
@@ -70,6 +73,19 @@ autocmd BufEnter * call ncm2#enable_for_buffer()
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+""""""
+" => LS
+""""""
+let g:LanguageClient_serverCommands = {
+    \ 'python': [$HOME.'/.local/bin/pyls']
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
 """""""""""""
 " => Denite "
 """""""""""""
@@ -100,11 +116,6 @@ if executable('ag')
   call denite#custom#var('file/rec', 'command',
     \ ['ag' , '--follow',  '--nocolor', '--nogroup', '--vimgrep',  '-U', '-S', '-g', ''])
 endif
-
-""""""""""""""""
-" => SuperTab
-""""""""""""""""
-let g:SuperTabDefaultCompletionType = "<tab>"
 
 """"""""""""""""
 " => UltiSnips "
@@ -271,10 +282,6 @@ let g:ale_pattern_options = {
 let g:ale_linters_ignore = ['pyls'] " Prevent overlapping flake8
 let g:ale_python_flake8_options = "--max-line-length=88" " Comply with Black formatter
 " let g:ale_fix_on_save = 1
-
-" Action mapping
-nnoremap <silent> K :ALEHover<CR>
-nnoremap <silent> gd :ALEGoToDefinition<CR>
 
 " Navigation
 nmap <silent> ]s <Plug>(ale_next_wrap)
