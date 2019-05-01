@@ -34,6 +34,9 @@ if executable("go")
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'ncm2/ncm2-go', { 'for': 'go' }
 endif
+if executable("python3.6")
+  Plug 'ncm2/ncm2-jedi', { 'for': 'python' }
+endif
 
 " Colorscheme & Display helper
 Plug 'joshdick/onedark.vim'
