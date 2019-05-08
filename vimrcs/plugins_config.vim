@@ -55,6 +55,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'machakann/vim-sandwich'
 Plug 'easymotion/vim-easymotion'
+Plug 'junegunn/vim-easy-align'
 if executable("yarn")
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 endif
@@ -298,3 +299,11 @@ nmap <silent> <leader>= <Plug>(ale_fix)
 """"""""""""""
 let g:go_fmt_autosave = 0
 let g:go_mod_fmt_autosave = 0
+
+"""""""""""""
+" => EasyAlign
+"""""""""""""
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
