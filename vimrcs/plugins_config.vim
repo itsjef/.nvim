@@ -83,6 +83,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 """"""
 " => LS
 """"""
+let g:LanguageClient_settingsPath = $HOME.'/.nvim/settings.json'
 let g:LanguageClient_serverCommands = {
     \ 'python': [$HOME.'/.local/bin/pyls']
     \ }
