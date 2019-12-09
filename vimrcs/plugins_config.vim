@@ -91,7 +91,7 @@ call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
   \ '.hg/', '.git/', '.bzr/', '.svn/',
   \ 'node_modules/', 'bower_components/', 'tmp/', 'log/', 'vendor/ruby',
   \ '.idea/', 'dist/',
-  \ '.png', '.jpg', '.jpeg', '.gif',
+  \ '*.png', '*.jpg', '*.jpeg', '*.gif', '*.bmp', '*.pdf', '*.tif', '*.tiff',
   \ 'build/',
   \ '__pycache__/', 'venv/',
   \ 'tags', 'tags-*'])
