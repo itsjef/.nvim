@@ -29,15 +29,6 @@ Plug 'honza/vim-snippets'
 
 Plug 'mattn/emmet-vim'
 
-" Languages
-if executable("go")
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-  Plug 'ncm2/ncm2-go', { 'for': 'go' }
-endif
-if executable("python3.6")
-  Plug 'ncm2/ncm2-jedi', { 'for': 'python' }
-endif
-
 " Colorscheme & Display helper
 Plug 'joshdick/onedark.vim'
 Plug 'Yggdroot/indentLine'
@@ -56,9 +47,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'machakann/vim-sandwich'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
-if executable("yarn")
-  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-endif
 
 " Fonts & Icons
 Plug 'ryanoasis/vim-devicons'
@@ -67,7 +55,7 @@ Plug 'kristijanhusak/defx-git'
 call plug#end()
 
 " DISABLED
-let g:indentLine_fileTypeExclude = ['markdown']
+let g:indentLine_fileTypeExclude = ['markdown', 'defx']
 let g:polyglot_disabled = ['markdown']
 
 """""""""""""""""""""
@@ -143,7 +131,7 @@ endif
 " => Defx
 """"""""""""""""""""""""""""""
 call defx#custom#option('default', {
-  \ 'columns': 'git:icons:filename:type',
+  \ 'columns': 'git:indent:icons:filename:type',
   \ 'winwidth': 35,
   \ 'split': 'vertical',
   \ 'direction': 'botright',
@@ -154,7 +142,7 @@ call defx#custom#column('filename', {
   \ 'max_width': 30,
   \ })
 
-nnoremap <silent> <leader>nn :<C-u>Defx -auto-cd -toggle<CR>
+nnoremap <silent> <leader>nn :<C-u>Defx -toggle -resume<CR>
 
 " Close Vim if defx is the only buffer left
 autocmd WinEnter * if &filetype == 'defx' && winnr('$') == 1 | q | endif
@@ -183,7 +171,7 @@ function! s:defx_settings() abort
   nnoremap <silent><buffer><expr> <Space>
         \ defx#do_action('toggle_select') . 'j'
   nnoremap <silent><buffer><expr> C
-        \ defx#do_action('toggle_columns', 'git:mark:filename:type:size:time')
+        \ defx#do_action('toggle_columns', 'git:mark:indent:icon:filename:type:size:time')
   nnoremap <silent><buffer><expr> K
         \ defx#do_action('new_directory')
   nnoremap <silent><buffer><expr> M
