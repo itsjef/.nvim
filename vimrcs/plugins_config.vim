@@ -101,15 +101,17 @@ nnoremap <silent> <leader>/ :<C-u>Denite grep:. -no-empty<CR>
 nnoremap <silent> <leader><space>/ :<C-u>DeniteBufferDir grep:. -no-empty<CR>
 nnoremap <silent> <leader>fw :<C-u>DeniteCursorWord grep:. -highlight-matched-char=None<CR>
 
-if executable('ag')
+if executable('rg')
   " Grep
-  call denite#custom#var('grep', 'command', ['ag'])
-  call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
-  call denite#custom#var('grep', 'pattern_opt', [])
+  call denite#custom#var('grep', 'command', ['rg'])
+  call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep', '--no-heading'])
+  call denite#custom#var('grep', 'recursive_opts', [])
+  call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+  call denite#custom#var('grep', 'separator', ['--'])
+  call denite#custom#var('grep', 'final_opts', [])
 
   " File/rec
-  call denite#custom#var('file/rec', 'command',
-    \ ['ag' , '--follow',  '--nocolor', '--nogroup', '--vimgrep',  '-U', '-S', '-g', ''])
+  call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
 endif
 
 " Define mappings
