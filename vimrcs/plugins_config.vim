@@ -97,9 +97,9 @@ call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
   \ 'tags', 'tags-*'])
 
 nnoremap <silent> <C-p> :<C-u>Denite file/rec<CR>
-nnoremap <silent> <leader>/ :<C-u>Denite grep:. -mode=normal -no-empty<CR>
-nnoremap <silent> <leader><space>/ :<C-u>DeniteBufferDir grep:. -mode=normal -no-empty<CR>
-nnoremap <silent> <leader>fw :<C-u>DeniteCursorWord grep:. -mode=normal -highlight-matched-char=None<CR>
+nnoremap <silent> <leader>/ :<C-u>Denite grep:. -no-empty<CR>
+nnoremap <silent> <leader><space>/ :<C-u>DeniteBufferDir grep:. -no-empty<CR>
+nnoremap <silent> <leader>fw :<C-u>DeniteCursorWord grep:. -highlight-matched-char=None<CR>
 
 if executable('ag')
   " Grep
@@ -112,6 +112,22 @@ if executable('ag')
     \ ['ag' , '--follow',  '--nocolor', '--nogroup', '--vimgrep',  '-U', '-S', '-g', ''])
 endif
 
+" Define mappings
+autocmd FileType denite do WinEnter | call s:denite_settings()
+function! s:denite_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+endfunction
 """"""""""""""""
 " => UltiSnips "
 """"""""""""""""
