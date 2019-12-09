@@ -158,7 +158,7 @@ call defx#custom#column('filename', {
   \ 'max_width': 30,
   \ })
 
-nnoremap <silent> <leader>nn :<C-u>Defx -toggle -resume<CR>
+nnoremap <silent> <leader>nn :<C-u>Defx -auto-cd -toggle -resume<CR>
 
 " Close Vim if defx is the only buffer left
 autocmd WinEnter * if &filetype == 'defx' && winnr('$') == 1 | q | endif
