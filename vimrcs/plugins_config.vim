@@ -31,7 +31,7 @@ Plug 'mattn/emmet-vim'
 
 " Colorscheme & Display helper
 Plug 'joshdick/onedark.vim'
-Plug 'Yggdroot/indentLine'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'kshenoy/vim-signature'
 Plug 'mhinz/vim-signify'
 Plug 'sheerun/vim-polyglot'
@@ -55,7 +55,9 @@ Plug 'kristijanhusak/defx-git'
 call plug#end()
 
 " DISABLED
-let g:indentLine_fileTypeExclude = ['markdown', 'defx']
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_color_change_percent = 5
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'markdown', 'defx']
 let g:polyglot_disabled = ['markdown']
 
 """""""""""""""""""""
