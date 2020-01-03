@@ -38,6 +38,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'ap/vim-buftabline'
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
+Plug 'luochen1990/rainbow'
 
 " Utils & Helpers
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -316,3 +317,8 @@ let g:go_mod_fmt_autosave = 0
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+""""""""""""
+" => rainbow
+""""""""""""
+let g:rainbow_active = 1
