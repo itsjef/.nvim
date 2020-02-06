@@ -41,7 +41,6 @@ Plug 'itchyny/vim-gitbranch'
 Plug 'luochen1990/rainbow'
 
 " Utils & Helpers
-Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
@@ -84,55 +83,6 @@ nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
-"""""""""""""
-" => Denite "
-"""""""""""""
-call denite#custom#source('file/rec', 'matchers', ['matcher/fuzzy', 'matcher/ignore_globs'])
-call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
-  \ [ '*~', '*.o', '*.exe', '*.bak',
-  \ '.DS_Store', '*.pyc', '*.sw[po]', '*.class',
-  \ '.hg/', '.git/', '.bzr/', '.svn/',
-  \ 'node_modules/', 'bower_components/', 'tmp/', 'log/', 'vendor/ruby',
-  \ '.idea/', 'dist/',
-  \ '*.png', '*.jpg', '*.jpeg', '*.gif', '*.bmp', '*.pdf', '*.tif', '*.tiff',
-  \ 'build/',
-  \ '__pycache__/', 'venv/',
-  \ 'tags', 'tags-*'])
-
-nnoremap <silent> <C-p> :<C-u>Denite file/rec<CR>
-nnoremap <silent> <leader>/ :<C-u>Denite grep:. -no-empty<CR>
-nnoremap <silent> <leader><space>/ :<C-u>DeniteBufferDir grep:. -no-empty<CR>
-nnoremap <silent> <leader>fw :<C-u>DeniteCursorWord grep:. -highlight-matched-char=None<CR>
-
-if executable('rg')
-  " Grep
-  call denite#custom#var('grep', 'command', ['rg'])
-  call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep', '--no-heading'])
-  call denite#custom#var('grep', 'recursive_opts', [])
-  call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-  call denite#custom#var('grep', 'separator', ['--'])
-  call denite#custom#var('grep', 'final_opts', [])
-
-  " File/rec
-  call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
-endif
-
-" Define mappings
-autocmd FileType denite do WinEnter | call s:denite_settings()
-function! s:denite_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d
-  \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space>
-  \ denite#do_map('toggle_select').'j'
-endfunction
 """"""""""""""""
 " => UltiSnips "
 """"""""""""""""
