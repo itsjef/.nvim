@@ -15,5 +15,3 @@ $ sudo python3 -m pip install -U pynvim
 ```bash
 $ curl https://raw.githubusercontent.com/itsjef/.nvim/master/installer.sh | sh -
 ```
-
-3. Run `vim` and wait until plugins installation finishes (1st time only)
