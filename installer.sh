@@ -1,5 +1,6 @@
 #!/bin/sh
 
+GIT_SSL_NO_VERIFY=true
 INSTALL_DIR="$HOME/.nvim"
 echo "Install to \"$INSTALL_DIR\"..."
 if [ -e "$INSTALL_DIR" ]; then
@@ -24,33 +25,31 @@ if ! [ -e "$INSTALL_DIR" ]; then
   echo ""
 fi
 
-# write initial setting for .vimrc
-echo "Please add the following settings to the top of your init.vim file:"
-{
-  echo ""
-  echo ""
-  echo "\"Scripts ------------------------------------"
-  echo "\" Required:"
-  echo "set runtimepath+=$INSTALL_DIR"
-  echo ""
-  echo "source $INSTALL_DIR/vimrcs/basic.vim"
-  echo "source $INSTALL_DIR/vimrcs/plugins_config.vim"
-  echo "source $INSTALL_DIR/vimrcs/filetype.vim"
-  echo ""
-  echo "try"
-  echo "  source $INSTALL_DIR/vimrcs/custom.vim"
-  echo "catch"
-  echo "endtry"
-  echo ""
-  echo "\" Optional:"
-  echo "let g:python_host_prog='$(which python2)'"
-  echo "let g:python3_host_prog='$(which python3)'"
-  echo ""
-  echo "\"End Scripts ------------------------------------"
-  echo ""
-  echo ""
-}
+mkdir -p $HOME/.config/nvim/autoload
+curl --insecure -fLo $HOME/.config/nvim/autoload/ https://raw.github.com/junegunn/vim-plug/master/plug.vim
 
-echo "Done."
+# write initial setting for .vimrc
+cat <<EOT >> $HOME/.config/nvim/init.vim
+\" Required:
+set runtimepath+=$INSTALL_DIR
+
+source $INSTALL_DIR/vimrcs/basic.vim
+source $INSTALL_DIR/vimrcs/plugins_config.vim
+source $INSTALL_DIR/vimrcs/filetype.vim
+
+try
+  source $INSTALL_DIR/vimrcs/custom.vim
+catch
+endtry
+
+\" Optional:
+let g:python_host_prog='$(which python2)'
+let g:python3_host_prog='$(which python3)'
+EOT
+
+ln -sf $HOME/.config/nvim/init.vim $HOME/.nvimrc
+ln -sf $INSTALL_DIR/coc-settings.json $HOME/.config/nvim/coc-settings.json
+
+vim +PlugInstall +qall
 
 echo "Completed setup!"
