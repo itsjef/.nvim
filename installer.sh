@@ -31,7 +31,7 @@ mkdir -p $HOME/.config/nvim/
 
 # write initial setting for .vimrc
 cat <<EOT >> $HOME/.config/nvim/init.vim
-\" Required:
+" Required:
 set runtimepath+=$INSTALL_DIR
 
 source $INSTALL_DIR/vimrcs/basic.vim
@@ -43,7 +43,7 @@ try
 catch
 endtry
 
-\" Optional:
+" Optional:
 let g:python_host_prog='$(which python2)'
 let g:python3_host_prog='$(which python3)'
 EOT
