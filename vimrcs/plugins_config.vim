@@ -1,12 +1,6 @@
 """"""""""""
 " vim-plug "
 """"""""""""
-if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-    \ https://raw.github.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 call plug#begin('~/.nvim/bundle')
 " Linting
 Plug 'w0rp/ale'
@@ -42,6 +36,16 @@ Plug 'junegunn/vim-easy-align'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
+
+" Navigation
+Plug 'easymotion/vim-easymotion'
+if has('nvim-0.4.2')
+  if executable('cargo')
+    Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+  else
+    Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+  endif
+endif
 call plug#end()
 
 " DISABLED
