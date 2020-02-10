@@ -285,3 +285,9 @@ if has_key(g:plugs, 'coc.nvim')
     autocmd VimEnter * nmap <silent> gr <Plug>(coc-references)
   augroup END
 endif
+
+" --------------------------
+" vim-clap
+" --------------------------
+nnoremap <silent> <C-p> :<C-u>Clap files<CR>	
+nnoremap <silent> <leader>/ :<C-u>Clap grep<CR>	
