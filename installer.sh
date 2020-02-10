@@ -46,6 +46,7 @@ endtry
 " Optional:
 let g:python_host_prog='$(which python2)'
 let g:python3_host_prog='$(which python3)'
+colo onedark
 EOT
 
 ln -sf $HOME/.config/nvim/init.vim $HOME/.nvimrc
