@@ -25,8 +25,9 @@ if ! [ -e "$INSTALL_DIR" ]; then
   echo ""
 fi
 
-mkdir -p $HOME/.config/nvim/autoload
-curl --insecure -fLo $HOME/.config/nvim/autoload/ https://raw.github.com/junegunn/vim-plug/master/plug.vim
+curl --insecure -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+mkdir -p $HOME/.config/nvim/
 
 # write initial setting for .vimrc
 cat <<EOT >> $HOME/.config/nvim/init.vim
