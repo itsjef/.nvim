@@ -6,36 +6,35 @@ call plug#begin('~/.nvim/bundle')
 Plug 'w0rp/ale'
 
 " Autocompletion & snippets
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-
 Plug 'mattn/emmet-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Colorscheme & Display helper
-Plug 'joshdick/onedark.vim'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'kshenoy/vim-signature'
-Plug 'mhinz/vim-signify'
-Plug 'sheerun/vim-polyglot'
 Plug 'ap/vim-buftabline'
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
+Plug 'joshdick/onedark.vim'
+Plug 'kshenoy/vim-signature'
 Plug 'luochen1990/rainbow'
+Plug 'mhinz/vim-signify'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'sheerun/vim-polyglot'
 
 " Utils & Helpers
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdcommenter'
-Plug 'machakann/vim-sandwich'
 Plug 'easymotion/vim-easymotion'
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
+Plug 'machakann/vim-sandwich'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 
 " Fonts & Icons
-Plug 'ryanoasis/vim-devicons'
-Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
+Plug 'kristijanhusak/defx-icons'
+Plug 'ryanoasis/vim-devicons'
 
 " Navigation
 Plug 'easymotion/vim-easymotion'
