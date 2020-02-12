@@ -51,11 +51,17 @@ if has('nvim-0.4.3') && executable('python')
 endif
 call plug#end()
 
-" DISABLED
+" ---------------------
+" vim-polyglot
+" ---------------------
+" let g:polyglot_disabled = ['markdown']
+
+" ---------------------
+" vim-indent-guides
+" ---------------------
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_color_change_percent = 5
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'markdown', 'defx']
-let g:polyglot_disabled = ['markdown']
 
 """"""""""""""""
 " => UltiSnips "
