@@ -14,7 +14,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Colorscheme & Display helper
 Plug 'ap/vim-buftabline'
 Plug 'itchyny/lightline.vim'
-Plug 'itchyny/vim-gitbranch'
 Plug 'joshdick/onedark.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'luochen1990/rainbow'
@@ -44,6 +43,11 @@ if has('nvim-0.4.2')
   else
     Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
   endif
+endif
+
+" Debugging
+if has('nvim-0.4.3') && executable('python')
+  Plug 'puremourning/vimspector', {'do': 'python install_gadget.py --enable-python'}
 endif
 call plug#end()
 
@@ -167,7 +171,7 @@ let g:lightline = {
   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
   \ },
   \ 'component_function': {
-  \   'gitbranch': 'gitbranch#name',
+  \   'gitbranch': 'FugitiveHead',
   \ },
   \ }
 
@@ -290,3 +294,8 @@ endif
 " --------------------------
 nnoremap <silent> <C-p> :<C-u>Clap files<CR>	
 nnoremap <silent> <leader>/ :<C-u>Clap grep<CR>	
+
+" -----------------
+"  vimspector
+" -----------------
+let g:vimspector_enable_mappings = 'HUMAN'
