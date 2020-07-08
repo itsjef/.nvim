@@ -298,8 +298,9 @@ endif
 " --------------------------
 " vim-clap
 " --------------------------
-nnoremap <silent> <C-p> :<C-u>Clap files<CR>	
-nnoremap <silent> <leader>/ :<C-u>Clap grep<CR>	
+nnoremap <silent> <C-p> :<C-u>Clap files<CR>
+nnoremap <silent> <leader>/ :<C-u>Clap grep<CR>
+nnoremap <silent> <leader>* :<C-u>Clap grep ++query=<cword><CR>
 
 " -----------------
 "  vimspector
