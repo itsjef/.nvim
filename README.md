@@ -17,4 +17,4 @@ $ sudo npm install -g neovim
 $ curl https://raw.githubusercontent.com/itsjef/.nvim/master/installer.sh | sh -
 ```
 
-3. (for Pyenv users) Open `nvim` in Normal mode and run `:h python-virtualenv` for how to setup Python provider for Neovim
+3. (for [pyenv](https://github.com/pyenv/pyenv) users) Open `nvim` in Normal mode and run `:h python-virtualenv` for how to setup Python provider for Neovim
