@@ -2,12 +2,13 @@ My NeoVim configuration
 
 # Quickstart
 
-1. Install python provider lib
+1. Setup providers
 
 ```bash
-$ sudo apt-get install python-pip python3-pip
+$ sudo apt-get install python-pip python3-pip npm
 $ sudo python2 -m pip install -U pynvim
 $ sudo python3 -m pip install -U pynvim
+$ sudo npm install -g neovim
 ```
 
 2. Run below script
@@ -15,3 +16,5 @@ $ sudo python3 -m pip install -U pynvim
 ```bash
 $ curl https://raw.githubusercontent.com/itsjef/.nvim/master/installer.sh | sh -
 ```
+
+3. (for Pyenv users) Open `nvim` in Normal mode and run `:h python-virtualenv` for how to setup Python provider for Neovim
