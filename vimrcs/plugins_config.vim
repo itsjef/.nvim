@@ -3,7 +3,7 @@
 """"""""""""
 call plug#begin('~/.nvim/bundle')
 " Linting
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 " Autocompletion & snippets
 Plug 'SirVer/ultisnips'
@@ -23,7 +23,6 @@ Plug 'sheerun/vim-polyglot'
 
 " Utils & Helpers
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'machakann/vim-sandwich'
@@ -256,6 +255,25 @@ let g:rainbow_active = 1
 " ----------------------------------------------------------------------------
 " coc.nvim
 " ----------------------------------------------------------------------------
+" if hidden is not set, TextEdit might fail.
+set hidden
+
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
 if has_key(g:plugs, 'coc.nvim')
   function! s:check_back_space() abort
     let col = col('.') - 1
