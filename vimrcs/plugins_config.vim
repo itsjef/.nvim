@@ -68,16 +68,6 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'markdown', 'defx']
 let g:UltiSnipsExpandTrigger="<c-j>"
 
 """"""""""""""""""""""""""""""
-" => NeoYank
-""""""""""""""""""""""""""""""
-if has("clipboard")
-  try
-    let g:neoyank#file = $HOME.'/.nvim/temp_dir/neoyank.txt'
-  catch
-  endtry
-endif
-
-""""""""""""""""""""""""""""""
 " => Defx
 """"""""""""""""""""""""""""""
 call defx#custom#option('default', {
@@ -188,15 +178,6 @@ function! LightlineReload()
   call lightline#update()
 endfunction
 
-""""""""""""""""""""
-" => NERDCommenter
-""""""""""""""""""""
-let g:NERDSpaceDelims = 1
-let g:NERDCompactSexyComs = 1
-let g:NERDTrimTrailingWhitespace = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDCommentEmptyLines = 1
-
 """""""""""
 " => ALE  "
 """""""""""
@@ -232,12 +213,6 @@ let g:ale_python_flake8_options = "--max-line-length=88" " Comply with Black for
 nmap <silent> ]s <Plug>(ale_next_wrap)
 nmap <silent> [s <Plug>(ale_previous_wrap)
 nmap <silent> <leader>= <Plug>(ale_fix)
-
-""""""""""""""
-" => vim-go  "
-""""""""""""""
-let g:go_fmt_autosave = 0
-let g:go_mod_fmt_autosave = 0
 
 """""""""""""
 " => EasyAlign
