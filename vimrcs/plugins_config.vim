@@ -2,58 +2,29 @@
 " vim-plug "
 """"""""""""
 call plug#begin('~/.nvim/bundle')
-" Linting
-Plug 'dense-analysis/ale'
-
-" Autocompletion & snippets
+Plug 'joshdick/onedark.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'mhinz/vim-signify'
+Plug 'ap/vim-buftabline'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'mattn/emmet-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Colorscheme & Display helper
-Plug 'ap/vim-buftabline'
-Plug 'itchyny/lightline.vim'
-Plug 'joshdick/onedark.vim'
-Plug 'kshenoy/vim-signature'
-Plug 'luochen1990/rainbow'
-Plug 'mhinz/vim-signify'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'sheerun/vim-polyglot'
-
-" Utils & Helpers
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/vim-easy-align'
+Plug 'luochen1990/rainbow'
+Plug 'itchyny/lightline.vim'
+
+Plug 'dense-analysis/ale'
 Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 
-" Fonts & Icons
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'kristijanhusak/defx-git'
 Plug 'kristijanhusak/defx-icons'
 Plug 'ryanoasis/vim-devicons'
 
-" Navigation
-Plug 'easymotion/vim-easymotion'
-if has('nvim-0.4.2')
-  if executable('cargo')
-    Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-  else
-    Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
-  endif
-endif
-
-" Debugging
-if has('nvim-0.4.3') && executable('python')
-  Plug 'puremourning/vimspector', {'do': 'python install_gadget.py --enable-python'}
-endif
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
-
-" ---------------------
-" vim-polyglot
-" ---------------------
-" let g:polyglot_disabled = ['markdown']
 
 " ---------------------
 " vim-indent-guides
@@ -68,14 +39,26 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'markdown', 'defx']
 let g:UltiSnipsExpandTrigger="<c-j>"
 
 """"""""""""""""""""""""""""""
-" => NeoYank
+" => Lightline
 """"""""""""""""""""""""""""""
-if has("clipboard")
-  try
-    let g:neoyank#file = $HOME.'/.nvim/temp_dir/neoyank.txt'
-  catch
-  endtry
-endif
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'FugitiveHead',
+  \ },
+  \ }
+
+command! LightlineReload call LightlineReload()
+
+function! LightlineReload()
+  call lightline#init()
+  call lightline#colorscheme()
+  call lightline#update()
+endfunction
 
 """"""""""""""""""""""""""""""
 " => Defx
@@ -166,37 +149,6 @@ function! s:defx_settings() abort
         \ defx#do_action('open_or_close_tree')
 endfunction
 
-""""""""""""""""""""""""""""""
-" => Lightline
-""""""""""""""""""""""""""""""
-let g:lightline = {
-  \ 'colorscheme': 'onedark',
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-  \ },
-  \ 'component_function': {
-  \   'gitbranch': 'FugitiveHead',
-  \ },
-  \ }
-
-command! LightlineReload call LightlineReload()
-
-function! LightlineReload()
-  call lightline#init()
-  call lightline#colorscheme()
-  call lightline#update()
-endfunction
-
-""""""""""""""""""""
-" => NERDCommenter
-""""""""""""""""""""
-let g:NERDSpaceDelims = 1
-let g:NERDCompactSexyComs = 1
-let g:NERDTrimTrailingWhitespace = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDCommentEmptyLines = 1
-
 """""""""""
 " => ALE  "
 """""""""""
@@ -232,20 +184,6 @@ let g:ale_python_flake8_options = "--max-line-length=88" " Comply with Black for
 nmap <silent> ]s <Plug>(ale_next_wrap)
 nmap <silent> [s <Plug>(ale_previous_wrap)
 nmap <silent> <leader>= <Plug>(ale_fix)
-
-""""""""""""""
-" => vim-go  "
-""""""""""""""
-let g:go_fmt_autosave = 0
-let g:go_mod_fmt_autosave = 0
-
-"""""""""""""
-" => EasyAlign
-"""""""""""""
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
 
 """"""""""""
 " => rainbow
@@ -319,8 +257,3 @@ endif
 nnoremap <silent> <C-p> :<C-u>Clap files<CR>
 nnoremap <silent> <leader>/ :<C-u>Clap grep<CR>
 nnoremap <silent> <leader>* :<C-u>Clap grep ++query=<cword><CR>
-
-" -----------------
-"  vimspector
-" -----------------
-let g:vimspector_enable_mappings = 'HUMAN'
