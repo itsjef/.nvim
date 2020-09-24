@@ -163,10 +163,11 @@ let g:lightline = {
   \ 'colorscheme': 'onedark',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+  \             [ 'gitbranch', 'readonly', 'filename', 'modified', 'cocstatus' ] ]
   \ },
   \ 'component_function': {
   \   'gitbranch': 'FugitiveHead',
+  \   'cocstatus': 'coc#status',
   \ },
   \ }
 
@@ -261,7 +262,7 @@ if has_key(g:plugs, 'coc.nvim')
         \ coc#refresh()
   inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
   " Use <c-space> to trigger completion.
-  inoremap <silent><expr> <c-space> coc#refresh()
+  " inoremap <silent><expr> <c-space> coc#refresh()
 
   " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
   " Coc only does snippet and additional edit on confirm.
