@@ -45,9 +45,9 @@ if has('nvim-0.4.2')
 endif
 
 " Debugging
-if has('nvim-0.4.3') && executable('python')
-  Plug 'puremourning/vimspector', {'do': 'python install_gadget.py --enable-python'}
-endif
+" if has('nvim-0.4.3') && executable('python')
+"   Plug 'puremourning/vimspector', {'do': 'python install_gadget.py --enable-python'}
+" endif
 call plug#end()
 
 " ---------------------
@@ -299,4 +299,4 @@ nnoremap <silent> <leader>* :<C-u>Clap grep ++query=<cword><CR>
 " -----------------
 "  vimspector
 " -----------------
-let g:vimspector_enable_mappings = 'HUMAN'
+" let g:vimspector_enable_mappings = 'HUMAN'
