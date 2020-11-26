@@ -1,5 +1,18 @@
 {
+  "diagnostic.displayByAle": true,
   "python.jediEnabled": false,
   "python.linting.enabled": false,
   "python.analysis.diagnosticEnabled": false,
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": [
+        "terraform",
+        "tf"
+      ],
+      "initializationOptions": {},
+      "settings": {}
+    }
+  }
 }
