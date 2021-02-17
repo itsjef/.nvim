@@ -278,7 +278,7 @@ if has_key(g:plugs, 'coc.nvim')
 
   nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-  let g:coc_global_extensions = ['coc-python', 'coc-snippets', 'coc-json', 'coc-yaml']
+  let g:coc_global_extensions = ['coc-jedi', 'coc-json', 'coc-pyright', 'coc-snippets', 'coc-yaml']
 
   augroup coc-config
     autocmd!
