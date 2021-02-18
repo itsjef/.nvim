@@ -13,7 +13,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Colorscheme & Display helper
 Plug 'ap/vim-buftabline'
-Plug 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim' | Plug 'itchyny/vim-gitbranch'
 Plug 'joshdick/onedark.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'luochen1990/rainbow'
@@ -27,7 +27,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
 
 " Fonts & Icons
 Plug 'kristijanhusak/defx-git'
@@ -44,16 +43,7 @@ if has('nvim-0.4.2')
   endif
 endif
 
-" Debugging
-" if has('nvim-0.4.3') && executable('python')
-"   Plug 'puremourning/vimspector', {'do': 'python install_gadget.py --enable-python'}
-" endif
 call plug#end()
-
-" ---------------------
-" vim-polyglot
-" ---------------------
-" let g:polyglot_disabled = ['markdown']
 
 " ---------------------
 " vim-indent-guides
@@ -166,7 +156,7 @@ let g:lightline = {
   \             [ 'gitbranch', 'readonly', 'filename', 'modified', 'cocstatus' ] ]
   \ },
   \ 'component_function': {
-  \   'gitbranch': 'FugitiveHead',
+  \   'gitbranch': 'gitbranch#name',
   \   'cocstatus': 'coc#status',
   \ },
   \ }
@@ -295,8 +285,3 @@ endif
 nnoremap <silent> <C-p> :<C-u>Clap files<CR>
 nnoremap <silent> <leader>/ :<C-u>Clap grep<CR>
 nnoremap <silent> <leader>* :<C-u>Clap grep ++query=<cword><CR>
-
-" -----------------
-"  vimspector
-" -----------------
-" let g:vimspector_enable_mappings = 'HUMAN'
