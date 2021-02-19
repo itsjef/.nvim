@@ -11,9 +11,10 @@ set clipboard+=unnamedplus
 let mapleader = ","
 let g:mapleader = ","
 
-" Buffer navigation
+" Buffer navigation & manipulation
 nmap <leader>h :bprevious<CR>
 nmap <leader>l :bnext<CR>
+nmap <leader>bd :bp\|bd#<CR>
 
 " Mouse
 set mouse=n
