@@ -1,7 +1,7 @@
 """"""""""""
 " vim-plug "
 """"""""""""
-call plug#begin('~/.nvim/bundle')
+call plug#begin($HOME.'/.config/nvim/bundle')
 " Linting
 Plug 'dense-analysis/ale'
 
@@ -11,7 +11,7 @@ Plug 'honza/vim-snippets'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Colorscheme & Display helper
+" Colorscheme & Syntax Highlighting
 Plug 'ap/vim-buftabline'
 Plug 'itchyny/lightline.vim' | Plug 'itchyny/vim-gitbranch'
 Plug 'joshdick/onedark.vim'
@@ -35,12 +35,10 @@ Plug 'ryanoasis/vim-devicons'
 
 " Navigation
 Plug 'easymotion/vim-easymotion'
-if has('nvim-0.4.2')
-  if executable('cargo')
-    Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-  else
-    Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
-  endif
+if executable('cargo')
+  Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+else
+  Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 endif
 
 call plug#end()
@@ -201,8 +199,8 @@ let g:ale_python_flake8_options = "--max-line-length=88" " Comply with Black for
 " let g:ale_fix_on_save = 1
 
 " Navigation
-nmap <silent> ]s <Plug>(ale_next_wrap)
-nmap <silent> [s <Plug>(ale_previous_wrap)
+nmap <silent> ]d <Plug>(ale_next_wrap)
+nmap <silent> [d <Plug>(ale_previous_wrap)
 nmap <silent> <leader>= <Plug>(ale_fix)
 
 """""""""""""
@@ -273,9 +271,10 @@ if has_key(g:plugs, 'coc.nvim')
   augroup coc-config
     autocmd!
     autocmd VimEnter * nmap <silent> gd <Plug>(coc-definition)
-    autocmd VimEnter * nmap <silent> gy <Plug>(coc-type-definition)
+    autocmd VimEnter * nmap <silent> gD <Plug>(coc-declaration)
     autocmd VimEnter * nmap <silent> gi <Plug>(coc-implementation)
     autocmd VimEnter * nmap <silent> gr <Plug>(coc-references)
+    autocmd VimEnter * nmap <silent> gy <Plug>(coc-type-definition)
   augroup END
 endif
 
