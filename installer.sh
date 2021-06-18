@@ -1,7 +1,7 @@
 #!/bin/sh
 
 GIT_SSL_NO_VERIFY=true
-INSTALL_DIR="$HOME/.nvim"
+INSTALL_DIR="$HOME/.config/nvim"
 echo "Install to \"$INSTALL_DIR\"..."
 if [ -e "$INSTALL_DIR" ]; then
   echo "\"$INSTALL_DIR\" already exists!"
@@ -27,30 +27,19 @@ fi
 
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-mkdir -p $HOME/.config/nvim/
 
 # write initial setting for .vimrc
-cat <<EOT >> $HOME/.config/nvim/init.vim
-" Required:
-set runtimepath+=$INSTALL_DIR
+cat <<EOF >> $INSTALL_DIR/init.lua
+vim.g.python_host_prog = '$(which python2)'
+vim.g.python3_host_prog = '$(which python3)'
 
-source $INSTALL_DIR/vimrcs/basic.vim
-source $INSTALL_DIR/vimrcs/plugins_config.vim
-source $INSTALL_DIR/vimrcs/filetype.vim
-
-try
-  source $INSTALL_DIR/vimrcs/custom.vim
-catch
-endtry
-
-" Optional:
-let g:python_host_prog='$(which python2)'
-let g:python3_host_prog='$(which python3)'
-colo onedark
-EOT
-
-ln -sf $HOME/.config/nvim/init.vim $HOME/.nvimrc
-ln -sf $INSTALL_DIR/coc-settings.json $HOME/.config/nvim/coc-settings.json
+-- do not reorder
+require('globals')
+require('general')
+require('keymappings')
+require('plugins')
+require('themes')
+EOF
 
 vim +PlugInstall +qall
 

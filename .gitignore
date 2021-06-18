@@ -1,6 +1,7 @@
+.DS_Store
 autoload/plug.vim*
-temp_dir/*
 bundle/*
 doc/tags
-.DS_Store
+init.lua
+temp_dir/*
 vimrcs/custom.vim
