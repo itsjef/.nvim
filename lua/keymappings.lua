@@ -6,9 +6,9 @@ vim.api.nvim_set_keymap('n', '<S-TAB>', ':bprevious<CR>', {noremap = true, silen
 vim.api.nvim_set_keymap('n', '<leader>bd', ':bp|bd#<CR>', {noremap = true, silent = true})
 
 -- Quickly open/reload nvimrc
-vim.api.nvim_set_keymap('n', '<leader>sv', ':luafile ' .. G.path.init .. '<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>ev', ':e ' .. G.path.init .. '<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>eb', ':e ' .. G.path.basic .. '<cr>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('n', '<leader>sv', ':luafile ' .. G.path.init .. '<cr>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('n', '<leader>ev', ':e ' .. G.path.init .. '<cr>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('n', '<leader>eb', ':e ' .. G.path.basic .. '<cr>', {noremap = true, silent = true})
 
 -- Quick shortcut for splittling
 vim.api.nvim_set_keymap('n', '<C-W>-', ':split<CR>', {noremap = true, silent = true})
