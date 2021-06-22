@@ -1,53 +1,50 @@
-vim.api.nvim_exec(
-[[
-call plug#begin($HOME.'/.config/nvim/bundle')
+return require'packer'.startup(function()
+  -- Packer can manage itself
+  use {'wbthomason/packer.nvim'}
 
-" Linting
-Plug 'dense-analysis/ale'
-Plug 'nathunsmitty/nvim-ale-diagnostic'
+  -- Linting
+  use {'dense-analysis/ale'}
+  use {'nathunsmitty/nvim-ale-diagnostic'}
 
-" File explorer
-Plug 'kyazdani42/nvim-tree.lua'
+  -- File explorer
+  use {'kyazdani42/nvim-tree.lua'}
 
-" LSP
-Plug 'kabouzeid/nvim-lspinstall'
-Plug 'neovim/nvim-lspconfig'
+  -- LSP
+  use {'kabouzeid/nvim-lspinstall'}
+  use {'neovim/nvim-lspconfig'}
 
-" Autocompletion & snippets
-Plug 'hrsh7th/nvim-compe'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
-Plug 'mattn/emmet-vim'
-Plug 'rafamadriz/friendly-snippets'
+  -- Autocompletion & snippets
+  use {'hrsh7th/nvim-compe'}
+  use {'hrsh7th/vim-vsnip'}
+  use {'hrsh7th/vim-vsnip-integ'}
+  use {'mattn/emmet-vim'}
+  use {'rafamadriz/friendly-snippets'}
 
-" Icons
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'ryanoasis/vim-devicons'
+  -- Icons
+  use {'kyazdani42/nvim-web-devicons'}
+  use {'ryanoasis/vim-devicons'}
 
-" Colorscheme & Syntax Highlighting
-Plug 'akinsho/nvim-bufferline.lua'
-" Plug 'joshdick/onedark.vim'
-Plug 'ful1e5/onedark.nvim'
-Plug 'hoob3rt/lualine.nvim'
-Plug 'kshenoy/vim-signature'
-Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
-Plug 'luochen1990/rainbow'
-Plug 'mhinz/vim-signify'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'sheerun/vim-polyglot'
+  -- Colorscheme & Syntax Highlighting
+  use {'akinsho/nvim-bufferline.lua'}
+  -- use 'joshdick/onedark.vim'
+  use {'ful1e5/onedark.nvim'}
+  use {'hoob3rt/lualine.nvim'}
+  use {'kshenoy/vim-signature'}
+  use {'luochen1990/rainbow'}
+  use {'mhinz/vim-signify'}
+  use {'sheerun/vim-polyglot'}
+  use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
-" Navigation
-Plug 'easymotion/vim-easymotion'
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+  -- Navigation
+  use {'easymotion/vim-easymotion'}
+  use {'nvim-lua/plenary.nvim'}
+  use {'nvim-lua/popup.nvim'}
+  use {'nvim-telescope/telescope.nvim'}
 
-" Utils & Helpers
-Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/vim-easy-align'
-Plug 'machakann/vim-sandwich'
-Plug 'tpope/vim-commentary'
-
-call plug#end()
-]],
-false)
+  -- Utils & Helpers
+  use {'jiangmiao/auto-pairs'}
+  use {'junegunn/vim-easy-align'}
+  use {'machakann/vim-sandwich'}
+  use {'tpope/vim-commentary'}
+end)

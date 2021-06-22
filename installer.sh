@@ -25,8 +25,8 @@ if ! [ -e "$INSTALL_DIR" ]; then
   echo ""
 fi
 
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+sh -c 'git clone https://github.com/wbthomason/packer.nvim \
+"${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/packer/start/packer.nvim'
 
 # write initial setting for .vimrc
 cat <<EOF >> $INSTALL_DIR/init.lua
@@ -41,6 +41,6 @@ require('plugins')
 require('themes')
 EOF
 
-vim +PlugInstall +qall
+vim +PackerSync +qall
 
 echo "Completed setup!"
