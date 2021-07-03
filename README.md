@@ -1,5 +1,7 @@
 My NeoVim configuration
 
+For Neovim >= 0.5
+
 # Quickstart
 
 1. Setup providers
