@@ -33,7 +33,7 @@ return require'packer'.startup(function()
   use {'luochen1990/rainbow'}
   use {'mhinz/vim-signify'}
   use {'sheerun/vim-polyglot'}
-  use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
+  use {'lukas-reineke/indent-blankline.nvim'}
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
   -- Navigation
