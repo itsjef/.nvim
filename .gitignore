@@ -2,7 +2,6 @@
 autoload/plug.vim*
 bundle/*
 doc/tags
-init.lua
 plugin/
 temp_dir/*
 vimrcs/custom.vim
