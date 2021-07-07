@@ -1,4 +1,4 @@
-return require'packer'.startup(function()
+return require'packer'.startup({function()
   -- Packer can manage itself
   use {'wbthomason/packer.nvim'}
 
@@ -47,4 +47,11 @@ return require'packer'.startup(function()
   use {'junegunn/vim-easy-align'}
   use {'machakann/vim-sandwich'}
   use {'tpope/vim-commentary'}
-end)
+end,
+config = {
+  display = {
+    open_fn = function()
+      return require('packer.util').float({ border = 'single' })
+    end
+  }
+}})
