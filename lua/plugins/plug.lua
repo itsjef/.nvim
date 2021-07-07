@@ -22,7 +22,6 @@ return require'packer'.startup({function()
 
   -- Icons
   use {'kyazdani42/nvim-web-devicons'}
-  use {'ryanoasis/vim-devicons'}
 
   -- Colorscheme & Syntax Highlighting
   use {'akinsho/nvim-bufferline.lua'}
@@ -31,8 +30,12 @@ return require'packer'.startup({function()
   use {'hoob3rt/lualine.nvim'}
   use {'kshenoy/vim-signature'}
   use {'luochen1990/rainbow'}
-  use {'mhinz/vim-signify'}
-  use {'sheerun/vim-polyglot'}
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
   use {'lukas-reineke/indent-blankline.nvim'}
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
