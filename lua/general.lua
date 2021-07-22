@@ -11,7 +11,7 @@ vim.wo.relativenumber = true -- shoe line numbers relatively
 vim.o.tabstop = 2
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
-vim.bo.expandtab = true
+vim.o.expandtab = true
 
 -- Line mark
 vim.wo.list = true
