@@ -9,6 +9,9 @@ return require'packer'.startup({function()
   -- File explorer
   use {'kyazdani42/nvim-tree.lua'}
 
+  -- Git
+  use {'tpope/vim-fugitive'}
+
   -- LSP
   use {'kabouzeid/nvim-lspinstall'}
   use {'neovim/nvim-lspconfig'}
