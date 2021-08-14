@@ -40,7 +40,7 @@ return require'packer'.startup({function()
     end
   }
   use {'lukas-reineke/indent-blankline.nvim'}
-  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+  use {'nvim-treesitter/nvim-treesitter', branch = '0.5-compat', run = ':TSUpdate'}
 
   -- Navigation
   use {'easymotion/vim-easymotion'}
