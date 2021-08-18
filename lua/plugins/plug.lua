@@ -38,8 +38,7 @@ return require'packer'.startup({function()
 
   -- Colorscheme & Syntax Highlighting
   use {'akinsho/nvim-bufferline.lua'}
-  -- use 'joshdick/onedark.vim'
-  use {'ful1e5/onedark.nvim'}
+  use {'monsonjeremy/onedark.nvim'}
   use {'hoob3rt/lualine.nvim'}
   use {'kshenoy/vim-signature'}
   use {'luochen1990/rainbow'}
