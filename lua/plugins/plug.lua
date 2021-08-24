@@ -12,6 +12,10 @@ return require'packer'.startup({function()
   -- Packer can manage itself
   use {'wbthomason/packer.nvim'}
 
+  -- Plugin dependencies
+  use {'nvim-lua/plenary.nvim'}
+  use {'nvim-lua/popup.nvim'}
+
   -- Linting
   use {'dense-analysis/ale'}
   use {'nathunsmitty/nvim-ale-diagnostic'}
@@ -54,9 +58,8 @@ return require'packer'.startup({function()
 
   -- Navigation
   use {'easymotion/vim-easymotion'}
-  use {'nvim-lua/plenary.nvim'}
-  use {'nvim-lua/popup.nvim'}
   use {'nvim-telescope/telescope.nvim'}
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- Utils & Helpers
   use {'jiangmiao/auto-pairs'}
