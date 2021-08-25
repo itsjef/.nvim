@@ -8,7 +8,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Install plugins
-return require'packer'.startup({function()
+require('packer').startup({function()
   -- Packer can manage itself
   use {'wbthomason/packer.nvim'}
 
@@ -45,11 +45,15 @@ return require'packer'.startup({function()
   use {'kyazdani42/nvim-web-devicons'}
 
   -- Colorscheme & Syntax Highlighting
-  use {'akinsho/nvim-bufferline.lua'}
+  use {
+    'akinsho/nvim-bufferline.lua',
+    config = function()
+      require('bufferline').setup()
+    end
+  }
   use {'monsonjeremy/onedark.nvim'}
   use {'hoob3rt/lualine.nvim'}
   use {'kshenoy/vim-signature'}
-  use {'luochen1990/rainbow'}
   use {
     'lewis6991/gitsigns.nvim',
     requires = {'nvim-lua/plenary.nvim'},
@@ -83,3 +87,16 @@ config = {
     end
   }
 }})
+
+-- LSPs
+require('conf.lsp')
+
+-- Other conf
+require('conf.ale')
+require('conf.autocomplete')
+require('conf.easyalign')
+require('conf.indent-blankline')
+require('conf.lualine')
+require('conf.nvim-tree')
+require('conf.telescope')
+require('conf.treesitter')
