@@ -27,11 +27,19 @@ return require'packer'.startup({function()
   use {'neovim/nvim-lspconfig'}
 
   -- Autocompletion & snippets
-  use {'hrsh7th/nvim-compe'}
-  use {'hrsh7th/vim-vsnip'}
-  use {'hrsh7th/vim-vsnip-integ'}
   use {'mattn/emmet-vim'}
-  use {'rafamadriz/friendly-snippets'}
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'saadparwaiz1/cmp_luasnip',
+    },
+  }
+  use {
+    'L3MON4D3/LuaSnip',
+    requires = {'rafamadriz/friendly-snippets'}
+  }
 
   -- Icons
   use {'kyazdani42/nvim-web-devicons'}
