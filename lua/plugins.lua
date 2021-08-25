@@ -75,7 +75,7 @@ require('packer').startup({function()
   use {'nvim-treesitter/nvim-treesitter', branch = '0.5-compat', run = ':TSUpdate'}
   use {'nvim-treesitter/nvim-treesitter-textobjects', branch = '0.5-compat'}
   use {'p00f/nvim-ts-rainbow'}
-  use {'onsails/lspkind-nvim'}
+  -- use {'onsails/lspkind-nvim'}
 
   -- Navigation
   use {'easymotion/vim-easymotion'}

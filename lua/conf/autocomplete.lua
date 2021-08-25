@@ -12,12 +12,12 @@ cmp.setup {
       require('luasnip').lsp_expand(args.body)
     end,
   },
-  formatting = {
-    format = function(entry, vim_item)
-      vim_item.kind = require'lspkind'.presets.default[vim_item.kind]
-      return vim_item
-    end
-  },
+  -- formatting = {
+  --   format = function(entry, vim_item)
+  --     vim_item.kind = require'lspkind'.presets.default[vim_item.kind]
+  --     return vim_item
+  --   end
+  -- },
   mapping = {
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
