@@ -60,6 +60,7 @@ return require'packer'.startup({function()
   use {'lukas-reineke/indent-blankline.nvim'}
   use {'nvim-treesitter/nvim-treesitter', branch = '0.5-compat', run = ':TSUpdate'}
   use {'nvim-treesitter/nvim-treesitter-textobjects', branch = '0.5-compat'}
+  use {'onsails/lspkind-nvim'}
 
   -- Navigation
   use {'easymotion/vim-easymotion'}
