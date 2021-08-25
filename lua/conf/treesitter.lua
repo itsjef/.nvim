@@ -9,6 +9,9 @@ require'nvim-treesitter.configs'.setup {
   incremental_selection = {
     enable = false
   },
+  rainbow = {
+    enable = true
+  },
   textobjects = {
     select = {
       enable = true,
