@@ -17,7 +17,12 @@ require('packer').startup({function()
   use {'nathunsmitty/nvim-ale-diagnostic'}
 
   -- File explorer
-  use {'kyazdani42/nvim-tree.lua'}
+  use {
+    'kyazdani42/nvim-tree.lua',
+    config = function()
+      require('conf.nvim-tree')
+    end
+  }
 
   -- Git
   use {'tpope/vim-fugitive'}
@@ -41,14 +46,12 @@ require('packer').startup({function()
     requires = {'rafamadriz/friendly-snippets'}
   }
 
-  -- Icons
-  use {'kyazdani42/nvim-web-devicons'}
-
   -- Colorscheme & Syntax Highlighting
   use {
     'akinsho/nvim-bufferline.lua',
+    requires = {'kyazdani42/nvim-web-devicons'},
     config = function()
-      require('bufferline').setup()
+      require('bufferline').setup{}
     end
   }
   use {'monsonjeremy/onedark.nvim'}
@@ -58,10 +61,17 @@ require('packer').startup({function()
     'lewis6991/gitsigns.nvim',
     requires = {'nvim-lua/plenary.nvim'},
     config = function()
-      require('gitsigns').setup()
+      require('gitsigns').setup{}
     end
   }
-  use {'lukas-reineke/indent-blankline.nvim'}
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      vim.g.indent_blankline_filetype_exclude = {'help', 'nerdtree', 'defx'}
+      vim.g.indent_blankline_use_treesitter = true
+      -- vim.g.indent_blankline_show_current_context = true
+    end
+  }
   use {'nvim-treesitter/nvim-treesitter', branch = '0.5-compat', run = ':TSUpdate'}
   use {'nvim-treesitter/nvim-treesitter-textobjects', branch = '0.5-compat'}
   use {'p00f/nvim-ts-rainbow'}
@@ -77,7 +87,15 @@ require('packer').startup({function()
 
   -- Utils & Helpers
   use {'jiangmiao/auto-pairs'}
-  use {'junegunn/vim-easy-align'}
+  use {
+    'junegunn/vim-easy-align',
+    config = function()
+      -- Start interactive EasyAlign in visual mode (e.g. vipga)
+      vim.api.nvim_set_keymap('x', 'ga', '<Plug>(EasyAlign)', {silent = true})
+      -- Start interactive EasyAlign for a motion/text object (e.g. gaip)
+      vim.api.nvim_set_keymap('n', 'ga', '<Plug>(EasyAlign)', {silent = true})
+    end
+  }
   use {'machakann/vim-sandwich'}
   use {'tpope/vim-commentary'}
 end,
@@ -95,9 +113,6 @@ require('conf.lsp')
 -- Other conf
 require('conf.ale')
 require('conf.autocomplete')
-require('conf.easyalign')
-require('conf.indent-blankline')
 require('conf.lualine')
-require('conf.nvim-tree')
 require('conf.telescope')
 require('conf.treesitter')
