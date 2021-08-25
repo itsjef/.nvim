@@ -7,6 +7,10 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
+-- Automatically run :PackerCompile whenever this file is updated
+local plugins_path = fn.stdpath('config')..'/lua/plugins.lua'
+vim.cmd('autocmd BufWritePost '..plugins_path..' PackerCompile')
+
 -- Install plugins
 require('packer').startup({function()
   -- Packer can manage itself
