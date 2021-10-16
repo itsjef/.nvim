@@ -32,7 +32,7 @@ require('packer').startup({function()
   use {'tpope/vim-fugitive'}
 
   -- LSP
-  use {'kabouzeid/nvim-lspinstall'}
+  use {'williamboman/nvim-lsp-installer'}
   use {'neovim/nvim-lspconfig'}
 
   -- Autocompletion & snippets
