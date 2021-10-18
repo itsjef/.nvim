@@ -107,6 +107,14 @@ require('packer').startup({function()
   }
   use {'machakann/vim-sandwich'}
   use {'tpope/vim-commentary'}
+
+  -- PlantUML
+  use {
+    'weirongxu/plantuml-previewer.vim',
+    requires = {'tyru/open-browser.vim'},
+    ft = {'plantuml'},
+    cmd = {'PlantumlOpen', 'PlantumlStart'}
+  }
 end,
 config = {
   display = {
