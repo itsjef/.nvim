@@ -107,6 +107,12 @@ require('packer').startup({function()
   }
   use {'machakann/vim-sandwich'}
   use {'tpope/vim-commentary'}
+  use {
+    'luukvbaal/stabilize.nvim',
+    config = function()
+      require('stabilize').setup{}
+    end
+  }
 
   -- PlantUML
   use {
