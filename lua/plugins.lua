@@ -63,7 +63,7 @@ require('packer').startup({function()
     end
   }
   use {'monsonjeremy/onedark.nvim'}
-  use {'hoob3rt/lualine.nvim'}
+  use {'nvim-lualine/lualine.nvim'}
   use {'kshenoy/vim-signature'}
   use {
     'lewis6991/gitsigns.nvim',
