@@ -16,9 +16,13 @@ require('packer').startup({function()
   -- Packer can manage itself
   use {'wbthomason/packer.nvim'}
 
-  -- Linting
-  use {'dense-analysis/ale'}
-  use {'nathunsmitty/nvim-ale-diagnostic'}
+  -- diagnostic, code actions, and more.
+  use({ "jose-elias-alvarez/null-ls.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "neovim/nvim-lspconfig"
+    }
+  })
 
   -- File explorer
   use {
@@ -137,9 +141,9 @@ config = {
 require('conf.lsp')
 
 -- Other conf
-require('conf.ale')
 require('conf.autocomplete')
 require('conf.hop')
 require('conf.lualine')
+require('conf.null-ls')
 require('conf.telescope')
 require('conf.treesitter')
