@@ -87,7 +87,10 @@ require('packer').startup({function()
   -- use {'onsails/lspkind-nvim'}
 
   -- Navigation
-  use {'easymotion/vim-easymotion'}
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v1', -- optional but strongly recommended
+  }
   use {
     'nvim-telescope/telescope.nvim',
     requires = {'nvim-lua/plenary.nvim'}
@@ -136,6 +139,7 @@ require('conf.lsp')
 -- Other conf
 require('conf.ale')
 require('conf.autocomplete')
+require('conf.hop')
 require('conf.lualine')
 require('conf.telescope')
 require('conf.treesitter')
