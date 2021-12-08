@@ -1,6 +1,5 @@
 vim.o.clipboard = 'unnamedplus' -- copy & paste from system clipboard
 vim.o.hidden = true -- hide abandoned buffer
-vim.o.inccommand = 'nosplit' -- Live substitution
 vim.o.mouse = 'a' -- enable mouse
 vim.o.scrolloff = 999 -- Set lines to the cursor when moving around with j/k keys
 vim.wo.cursorline = true -- Display the line you are in
