@@ -66,7 +66,8 @@ require('packer').startup({function()
       require('bufferline').setup{}
     end
   }
-  use {'monsonjeremy/onedark.nvim'}
+  -- use {'monsonjeremy/onedark.nvim'}
+  use {'ful1e5/onedark.nvim'}
   use {'nvim-lualine/lualine.nvim'}
   use {'kshenoy/vim-signature'}
   use {
