@@ -1,5 +1,13 @@
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained",
+  ensure_installed = {
+    "bash",
+    "dockerfile",
+    "lua",
+    "make",
+    "markdown",
+    "python",
+    "yaml",
+  },
   highlight = {
     enable = true
   },
