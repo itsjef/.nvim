@@ -5,8 +5,13 @@ local sources = {
   builtins.formatting.trim_newlines,
   builtins.formatting.trim_whitespace,
 }
+local on_attach = function(client)
+  if client.resolved_capabilities.document_formatting then
+    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+  end
+end
 
-nls.config({ sources = sources })
-
-local lspconfig = require("lspconfig")
-lspconfig["null-ls"].setup({})
+nls.setup({
+  sources = sources,
+  on_attach = on_attach,
+})
