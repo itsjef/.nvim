@@ -1,8 +1,15 @@
-vim.api.nvim_set_keymap('n', '<C-p>', '<cmd>Telescope find_files<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>/', '<cmd>Telescope live_grep<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>*', '<cmd>Telescope grep_string<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', {noremap = true, silent = true})
+function nnoremap(key, command)
+  vim.api.nvim_set_keymap('n', key, command, {noremap = true, silent = true})
+end
+
+nnoremap('<C-p>', '<cmd>Telescope find_files<cr>')
+nnoremap('<leader>/', '<cmd>Telescope live_grep<cr>')
+nnoremap('<leader>*', '<cmd>Telescope grep_string<cr>')
+nnoremap('<leader>tT', '<cmd>Telescope tags<cr>')
+nnoremap('<leader>tb', '<cmd>Telescope buffers<cr>')
+nnoremap('<leader>th', '<cmd>Telescope help_tags<cr>')
+nnoremap('<leader>tr', '<cmd>Telescope resume<cr>')
+nnoremap('<leader>tt', '<cmd>Telescope current_buffer_tags<cr>')
 
 local actions = require('telescope.actions')
 
