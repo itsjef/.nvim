@@ -48,9 +48,12 @@ require("nvim-lsp-installer").on_server_ready(function(server)
     local opts = { on_attach = on_attach, capabilities = capabilities }
 
     -- (optional) Customize the options passed to the server
-    -- if server.name == "tsserver" then
-    --     opts.root_dir = function() ... end
-    -- end
+    if server.name == "dockerls" then
+        opts.on_attach = function(client, bufnr)
+          client.resolved_capabilities.document_formatting = false
+          on_attach()
+        end
+    end
 
     -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
     server:setup(opts)
