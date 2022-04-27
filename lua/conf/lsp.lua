@@ -48,7 +48,7 @@ require("nvim-lsp-installer").on_server_ready(function(server)
     local opts = { on_attach = on_attach, capabilities = capabilities }
 
     -- (optional) Customize the options passed to the server
-    if server.name == "dockerls" then
+    if server.name == "dockerls" or server.name == "gopls" then
         opts.on_attach = function(client, bufnr)
           client.resolved_capabilities.document_formatting = false
           on_attach()

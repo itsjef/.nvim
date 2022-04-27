@@ -1,5 +1,5 @@
 function nnoremap(key, command)
-  vim.api.nvim_set_keymap('n', key, command, {noremap = true, silent = true})
+  vim.keymap.set('n', key, command, {noremap = true, silent = true})
 end
 
 nnoremap('<C-p>', '<cmd>Telescope find_files<cr>')

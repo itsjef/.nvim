@@ -48,7 +48,7 @@ cmp.setup {
   --     return vim_item
   --   end
   -- },
-  mapping = {
+  mapping = cmp.mapping.preset.insert({
     ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
     ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -61,11 +61,12 @@ cmp.setup {
     },
     ['<Tab>'] = cmp.mapping(tab, { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(shift_tab, { 'i', 's' }),
-  },
-  sources = {
-    { name = 'buffer' },
+  }),
+  sources = cmp.config.sources({
     { name = 'luasnip' },
     { name = 'nvim_lsp' },
     { name = 'path' },
-  },
+  }, {
+    { name = 'buffer' },
+  }),
 }
