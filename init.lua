@@ -1,5 +1,5 @@
-vim.g.python_host_prog = '/home/adrian/.pyenv/versions/pynvim/bin/python'
-vim.g.python3_host_prog = '/home/adrian/.pyenv/versions/pynvim3/bin/python'
+vim.g.python_host_prog = '/home/adrian/.virtualenvs/pynvim/bin/python'
+vim.g.python3_host_prog = '/home/adrian/.virtualenvs/py3nvim/bin/python'
 
 -- do not reorder
 require('globals')
