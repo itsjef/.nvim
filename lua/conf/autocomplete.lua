@@ -63,6 +63,7 @@ cmp.setup {
     ['<S-Tab>'] = cmp.mapping(shift_tab, { 'i', 's' }),
   }),
   sources = cmp.config.sources({
+    { name = 'orgmode' },
     { name = 'luasnip' },
     { name = 'nvim_lsp' },
     { name = 'path' },

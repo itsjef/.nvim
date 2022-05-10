@@ -129,6 +129,9 @@ require('packer').startup({function()
     ft = {'plantuml'},
     cmd = {'PlantumlOpen', 'PlantumlStart'}
   }
+
+  -- Org Mode
+  use {'nvim-orgmode/orgmode'}
 end,
 config = {
   display = {
@@ -146,5 +149,6 @@ require('conf.autocomplete')
 require('conf.hop')
 require('conf.lualine')
 require('conf.null-ls')
+require('conf.orgmode')
 require('conf.telescope')
 require('conf.treesitter')

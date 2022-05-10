@@ -11,7 +11,7 @@ require'nvim-treesitter.configs'.setup {
     "yaml",
   },
   highlight = {
-    enable = true
+    enable = true,
   },
   indent = {
     enable = false
