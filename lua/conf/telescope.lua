@@ -10,6 +10,7 @@ nnoremap('<leader>tb', '<cmd>Telescope buffers<cr>')
 nnoremap('<leader>th', '<cmd>Telescope help_tags<cr>')
 nnoremap('<leader>tr', '<cmd>Telescope resume<cr>')
 nnoremap('<leader>tt', '<cmd>Telescope current_buffer_tags<cr>')
+nnoremap('<leader>tf', '<cmd>Telescope oldfiles<cr>')
 
 local actions = require('telescope.actions')
 
