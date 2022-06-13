@@ -59,6 +59,10 @@ require('packer').startup({function()
   }
 
   -- Colorscheme & Syntax Highlighting
+  use {'catppuccin/nvim', as = 'catppuccin'}
+  use {'ful1e5/onedark.nvim'}
+  use {'marko-cerovac/material.nvim'}
+  use {'projekt0n/github-nvim-theme'}
   use {
     'akinsho/bufferline.nvim',
     requires = {'kyazdani42/nvim-web-devicons'},
@@ -66,8 +70,6 @@ require('packer').startup({function()
       require('bufferline').setup{}
     end
   }
-  -- use {'monsonjeremy/onedark.nvim'}
-  use {'ful1e5/onedark.nvim'}
   use {'nvim-lualine/lualine.nvim'}
   use {'kshenoy/vim-signature'}
   use {
