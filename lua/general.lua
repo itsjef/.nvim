@@ -14,8 +14,9 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true
 
 -- Line mark
-vim.wo.list = true
-vim.wo.listchars = 'eol:↲'
+vim.opt.list = true
+vim.opt.listchars = {eol = '¬', nbsp = '+', tab = '> ', trail = '-'}
+
 
 -- When searching try to be smart about cases
 vim.o.ignorecase = true
@@ -33,3 +34,6 @@ vim.api.nvim_exec([[
   catch
   endtry
 ]], false)
+
+-- True color
+vim.g.termguicolors = true
