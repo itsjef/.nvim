@@ -89,6 +89,7 @@ require('packer').startup({function()
   }
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use {'nvim-treesitter/nvim-treesitter-textobjects' }
+  use {'nvim-treesitter/nvim-treesitter-context'}
   use {'p00f/nvim-ts-rainbow'}
   use {'sheerun/vim-polyglot'}
   -- use {'onsails/lspkind-nvim'}
