@@ -106,7 +106,6 @@ require('packer').startup({function()
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- Utils & Helpers
-  use {'jiangmiao/auto-pairs'}
   use {
     'junegunn/vim-easy-align',
     config = function()
@@ -116,12 +115,30 @@ require('packer').startup({function()
       vim.keymap.set('n', 'ga', '<Plug>(EasyAlign)', {silent = true})
     end
   }
-  use {'machakann/vim-sandwich'}
+  use {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup {}
+    end
+  }
+  use {
+    "kylechui/nvim-surround",
+    config = function()
+      require("nvim-surround").setup {
+        keymaps = {
+          normal = "sa",
+          normal_cur = "sas",
+          delete = "sd",
+          change = "sc",
+        }
+      }
+    end
+  }
   use {'tpope/vim-commentary'}
   use {
     'luukvbaal/stabilize.nvim',
     config = function()
-      require('stabilize').setup{}
+      require('stabilize').setup {}
     end
   }
 
