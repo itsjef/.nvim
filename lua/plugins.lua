@@ -141,25 +141,7 @@ require('packer').startup({function()
       require('stabilize').setup {}
     end
   }
-
-  -- PlantUML
-  use {
-    'weirongxu/plantuml-previewer.vim',
-    requires = {'tyru/open-browser.vim'},
-    ft = {'plantuml'},
-    cmd = {'PlantumlOpen', 'PlantumlStart'}
-  }
-
-  -- Org Mode
-  use {'nvim-orgmode/orgmode'}
-end,
-config = {
-  display = {
-    open_fn = function()
-      return require('packer.util').float({ border = 'single' })
-    end
-  }
-}})
+end })
 
 -- LSPs
 require('conf.lsp')
@@ -169,6 +151,5 @@ require('conf.autocomplete')
 require('conf.hop')
 require('conf.lualine')
 require('conf.null-ls')
-require('conf.orgmode')
 require('conf.telescope')
 require('conf.treesitter')
