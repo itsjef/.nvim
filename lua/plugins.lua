@@ -36,8 +36,12 @@ require('packer').startup({function()
   use {'tpope/vim-fugitive'}
 
   -- LSP
-  use {'williamboman/nvim-lsp-installer'}
-  use {'neovim/nvim-lspconfig'}
+  use { 'williamboman/mason-lspconfig.nvim',
+    requires = {
+      'williamboman/mason.nvim',
+      'neovim/nvim-lspconfig'
+    }
+  }
 
   -- Autocompletion & snippets
   use {'mattn/emmet-vim'}
