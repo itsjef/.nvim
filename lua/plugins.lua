@@ -124,14 +124,7 @@ require('packer').startup({function()
   use {
     "kylechui/nvim-surround",
     config = function()
-      require("nvim-surround").setup {
-        keymaps = {
-          normal = "sa",
-          normal_cur = "sas",
-          delete = "sd",
-          change = "sc",
-        }
-      }
+      require('nvim-surround').setup {}
     end
   }
   use {'tpope/vim-commentary'}
