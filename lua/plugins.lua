@@ -30,6 +30,16 @@ require('packer').startup({ function()
     }
   }
 
+  -- DAP
+  use { 'mfussenegger/nvim-dap',
+    requires = {
+      'mfussenegger/nvim-dap-python',
+      'nvim-telescope/telescope-dap.nvim',
+      'rcarriga/nvim-dap-ui',
+      'theHamsta/nvim-dap-virtual-text',
+    }
+  }
+
   -- File explorer
   use {
     'kyazdani42/nvim-tree.lua',
@@ -140,6 +150,9 @@ end })
 
 -- LSPs
 require('conf.lsp')
+
+-- DAP
+require('conf.dap')
 
 -- Other conf
 require('conf.autocomplete')
