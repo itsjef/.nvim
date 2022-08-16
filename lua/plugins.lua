@@ -109,7 +109,7 @@ require('packer').startup({ function()
   -- Navigation
   use {
     'phaazon/hop.nvim',
-    branch = 'v1', -- optional but strongly recommended
+    branch = 'v2', -- optional but strongly recommended
   }
   use {
     'nvim-telescope/telescope.nvim',
