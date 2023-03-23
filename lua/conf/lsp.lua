@@ -50,8 +50,8 @@ local server_handlers = {
     }
   end,
 
-  ['sumneko_lua'] = function()
-    lspconfig['sumneko_lua'].setup {
+  ['lua_ls'] = function()
+    lspconfig['lua_ls'].setup {
       on_attach = on_attach_no_formatting,
       settings = {
         Lua = {
