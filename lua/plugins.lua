@@ -17,7 +17,8 @@ require('packer').startup({ function()
   use { 'wbthomason/packer.nvim' }
 
   -- LSPs: diagnostic, auto-formatting, code actions, and more.
-  use({ 'jose-elias-alvarez/null-ls.nvim',
+  use({
+    'jose-elias-alvarez/null-ls.nvim',
     requires = {
       'nvim-lua/plenary.nvim',
       'neovim/nvim-lspconfig'
@@ -102,7 +103,7 @@ require('packer').startup({ function()
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'nvim-treesitter/nvim-treesitter-textobjects' }
   use { 'nvim-treesitter/nvim-treesitter-context' }
-  use { 'p00f/nvim-ts-rainbow' }
+  use { 'HiPhish/nvim-ts-rainbow2' }
   use { 'sheerun/vim-polyglot' }
   -- use {'onsails/lspkind-nvim'}
 

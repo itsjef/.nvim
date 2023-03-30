@@ -1,4 +1,4 @@
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   ensure_installed = {
     "bash",
     "comment",
@@ -25,10 +25,8 @@ require'nvim-treesitter.configs'.setup {
   textobjects = {
     select = {
       enable = true,
-
       -- Automatically jump forward to textobj, similar to targets.vim
       lookahead = true,
-
       keymaps = {
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
