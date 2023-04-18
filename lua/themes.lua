@@ -3,4 +3,4 @@ require('github-theme').setup()
 require('material').setup()
 require('onedark').setup()
 
-vim.cmd[[colo catppuccin-macchiato]]
+vim.cmd [[colo catppuccin-macchiato]]

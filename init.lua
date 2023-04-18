@@ -5,5 +5,5 @@ vim.g.python3_host_prog = '/home/adrian/.virtualenvs/py3nvim/bin/python'
 require('globals')
 require('general')
 require('keymappings')
-require('themes')
 require('plugins')
+require('themes')

@@ -5,3 +5,4 @@ doc/tags
 plugin/
 temp_dir/*
 vimrcs/custom.vim
+lazy-lock.json
