@@ -16,6 +16,17 @@ vim.opt.rtp:prepend(install_path)
 
 -- Define plugins
 local plugins = {
+  -- Greeter
+  {
+    'goolord/alpha-nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('alpha').setup(
+        require 'alpha.themes.startify'.config
+      )
+    end
+  },
+
   -- LSPs: diagnostic, auto-formatting, code actions, and more.
   {
     'jose-elias-alvarez/null-ls.nvim',
