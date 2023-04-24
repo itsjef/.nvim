@@ -156,5 +156,5 @@ return {
   },
 
   -- Languages
-  'sheerun/vim-polyglot'
+  -- 'sheerun/vim-polyglot'
 }

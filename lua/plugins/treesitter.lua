@@ -23,13 +23,13 @@ return {
         enable = true,
       },
       indent = {
-        enable = false
+        enable = true,
       },
       incremental_selection = {
-        enable = false
+        enable = false,
       },
       rainbow = {
-        enable = true
+        enable = true,
       },
       textobjects = {
         select = {
