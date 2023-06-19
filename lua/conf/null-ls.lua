@@ -1,3 +1,6 @@
+local major = vim.version().major
+local minor = vim.version().minor
+
 local nls = require("null-ls")
 local builtins = nls.builtins
 local sources = {
@@ -15,7 +18,13 @@ local on_attach = function(client, bufnr)
       buffer = bufnr,
       callback = function()
         -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-        vim.lsp.buf.formatting_sync()
+        if major == 0 then
+          if minor < 8 then
+            vim.lsp.buf.formatting_sync()
+          else
+            vim.lsp.buf.format({ bufnr = bufnr })
+          end
+        end
       end,
     })
   end

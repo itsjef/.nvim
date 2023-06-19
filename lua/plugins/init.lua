@@ -90,7 +90,10 @@ return {
   },
   'ful1e5/onedark.nvim',
   'marko-cerovac/material.nvim',
-  'projekt0n/github-nvim-theme',
+  {
+    'projekt0n/github-nvim-theme',
+    version = '*',
+  },
   'kshenoy/vim-signature',
   {
     'lewis6991/gitsigns.nvim',
