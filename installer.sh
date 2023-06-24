@@ -25,8 +25,8 @@ if ! [ -e "$INSTALL_DIR" ]; then
   echo ""
 fi
 
-sh -c 'git clone https://github.com/wbthomason/packer.nvim \
-"${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/packer/start/packer.nvim'
+sh -c 'git clone --filter=blob:none --branch=stable https://github.com/folke/lazy.nvim.git \
+"${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/lazy/lazy.nvim'
 
 # write initial setting for .vimrc
 cat <<EOF >> $INSTALL_DIR/init.lua
@@ -40,7 +40,5 @@ require('keymappings')
 require('plugins')
 require('themes')
 EOF
-
-vim +PackerSync +qall
 
 echo "Completed setup!"
