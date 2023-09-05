@@ -73,6 +73,7 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
       'saadparwaiz1/cmp_luasnip',
+      'onsails/lspkind.nvim',
     },
   },
   {
@@ -94,7 +95,12 @@ return {
     'projekt0n/github-nvim-theme',
     version = '*',
   },
-  'kshenoy/vim-signature',
+  {
+    'chentoast/marks.nvim',
+    config = function()
+      require('marks').setup()
+    end
+  },
   {
     'lewis6991/gitsigns.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
@@ -104,10 +110,9 @@ return {
   },
   {
     'lukas-reineke/indent-blankline.nvim',
+    branch = 'v3',
     config = function()
-      vim.g.indent_blankline_filetype_exclude = { 'help', 'nerdtree', 'defx' }
-      vim.g.indent_blankline_use_treesitter = true
-      -- vim.g.indent_blankline_show_current_context = true
+      require('ibl').setup()
     end
   },
 
@@ -158,6 +163,12 @@ return {
     end
   },
 
-  -- Languages
-  -- 'sheerun/vim-polyglot'
+  -- AI assistants
+  {
+    'jcdickinson/codeium.nvim',
+    event = 'InsertEnter',
+    config = function()
+      require('codeium').setup({})
+    end
+  }
 }
