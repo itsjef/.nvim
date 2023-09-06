@@ -1,12 +1,6 @@
 return {
   -- LSPs: diagnostic, auto-formatting, code actions, and more.
-  {
-    'jose-elias-alvarez/null-ls.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'neovim/nvim-lspconfig'
-    },
-  },
+  'echasnovski/mini.nvim',
   {
     'williamboman/mason-lspconfig.nvim',
     dependencies = {
