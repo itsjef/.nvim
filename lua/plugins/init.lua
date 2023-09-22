@@ -129,15 +129,6 @@ return {
 
   -- Utils & Helpers
   {
-    'junegunn/vim-easy-align',
-    config = function()
-      -- Start interactive EasyAlign in visual mode (e.g. vipga)
-      vim.keymap.set('x', 'ga', '<Plug>(EasyAlign)', { silent = true })
-      -- Start interactive EasyAlign for a motion/text object (e.g. gaip)
-      vim.keymap.set('n', 'ga', '<Plug>(EasyAlign)', { silent = true })
-    end
-  },
-  {
     'windwp/nvim-autopairs',
     config = function()
       require('nvim-autopairs').setup()
@@ -151,7 +142,6 @@ return {
       require('nvim-surround').setup()
     end
   },
-  'tpope/vim-commentary',
   {
     'luukvbaal/stabilize.nvim',
     config = function()
