@@ -104,7 +104,8 @@ return {
   },
   {
     'lukas-reineke/indent-blankline.nvim',
-    branch = 'v3',
+    main = 'ibl',
+    opts = {},
     config = function()
       require('ibl').setup({
         scope = { enabled = false },
