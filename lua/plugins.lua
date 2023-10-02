@@ -28,5 +28,4 @@ require('conf.lsp')
 -- Other conf
 require('conf.autocomplete')
 require('conf.hop')
-require('conf.mini')
 require('conf.telescope')

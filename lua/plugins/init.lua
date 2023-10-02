@@ -1,6 +1,5 @@
 return {
   -- LSPs: diagnostic, auto-formatting, code actions, and more.
-  'echasnovski/mini.nvim',
   {
     'williamboman/mason-lspconfig.nvim',
     dependencies = {
