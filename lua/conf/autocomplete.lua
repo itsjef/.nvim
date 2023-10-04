@@ -33,6 +33,11 @@ local function shift_tab(fallback)
   end
 end
 
+local borderstyle = {
+  border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+}
+
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -76,4 +81,8 @@ cmp.setup {
     { name = 'codeium' },
     { name = 'buffer' },
   }),
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
 }

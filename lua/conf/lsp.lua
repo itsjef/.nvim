@@ -1,3 +1,6 @@
+local border = 'rounded'
+vim.diagnostic.config({ float = { border = border } })
+
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
@@ -38,7 +41,17 @@ local mason_lspconfig = require('mason-lspconfig')
 local lspconfig = require('lspconfig')
 
 local default_handler = function(server_name)
-  lspconfig[server_name].setup { on_attach = on_attach }
+  lspconfig[server_name].setup {
+    on_attach = on_attach,
+    handlers = {
+      ["textDocument/hover"] = vim.lsp.with(
+        vim.lsp.handlers.hover, { border = border }
+      ),
+      ["textDocument/signatureHelp"] = vim.lsp.with(
+        vim.lsp.handlers.signature_help, { border = border }
+      ),
+    }
+  }
 end
 
 local server_handlers = {
