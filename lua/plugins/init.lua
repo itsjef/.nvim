@@ -151,10 +151,10 @@ return {
 
   -- AI assistants
   {
-    'jcdickinson/codeium.nvim',
+    'Exafunction/codeium.nvim',
     event = 'InsertEnter',
     config = function()
       require('codeium').setup({})
     end
-  }
+  },
 }
