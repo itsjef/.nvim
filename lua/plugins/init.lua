@@ -57,7 +57,6 @@ return {
   'tpope/vim-fugitive',
 
   -- Autocompletion & snippets
-  'mattn/emmet-vim',
   {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
