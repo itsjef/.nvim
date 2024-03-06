@@ -6,8 +6,7 @@ vim.g.mapleader = ','
 -- Buffer navigation & manipulation
 -- vim.keymap.set('n', '<TAB>', ':bnext<CR>', opts)
 -- vim.keymap.set('n', '<S-TAB>', ':bprevious<CR>', opts)
--- vim.keymap.set('n', '<leader>bd', ':bp|bd#<CR>', opts)
-vim.keymap.set('n', '<leader>bd', ':bdelete<CR>', opts)
+vim.keymap.set('n', '<leader>bd', ':bp|bd#<CR>', opts)
 
 -- Quickly open/reload nvimrc
 -- vim.keymap.set('n', '<leader>sv', ':luafile ' .. G.path.init .. '<cr>', opts)
