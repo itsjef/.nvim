@@ -21,6 +21,7 @@ return {
   -- File explorer, Bufferline, Statusline
   {
     'nvim-tree/nvim-tree.lua',
+    version = 'v1.*',
     keys = {
       { '<leader>nn', '<cmd>NvimTreeToggle<CR>', desc = 'NvimTree' },
     },
@@ -40,7 +41,7 @@ return {
   },
   {
     'akinsho/bufferline.nvim',
-    version = "v3.*",
+    version = 'v4.*',
     dependencies = {
       'nvim-tree/nvim-web-devicons'
     },
@@ -104,6 +105,7 @@ return {
   },
   {
     'lukas-reineke/indent-blankline.nvim',
+    version = 'v3.*',
     main = 'ibl',
     opts = {},
     config = function()
@@ -115,12 +117,12 @@ return {
 
   -- Navigation
   {
-    'phaazon/hop.nvim',
-    branch = 'v2', -- optional but strongly recommended
+    'smoka7/hop.nvim',
+    version = 'v2.*',
   },
   {
     'nvim-telescope/telescope.nvim',
-    version = '*',
+    version = '0.1.*',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-live-grep-args.nvim'
@@ -137,8 +139,8 @@ return {
   },
   {
     'kylechui/nvim-surround',
-    version = '*',
-    event = "VeryLazy",
+    version = 'v2.*',
+    event = 'VeryLazy',
     config = function()
       require('nvim-surround').setup()
     end
