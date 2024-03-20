@@ -25,6 +25,7 @@ vim.o.smartcase = true
 -- 'Natural' splitting
 vim.o.splitbelow = true
 vim.o.splitright = true
+vim.o.splitkeep = 'screen'
 
 -- Persistent undo - You can undo even after closing a buffer or Vim itself
 vim.api.nvim_exec([[

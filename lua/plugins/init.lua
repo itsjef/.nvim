@@ -143,12 +143,6 @@ return {
       require('nvim-surround').setup()
     end
   },
-  {
-    'luukvbaal/stabilize.nvim',
-    config = function()
-      require('stabilize').setup()
-    end
-  },
 
   -- AI assistants
   {
