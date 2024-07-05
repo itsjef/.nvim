@@ -64,7 +64,8 @@ local handlers = {
       settings = {
         basedpyright = {
           disableOrganizeImports = true,
-          typeCheckingMode = 'strict',
+          -- typeCheckingMode = 'strict',
+          typeCheckingMode = 'standard',
           -- analysis = {
           --   ignore = { '*' }, -- Ignore all files for analysis to exclusively use Ruff for linting
           -- },
