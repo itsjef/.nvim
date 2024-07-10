@@ -18,6 +18,7 @@ return {
         "python",
         "toml",
         "yaml",
+        "vimdoc",
       },
       highlight = {
         enable = true,
