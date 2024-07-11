@@ -156,6 +156,13 @@ return {
       require('nvim-surround').setup()
     end
   },
+  {
+    'mistweaverco/kulala.nvim',
+    version = 'v1.*',
+    config = function()
+      require('kulala').setup({})
+    end
+  },
 
   -- AI assistants
   -- {
