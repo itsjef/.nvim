@@ -149,14 +149,6 @@ return {
     end
   },
   {
-    'kylechui/nvim-surround',
-    version = 'v2.*',
-    event = 'VeryLazy',
-    config = function()
-      require('nvim-surround').setup()
-    end
-  },
-  {
     'mistweaverco/kulala.nvim',
     version = 'v1.*',
     config = function()
