@@ -150,7 +150,7 @@ return {
   },
   {
     'mistweaverco/kulala.nvim',
-    version = 'v1.*',
+    version = 'v3.*',
     config = function()
       require('kulala').setup({})
     end
