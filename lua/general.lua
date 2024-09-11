@@ -3,9 +3,8 @@ vim.o.hidden = true -- hide abandoned buffer
 vim.o.laststatus = 3 -- Display only 1 statusline
 vim.o.mouse = 'a' -- enable mouse
 vim.o.scrolloff = 999 -- Set lines to the cursor when moving around with j/k keys
-vim.wo.cursorline = true -- Display the line you are in
-vim.wo.number = true -- show line numbers
-vim.wo.relativenumber = true -- shoe line numbers relatively
+vim.o.cursorline = true -- Display the line you are in
+vim.o.number = true
 
 -- Indentation
 vim.o.tabstop = 2
@@ -38,3 +37,33 @@ vim.api.nvim_exec([[
 
 -- True color
 vim.g.termguicolors = true
+
+-- toggle relative line number on the basis of mode
+local augroup = vim.api.nvim_create_augroup('numbertoggle', {})
+
+vim.api.nvim_create_autocmd(
+  { 'BufEnter', 'FocusGained', 'InsertLeave', 'CmdlineLeave', 'WinEnter' },
+  {
+    pattern = '*',
+    group = augroup,
+    callback = function()
+      if vim.o.nu and vim.api.nvim_get_mode().mode ~= 'i' then
+        vim.opt.relativenumber = true
+      end
+    end,
+  }
+)
+
+vim.api.nvim_create_autocmd(
+  { 'BufLeave', 'FocusLost', 'InsertEnter', 'CmdlineEnter', 'WinLeave' },
+  {
+    pattern = '*',
+    group = augroup,
+    callback = function()
+      if vim.o.nu then
+        vim.opt.relativenumber = false
+        vim.cmd('redraw')
+      end
+    end,
+  }
+)
