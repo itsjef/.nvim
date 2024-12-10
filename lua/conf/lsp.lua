@@ -74,8 +74,8 @@ local handlers = {
     }
   end,
 
-  ['ruff_lsp'] = function()
-    lspconfig['ruff_lsp'].setup {
+  ['ruff'] = function()
+    lspconfig['ruff'].setup {
       on_attach = function(client, bufnr)
         client.server_capabilities.hoverProvider = false
         on_attach(client, bufnr)
